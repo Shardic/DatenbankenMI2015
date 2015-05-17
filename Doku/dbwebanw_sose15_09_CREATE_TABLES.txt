@@ -47,7 +47,6 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Mitarbeiter` (
   `MitGeschaeftsstellennummer` INT NOT NULL,
   `MitTerminnummer` INT NOT NULL,
   `MitFahrzeugnummer` INT NOT NULL,
-  `Mitarbeitercol` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Mitarbeiternummer`),
   CONSTRAINT `MitGeschaeftsstellennummer`
     FOREIGN KEY (`MitGeschaeftsstellennummer`)

@@ -1,7 +1,13 @@
-INSERT INTO Geschäftsstelle VALUES(1,'Bremen', 28203);
+﻿INSERT INTO Geschaeftsstelle VALUES(1,'Bremen', 28203);
+
 INSERT INTO Fahrzeug VALUES(1,'Audi', 20000,"Coupe",2, 'HB AU 12',1);
+
 INSERT INTO Kunde VALUES(1,'Hans Wurst',"Hans Wurst Straße 30 29199 Bremen");
+
 INSERT INTO Termin VALUES('2015-05-11','2015-05-30',1,1);
-INSERT INTO Terminmanagement VALUES(1,1,1);
+
 INSERT INTO Rechnung VALUES(1,25,500,1);
-INSERT INTO Mitarbeiter VALUES(1,'Müller', 1800,"Flughafenallee 10", "DE60 1234567891313", '2012-12-12‘,1,1,1‚col1');
+
+INSERT INTO Mitarbeiter VALUES (1, 'Müller', 1800, 'Flughafenallee 10', 'DE60 1234567891313', '2012-12-12', 1, 1, 1);
+
+INSERT INTO Terminmanagement VALUES(1,1,1);
