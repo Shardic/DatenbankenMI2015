@@ -1,0 +1,7 @@
+CREATE VIEW rechnungProTermin (Termin, Rechnung) AS 
+SELECT t.Terminnummer, r.Rechnungsbetrag
+FROM Terminmanagement tm
+INNER JOIN 
+Termin t ON tm.MTerminnummer = t.Terminnummer
+INNER JOIN 
+Rechnung r ON tm.MRechnungsnummer = r.Rechnungsnummer;
