@@ -1,0 +1,36 @@
+CREATE VIEW `terminfahrzeug` AS
+SELECT t.Terminnummer, t.Starttag, t.Endtag, f.Fahrzeugnummer, f.Hersteller, f.Fahrzeugtyp
+FROM Terminmanagement tm
+INNER JOIN Fahrzeug f
+ON f.Fahrzeugnummer=tm.MFahrzeugnummer
+INNER JOIN Termin t
+ON t.Terminnummer=tm.MTerminnummer;
+
+CREATE VIEW TerminZuKunde AS
+SELECT Termin.Starttag, Termin.TKundennummer
+FROM Termin
+WHERE (Starttag = \'822015-05-11\'91)
+ORDER BY TKundennummer DESC
+
+CREATE VIEW Kostenabrechnung AS
+SELECT SUM(m.Gehalt) AS 
+'Mitarbeitergehälter', SUM(r.Rechnungsbetrag) 
+AS 'Gewinn von Fahrzeugen', r.Rechnungsbetrag-m.Gehalt AS 'Gewinn/Verlust' 
+FROM Mitarbeiter m 
+NATURAL JOIN Rechnung r;
+
+CREATE VIEW Arbeitsort AS
+SELECT Mitarbeiter.Name, Geschaeftsstelle.Ort, Geschaeftsstelle.PLZ
+FROM Mitarbeiter 
+INNER JOIN Geschaeftsstelle
+ON Mitarbeiter.MitGeschaeftsstellennummer=Geschaeftsstelle.Geschaeftsstellennummer;
+
+CREATE VIEW rechnungProTermin (Termin, Rechnung) AS 
+SELECT t.Terminnummer, r.Rechnungsbetrag
+FROM Terminmanagement tm
+INNER JOIN 
+Termin t ON tm.MTerminnummer = t.Terminnummer
+INNER JOIN 
+Rechnung r ON tm.MRechnungsnummer = r.Rechnungsnummer;
+
+
