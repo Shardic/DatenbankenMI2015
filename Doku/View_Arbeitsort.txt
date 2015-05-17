@@ -1,0 +1,5 @@
+CREATE VIEW Arbeitsort AS
+SELECT Mitarbeiter.Name, Geschaeftsstelle.Ort, Geschaeftsstelle.PLZ
+FROM Mitarbeiter 
+INNER JOIN Geschaeftsstelle
+ON Mitarbeiter.MitGeschaeftsstellennummer=Geschaeftsstelle.Geschaeftsstellennummer;
