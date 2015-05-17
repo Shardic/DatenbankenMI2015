@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Geschaeftsstelle` (
   `Geschaeftsstellennummer` INT NOT NULL AUTO_INCREMENT,
   `Ort` VARCHAR(45) NULL,
   `PLZ` INT NULL,
-  PRIMARY KEY (`Geschaeftsstellennummer`))
+  PRIMARY KEY (`Geschaeftsstellennummer`));
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Fahrzeug` (
   `Fahrzeugnummer` INT NOT NULL AUTO_INCREMENT,
@@ -17,13 +17,13 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Fahrzeug` (
     FOREIGN KEY (`FGeschaeftsstellennummer`)
     REFERENCES `dbwebanw_sose15_09`.`Geschaeftsstelle` (`Geschaeftsstellennummer`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Kunde` (
   `Kundennummer` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
   `Adresse` VARCHAR(45) NULL,
-  PRIMARY KEY (`Kundennummer`))
+  PRIMARY KEY (`Kundennummer`));
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Termin` (
   `Starttag` DATE NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Termin` (
     FOREIGN KEY (`TKundennummer`)
     REFERENCES `dbwebanw_sose15_09`.`Kunde` (`Kundennummer`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Mitarbeiter` (
   `Mitarbeiternummer` INT NOT NULL AUTO_INCREMENT,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Mitarbeiter` (
     FOREIGN KEY (`MitFahrzeugnummer`)
     REFERENCES `dbwebanw_sose15_09`.`Fahrzeug` (`Fahrzeugnummer`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Rechnung` (
   `Rechnungsnummer` INT NOT NULL AUTO_INCREMENT,
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Rechnung` (
     FOREIGN KEY (`RKundennummer`)
     REFERENCES `dbwebanw_sose15_09`.`Kunde` (`Kundennummer`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Terminmanagement` (
   `MTerminnummer` INT NOT NULL,
@@ -96,4 +96,4 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`Terminmanagement` (
     FOREIGN KEY (`MRechnungsnummer`)
     REFERENCES `dbwebanw_sose15_09`.`Rechnung` (`Rechnungsnummer`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
