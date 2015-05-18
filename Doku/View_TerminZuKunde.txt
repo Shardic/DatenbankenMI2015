@@ -1,0 +1,12 @@
+Fabian: Termin zum bestimmten datum welche kunden da sind
+
+CREATE VIEW TerminZuKunde AS
+SELECT Termin.Starttag, Termin.TKundennummer
+FROM Termin
+WHERE (Starttag = ‚2015-05-11‘)
+ORDER BY TKundennummer DESC
+
+Projektion
+Π Starttag, TKundennummer(Termin)
+
+* hat bei Eingabe in meine lokale Datenbank funktioniert. Allerdings mit der Ausgabe :0 row(s) affected. Leider war ich auch nicht in der Lage mir die View anzeigen zu lassen.
