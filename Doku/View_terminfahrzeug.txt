@@ -1,0 +1,12 @@
+CREATE VIEW `terminfahrzeug` AS
+SELECT t.Terminnummer, t.Starttag, t.Endtag, f.Fahrzeugnummer, f.Hersteller, f.Fahrzeugtyp
+FROM Terminmanagement tm
+INNER JOIN Fahrzeug f
+ON f.Fahrzeugnummer=tm.MFahrzeugnummer
+INNER JOIN Termin t
+ON t.Terminnummer=tm.MTerminnummer;
+
+relationale Operation: 
+
+(Terminmanagement)ΘTerminmanagement.MFahrzeugnummer=Fahrzeug.Fahrzeugnummer(Fahrzeug)
+(Terminmanagement)ΘTerminmanagement.MTerminnummer=Termin.MTerminnummer(Termin)
