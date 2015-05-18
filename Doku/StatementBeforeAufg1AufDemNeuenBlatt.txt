@@ -1,0 +1,112 @@
+DROP DATABASE dbwebanw_sose15_09;
+CREATE DATABASE dbwebanw_sose15_09;
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`geschaeftsstelle` (
+  `geschaeftsstellennummer` INT NOT NULL AUTO_INCREMENT,
+  `ort` VARCHAR(65) NULL,
+  `plz` VARCHAR (5),
+  PRIMARY KEY (`geschaeftsstellennummer`));
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`fahrzeug` (
+  `fahrzeugnummer` INT NOT NULL AUTO_INCREMENT,
+  `hersteller` VARCHAR(45) NULL DEFAULT 'Unbekannt',
+  `laufleistung` INT NULL,
+  `fahrzeugtyp` VARCHAR(45) NULL,
+  `anzahl_sitzplaetze` INT NULL,
+  `nummernschild` VARCHAR(15) NULL,
+  `fgeschaeftsstellennummer` INT NULL,
+  PRIMARY KEY (`fahrzeugnummer`),
+  CONSTRAINT `frzgeschaeftsstellennummer`
+    FOREIGN KEY (`fgeschaeftsstellennummer`)
+    REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`kunde` (
+  `kundennummer` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NULL,
+  `adresse` VARCHAR(150) NULL,
+  PRIMARY KEY (`kundennummer`));
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`termin` (
+  `starttag` DATE NOT NULL,
+  `endtag` DATE NOT NULL,
+  `terminnummer` INT NOT NULL,
+  `tkundennummer` INT NOT NULL,
+  PRIMARY KEY (`terminnummer`),
+  CONSTRAINT `terkundennummer`
+    FOREIGN KEY (`tkundennummer`)
+    REFERENCES `dbwebanw_sose15_09`.`kunde` (`kundennummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`mitarbeiter` (
+  `mitarbeiternummer` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(50) NULL,
+  `gehalt` FLOAT NULL,
+  `adresse` VARCHAR(150) NULL,
+  `mitgeschaeftsstellennummer` INT NOT NULL,
+  `mitterminnummer` INT NOT NULL,
+  `mitfahrzeugnummer` INT NOT NULL,
+  PRIMARY KEY (`mitarbeiternummer`),
+  CONSTRAINT `mitgeschaeftsstellennummer`
+    FOREIGN KEY (`mitgeschaeftsstellennummer`)
+    REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `mitterminnummer`
+    FOREIGN KEY (`mitterminnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`termin` (`terminnummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `mitfahrzeugnummer`
+    FOREIGN KEY (`mitfahrzeugnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`rechnung` (
+  `rechnungsnummer` INT NOT NULL AUTO_INCREMENT,
+  `anzahl_tage` INT NOT NULL,
+  `rechnungsbetrag` INT NULL,
+  `rkundennummer` INT NOT NULL,
+  PRIMARY KEY (`rechnungsnummer`),
+  CONSTRAINT `rechkundennummer`
+    FOREIGN KEY (`rkundennummer`)
+    REFERENCES `dbwebanw_sose15_09`.`kunde` (`kundennummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`terminmanagement` (
+  `mterminnummer` INT NOT NULL,
+  `mrechnungsnummer` INT NOT NULL,
+  `mfahrzeugnummer` INT NOT NULL,
+  PRIMARY KEY (`mterminnummer`, `mrechnungsnummer`, `mfahrzeugnummer`),
+  CONSTRAINT `mngfahrzeugnummer`
+    FOREIGN KEY (`mfahrzeugnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `mngterminnummer`
+    FOREIGN KEY (`mterminnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`termin` (`terminnummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `mngrechnungsnummer`
+    FOREIGN KEY (`mrechnungsnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`rechnung` (`rechnungsnummer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+    
+INSERT INTO geschaeftsstelle VALUES(1,'Bremen', 28203);
+
+INSERT INTO fahrzeug VALUES(1,'Audi', 20000,"Coupe",2, 'HB AU 12',1);
+
+INSERT INTO kunde VALUES(1,'Hans Wurst',"Hans Wurst Straße 30 29199 Bremen");
+
+INSERT INTO termin VALUES('2015-05-11','2015-05-30',1,1);
+
+INSERT INTO rechnung VALUES(1,25,500,1);
+
+INSERT INTO mitarbeiter VALUES (1, 'Müller', 1800, 'Flughafenallee 10', 1, 1, 1);
+
+INSERT INTO terminmanagement VALUES(1,1,1);
