@@ -1,0 +1,45 @@
+Hier findet ihr Überlegungen was mit den Tabellen passieren soll wenn der Fremdschlüssel gelöscht wird. Fühlt euch frei die Anforderungen zu verbessern. Wir (Fabian, Oli & Konrad) hatten nicht wirklich eine Idee was wir gemacht haben.
+
+Format:
+Tabellenname —> betroffene Tabelle(wenn mehr als eine)
+on delete:	was passiert wenn Tupel gelöscht wird
+on update:	was passiert wenn ein Tupel geändert wird
+
+
+
+Fahrzeug 
+on dellte:	auf Standardwert setzen
+on update:	Kaskadierung „cascade“
+
+
+Termin
+on dellte:	no action „bei löschen des Termins soll der Kunde selber 		nicht angefasst werden“	
+on update:	no action „keine Veränderung der Beziehung“
+
+
+Mitarbeiter-> Geschäfttsstelle
+on dellte:	Null setzen	
+on update:	Kaskadierung „cascade“
+
+Mitarbeiter-> Termin
+on dellte:	no Action „Mitarbeiter kann Termin einsehen oder Ändern“
+on update:	no Action
+
+Mitarbeiter-> Fahrzeug
+on dellte:	no Action „Mitarbeiter verwaltet Fahrzeuge wenn Mitarbeiter		weg muß Fahrzeug bleiben“
+on update:	no Action
+
+Rechnung
+on dellte:	no Action „Wenn Rechnung gelöscht wird soll 				Kundennummer bleiben“
+on update:	no Action „Eine Rechnung ist für ein Kunden wenn sie geändert 		wird soll das auf einen Kunden keinen Einfluss haben“
+
+
+Terminmanagement->Fahrzeug
+on dellte:	nichts —> mapping Tabelle
+on update:	nichts
+Terminmanagement->Rechnung
+on dellte:	nichts
+on update:	nichts
+Terminmanagement->Termin
+on dellte:	nichts
+on update:	nichts
