@@ -30,7 +30,7 @@ on dellte:	no Action „Mitarbeiter verwaltet Fahrzeuge wenn Mitarbeiter		weg mu
 on update:	no Action
 
 Rechnung
-on dellte:	no Action „Wenn Rechnung gelöscht wird soll 				Kundennummer bleiben“
+on dellte:	no Action „Wenn Rechnung gelöscht wird soll 						Kundennummer bleiben“
 on update:	no Action „Eine Rechnung ist für ein Kunden wenn sie geändert 		wird soll das auf einen Kunden keinen Einfluss haben“
 
 
