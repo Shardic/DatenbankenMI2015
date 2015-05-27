@@ -1,4 +1,4 @@
-SQL Alter Table Operations
+﻿SQL Alter Table Operations
 https://dev.mysql.com/doc/refman/5.0/en/alter-table.html
 
 stack overflow on action & delete verhalten
@@ -42,36 +42,42 @@ ALTER TABLE fahrzeug
 ADD FOREIGN KEY(`fgeschaeftsstellennummer`)
 REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`)
 ON DELETE SET DEFAULT
-ON UPDATE CASCADE
+ON UPDATE CASCADE;
 
 Tabelle Termin
 ALTER TABLE termin
 ADD FOREIGN KEY (`tkundennummer`)
 REFERENCES `dbwebanw_sose15_09`.`kunde` (`kundennummer`)
 ON DELETE NO ACTION
-ON UPDATE NO ACTION)
+ON UPDATE NO ACTION;
 
 Tabelle Mitarbeiter
 ALTER TABLE mitarbeiter 
+CHANGE adresse email VARCHAR(150),
 ADD  FOREIGN KEY (`mitgeschaeftsstellennummer`)
 REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`)
 ON DELETE SET NULL
-ON UPDATE CASCADE
+ON UPDATE CASCADE,
 ADD  FOREIGN KEY (`mitterminnummer`)
 REFERENCES `dbwebanw_sose15_09`.`termin` (`terminnummer`)
 ON DELETE NO ACTION
-ON UPDATE NO ACTION
+ON UPDATE NO ACTION,
 ADD  FOREIGN KEY (`mitfahrzeugnummer`)
 REFERENCES `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`)
 ON DELETE NO ACTION
-ON UPDATE NO ACTION
+ON UPDATE NO ACTION;
+
+Tabelle Kunde
+ALTER TABLE kunde
+CHANGE adresse email VARCHAR(150);
+
 
 Tabelle Rechnung
 ALTER TABLE rechnung
 ADD FOREIGN KEY (`rkundennummer`)
 REFERENCES `dbwebanw_sose15_09`.`kunde` (`kundennummer`)
 ON DELETE NO ACTION
-ON UPDATE NO ACTION
+ON UPDATE NO ACTION;
 
 Die Tabelle Terminmanagement besteht nur aus Fremdschlüsseln. Ich habe leider keine Informationen gefunden wie man in so einem Fall vorgeht. Darum sollten wir uns bald kümmern!
 Ebenso müssen wir eine neue Mapping Tabelle Anlegen für Mitarbeiter, Termin und Fahrzeuge. 
