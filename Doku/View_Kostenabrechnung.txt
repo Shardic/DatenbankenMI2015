@@ -1,4 +1,0 @@
-CREATE VIEW Kostenabrechnung AS
-
-
-SELECT SUM(m.Gehalt) AS 'Mitarbeitergehälter', SUM(r.Rechnungsbetrag) AS 'Gewinn von Fahrzeugen', SUM(r.Rechnungsbetrag)-SUM(m.Gehalt) AS 'Gewinn/Verlust' FROM Mitarbeiter m FULL OUTER JOIN Rechnung r;

@@ -1,0 +1,5 @@
+CREATE VIEW Standort AS
+SELECT Fahrzeug.fahrzeugnummer, Fahrzeug.hersteller, Fahrzeug.laufleistung, Fahrzeug.fahrzeugtyp, Fahrzeug.anzahl_sitzplaetze, Fahrzeug.nummernschild, Geschaeftsstelle.ort, Geschaeftsstelle.plz
+FROM Fahrzeug
+INNER JOIN Geschaeftsstelle 
+ON Fahrzeug.fgeschaeftsstellennummer=Geschaeftsstelle.Geschaeftsstellennummer;
