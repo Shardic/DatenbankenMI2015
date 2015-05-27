@@ -1,8 +1,4 @@
 CREATE VIEW Kostenabrechnung AS
 
 
-SELECT SUM(m.Gehalt) AS 'Mitarbeitergehälter', SUM(r.Rechnungsbetrag) AS 'Gewinn von Fahrzeugen', SUM(r.Rechnungsbetrag)-SUM(m.Gehalt) AS 'Gewinn/Verlust' FROM Mitarbeiter m NATURAL JOIN Rechnung r;
-
-? [Projektion] Summe Gehalt (Mitarbeiter)
-? [Projektion] Summe Rechnungsbetrag (Rechnung)
-Rechnung ? [Natürlicher Verbund] Mitarbeiter
+SELECT SUM(m.Gehalt) AS 'Mitarbeitergehälter', SUM(r.Rechnungsbetrag) AS 'Gewinn von Fahrzeugen', SUM(r.Rechnungsbetrag)-SUM(m.Gehalt) AS 'Gewinn/Verlust' FROM Mitarbeiter m FULL OUTER JOIN Rechnung r;
