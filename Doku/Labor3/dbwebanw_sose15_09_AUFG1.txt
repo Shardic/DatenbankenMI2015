@@ -42,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`termin` (
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`mitarbeiter` (
   `mitarbeiternummer` INT AUTO_INCREMENT,
   `Name` VARCHAR(50) NULL,
-  `gehalt` FLOAT NULL,
   `adresse` VARCHAR(150) NULL,
   `mitgeschaeftsstellennummer` INT,
   `mitterminnummer` INT,

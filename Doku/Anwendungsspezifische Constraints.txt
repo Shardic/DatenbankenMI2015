@@ -1,8 +1,0 @@
-Termin:
-Endtag nicht von Starttag
-
-
-Geschäftsstelle PLZ auf VarChar(5)
-Ort auf VarChar(100)
-Fahrzeug hat Geschäftsstelle mit Null möglich
-Email auf VarChar(255)
