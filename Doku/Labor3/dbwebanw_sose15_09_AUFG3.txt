@@ -18,10 +18,16 @@ DROP `anzahl_sitzplaetze`,
 ADD `fmodellnummer` INT,
 ADD CONSTRAINT `frzmodellnummer`
     FOREIGN KEY (`fmodellnummer`)
-    REFERENCES `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`)
+REFERENCES `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`)
 	ON DELETE SET NULL 
 	ON UPDATE CASCADE;
 
 INSERT INTO `fahrzeugmodell` VALUES (1, "VW", "Limousine", 5);
 
 UPDATE `fahrzeug` SET `fmodellnummer` = 1 WHERE `fahrzeugnummer` = 1;
+
+ALTER TABLE rechnung
+DROP `anzahl_tage`,
+ADD `starttag` DATE,
+ADD `endtag` DATE;
+
