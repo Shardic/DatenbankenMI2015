@@ -1,9 +1,11 @@
+#Zur normalisierung wird weitere Tabelle erstellt die sich um Fahrzeugmodelle kümmert
+
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`fahrzeugmodell` (
   `modellnummer` INT AUTO_INCREMENT,
   `hersteller` VARCHAR(45) NULL DEFAULT 'Unbekannt',
   `fahrzeugtyp` VARCHAR(45) NULL,
   `anzahl_sitzplaetze` INT NULL,
-  PRIMARY KEY (`modellnummer`);
+  PRIMARY KEY (`modellnummer`));
 
 USE `dbwebanw_sose15_09`;
 
@@ -16,4 +18,10 @@ DROP `anzahl_sitzplaetze`,
 ADD `fmodellnummer` INT,
 ADD CONSTRAINT `frzmodellnummer`
     FOREIGN KEY (`fmodellnummer`)
-    REFERENCES `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`));
+    REFERENCES `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`)
+	ON DELETE SET NULL 
+	ON UPDATE CASCADE;
+
+INSERT INTO `fahrzeugmodell` VALUES (1, "VW", "Limousine", 5);
+
+UPDATE `fahrzeug` SET `fmodellnummer` = 1 WHERE `fahrzeugnummer` = 1;
