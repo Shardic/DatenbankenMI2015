@@ -1,4 +1,4 @@
-﻿SQL Alter Table Operations
+SQL Alter Table Operations
 https://dev.mysql.com/doc/refman/5.0/en/alter-table.html
 
 stack overflow on action & delete verhalten
@@ -39,10 +39,20 @@ REFERENCES verein(vId);
 
 Tabelle Fahrzeug:
 ALTER TABLE fahrzeug 
+DROP FOREIGN KEY `fgeschaeftsstellennummer`
 ADD FOREIGN KEY(`fgeschaeftsstellennummer`)
 REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`)
 ON DELETE SET DEFAULT
 ON UPDATE CASCADE;
+
+ALTER TABLE fahrzeug 
+DROP FOREIGN KEY `fgeschaeftsstellennummer`
+ADD FOREIGN KEY(`fgeschaeftsstellennummer`)
+REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`)
+
+ON DELETE SET DEFAULT ‚Fahrzeug geloescht‚
+ON UPDATE CASCADE;
+
 
 Tabelle Termin
 ALTER TABLE termin
@@ -57,7 +67,8 @@ CHANGE adresse email VARCHAR(150),
 ADD  FOREIGN KEY (`mitgeschaeftsstellennummer`)
 REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`)
 ON DELETE SET NULL
-ON UPDATE CASCADE,
+ON UPDATE CASCADE;
+
 ADD  FOREIGN KEY (`mitterminnummer`)
 REFERENCES `dbwebanw_sose15_09`.`termin` (`terminnummer`)
 ON DELETE NO ACTION
