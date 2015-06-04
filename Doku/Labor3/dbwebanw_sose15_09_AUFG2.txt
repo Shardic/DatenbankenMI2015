@@ -1,0 +1,14 @@
+#Aufgabe 3.2 wir haben uns entschieden, den Mitarbeiter nur der
+# Geschaeftsstelle zuzuordnen um Redundanzen zu vermeiden.
+
+USE dbwebanw_sose15_09;
+
+ALTER TABLE mitarbeiter
+DROP FOREIGN KEY mitterminnummer,
+DROP FOREIGN KEY mitfahrzeugnummer,
+DROP `mitterminnummer`,
+DROP `mitfahrzeugnummer`,
+CHANGE COLUMN `adresse` `email` VARCHAR(150) NULL; 
+
+ALTER TABLE kunde
+CHANGE COLUMN `adresse` `email` VARCHAR(150) NULL;
