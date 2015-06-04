@@ -1,4 +1,4 @@
-#Aufgabe 3.2 wir haben uns entschieden, den Mitarbeiter nur der
+#Aufgabe 3.2: wir haben uns entschieden, den Mitarbeiter nur der
 # Geschaeftsstelle zuzuordnen um Redundanzen zu vermeiden.
 
 USE dbwebanw_sose15_09;
