@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`fahrzeugmodell` (
+  `modellnummer` INT AUTO_INCREMENT,
+  `hersteller` VARCHAR(45) NULL DEFAULT 'Unbekannt',
+  `fahrzeugtyp` VARCHAR(45) NULL,
+  `anzahl_sitzplaetze` INT NULL,
+  PRIMARY KEY (`modellnummer`);
+
+USE `dbwebanw_sose15_09`;
+
+ALTER TABLE geschaeftsstelle DROP `plz`;
+
+ALTER TABLE fahrzeug
+DROP `hersteller`,
+DROP `fahrzeugtyp`,
+DROP `anzahl_sitzplaetze`,
+ADD `fmodellnummer` INT,
+ADD CONSTRAINT `frzmodellnummer`
+    FOREIGN KEY (`fmodellnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`));
