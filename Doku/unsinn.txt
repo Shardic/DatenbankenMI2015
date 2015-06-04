@@ -2,13 +2,13 @@ DROP DATABASE dbwebanw_sose15_09;
 CREATE DATABASE dbwebanw_sose15_09;
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`geschaeftsstelle` (
-  `geschaeftsstellennummer` INT NOT NULL AUTO_INCREMENT,
+  `geschaeftsstellennummer` INT AUTO_INCREMENT,
   `ort` VARCHAR(65) NULL,
   `plz` VARCHAR (5),
   PRIMARY KEY (`geschaeftsstellennummer`));
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`fahrzeug` (
-  `fahrzeugnummer` INT NOT NULL AUTO_INCREMENT,
+  `fahrzeugnummer` INT AUTO_INCREMENT,
   `hersteller` VARCHAR(45) NULL DEFAULT 'Unbekannt',
   `laufleistung` INT NULL,
   `fahrzeugtyp` VARCHAR(45) NULL,
@@ -21,29 +21,29 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`fahrzeug` (
     REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`));
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`kunde` (
-  `kundennummer` INT NOT NULL AUTO_INCREMENT,
+  `kundennummer` INT AUTO_INCREMENT,
   `name` VARCHAR(50) NULL,
   `adresse` VARCHAR(150) NULL,
   PRIMARY KEY (`kundennummer`));
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`termin` (
-  `starttag` DATE NOT NULL,
-  `endtag` DATE NOT NULL,
-  `terminnummer` INT NOT NULL,
-  `tkundennummer` INT NOT NULL,
+  `starttag` DATE,
+  `endtag` DATE,
+  `terminnummer` INT,
+  `tkundennummer` INT,
   PRIMARY KEY (`terminnummer`),
   CONSTRAINT `terkundennummer`
     FOREIGN KEY (`tkundennummer`)
     REFERENCES `dbwebanw_sose15_09`.`kunde` (`kundennummer`));
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`mitarbeiter` (
-  `mitarbeiternummer` INT NOT NULL AUTO_INCREMENT,
+  `mitarbeiternummer` INT AUTO_INCREMENT,
   `Name` VARCHAR(50) NULL,
   `gehalt` FLOAT NULL,
   `adresse` VARCHAR(150) NULL,
-  `mitgeschaeftsstellennummer` INT NOT NULL,
-  `mitterminnummer` INT NOT NULL,
-  `mitfahrzeugnummer` INT NOT NULL,
+  `mitgeschaeftsstellennummer` INT,
+  `mitterminnummer` INT,
+  `mitfahrzeugnummer` INT,
   PRIMARY KEY (`mitarbeiternummer`),
   CONSTRAINT `mitgeschaeftsstellennummer`
     FOREIGN KEY (`mitgeschaeftsstellennummer`)
@@ -56,27 +56,27 @@ CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`mitarbeiter` (
     REFERENCES `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`));
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`rechnung` (
-  `rechnungsnummer` INT NOT NULL AUTO_INCREMENT,
-  `anzahl_tage` INT NOT NULL,
+  `rechnungsnummer` INT AUTO_INCREMENT,
+  `anzahl_tage` INT,
   `rechnungsbetrag` INT NULL,
-  `rkundennummer` INT NOT NULL,
+  `rkundennummer` INT,
   PRIMARY KEY (`rechnungsnummer`),
   CONSTRAINT `rechkundennummer`
     FOREIGN KEY (`rkundennummer`)
     REFERENCES `dbwebanw_sose15_09`.`kunde` (`kundennummer`));
 
 CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`terminmanagement` (
-  `mterminnummer` INT NOT NULL,
-  `mrechnungsnummer` INT NOT NULL,
-  `mfahrzeugnummer` INT NOT NULL,
-  PRIMARY KEY (`mterminnummer`, `mrechnungsnummer`, `mfahrzeugnummer`),
-  CONSTRAINT `mngfahrzeugnummer`
+  `mterminnummer` INT,
+  `mrechnungsnummer` INT,
+  `mfahrzeugnummer` INT,
+  PRIMARY KEY (`mterminnummer`),
+  CONSTRAINT `terfahrzeugnummer`
     FOREIGN KEY (`mfahrzeugnummer`)
     REFERENCES `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`),
-  CONSTRAINT `mngterminnummer`
+  CONSTRAINT `terterminnummer`
     FOREIGN KEY (`mterminnummer`)
     REFERENCES `dbwebanw_sose15_09`.`termin` (`terminnummer`),
-  CONSTRAINT `mngrechnungsnummer`
+  CONSTRAINT `terrechnungsnummer`
     FOREIGN KEY (`mrechnungsnummer`)
      REFERENCES `dbwebanw_sose15_09`.`rechnung` (`rechnungsnummer`));
      
