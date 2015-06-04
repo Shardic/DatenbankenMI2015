@@ -1,3 +1,6 @@
+#Folgende Statements setzen die Datenbank noch mal neu auf, 
+# da wir Änderungen vor Aufgabe 3.1 eingefügt haben. 
+
 DROP DATABASE dbwebanw_sose15_09;
 CREATE DATABASE dbwebanw_sose15_09;
 
@@ -95,3 +98,74 @@ INSERT INTO rechnung VALUES(1,25,500,1);
 INSERT INTO mitarbeiter VALUES (1, 'Müller', 1800, 'Flughafenallee 10', 1, 1, 1);
 
 INSERT INTO terminmanagement VALUES(1,1,1);
+
+#Folgende Satements gehören zu Aufgabe 3.1 und 
+# bestimmen das Verhalten bei Verletzung referentieller
+# Integrität für jeden Fremdschlüssel
+
+USE `dbwebanw_sose15_09`;
+
+ALTER TABLE `fahrzeug`
+DROP FOREIGN KEY `frzgeschaeftsstellennummer`;
+
+ALTER TABLE `fahrzeug`
+ADD CONSTRAINT `frzgeschaeftsstellennummer` FOREIGN KEY(`fgeschaeftsstellennummer`)
+REFERENCES `geschaeftsstelle` (`geschaeftsstellennummer`)
+ON DELETE SET NULL
+ON UPDATE RESTRICT;
+
+ALTER TABLE `termin`
+DROP FOREIGN KEY `terkundennummer`;
+
+ALTER TABLE `termin`
+ADD CONSTRAINT `terkundennummer` FOREIGN KEY (`tkundennummer`)
+REFERENCES `kunde` (`kundennummer`)
+ON DELETE SET NULL
+ON UPDATE RESTRICT; 
+
+ALTER TABLE `mitarbeiter`
+DROP FOREIGN KEY `mitfahrzeugnummer`,
+DROP FOREIGN KEY `mitgeschaeftsstellennummer`,
+DROP FOREIGN KEY `mitterminnummer`;
+
+ALTER TABLE `mitarbeiter`
+ADD CONSTRAINT `mitfahrzeugnummer` FOREIGN KEY (`mitfahrzeugnummer`)
+REFERENCES `fahrzeug` (`fahrzeugnummer`) 
+ON DELETE SET NULL
+ON UPDATE RESTRICT,
+ADD CONSTRAINT `mitgeschaeftsstellennummer` FOREIGN KEY (`mitgeschaeftsstellennummer`)
+REFERENCES `geschaeftsstelle` (`geschaeftsstellennummer`) 
+ON DELETE SET NULL
+ON UPDATE RESTRICT,
+ADD CONSTRAINT `mitterminnummer` FOREIGN KEY (`mitterminnummer`)
+REFERENCES `termin` (`terminnummer`) 
+ON DELETE SET NULL
+ON UPDATE RESTRICT;
+
+ALTER TABLE `termin`
+DROP FOREIGN KEY `terkundennummer`;
+
+ALTER TABLE `termin`
+ADD CONSTRAINT `terkundennummer` FOREIGN KEY (`tkundennummer`)
+REFERENCES `kunde` (`kundennummer`) 
+ON DELETE SET NULL
+ON UPDATE RESTRICT;
+
+ALTER TABLE `terminmanagement`
+DROP FOREIGN KEY `terfahrzeugnummer`,
+DROP FOREIGN KEY `terrechnungsnummer`,
+DROP FOREIGN KEY `terterminnummer`;
+
+ALTER TABLE `terminmanagement`
+ADD CONSTRAINT `terfahrzeugnummer` FOREIGN KEY (`mfahrzeugnummer`)
+REFERENCES `fahrzeug` (`fahrzeugnummer`)
+ON DELETE SET NULL
+ON UPDATE RESTRICT,
+ADD CONSTRAINT `terterminnummer` FOREIGN KEY (`mterminnummer`)
+REFERENCES `termin` (`terminnummer`)
+ON DELETE CASCADE
+ON UPDATE RESTRICT,
+ADD CONSTRAINT `mrechnungsnummer` FOREIGN KEY (`mrechnungsnummer`)
+REFERENCES `rechnung` (`rechnungsnummer`)
+ON DELETE SET NULL
+ON UPDATE RESTRICT;
