@@ -17,3 +17,8 @@ ADD `fmodellnummer` INT,
 ADD CONSTRAINT `frzmodellnummer`
     FOREIGN KEY (`fmodellnummer`)
     REFERENCES `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`));
+
+ALTER TABLE rechnung
+DROP `anzahl_tage`,
+ADD `starttag` DATE,
+ADD `endtag` DATE;
