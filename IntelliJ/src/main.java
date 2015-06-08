@@ -6,4 +6,7 @@ public class main {
     //von Fabian
     //von oli
     //Konrad
+    public static void main(String[] args){
+        System.out.println("Hallo Welt!");
+    }
 }
