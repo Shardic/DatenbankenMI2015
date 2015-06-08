@@ -9,4 +9,9 @@ public class Main {
 
 
 //Hallo Fabian!
+<<<<<<< HEAD
 //Hallo
+=======
+//Hallo von Konrad
+//Hallo von Fabian
+>>>>>>> a8ec1535016122762bd185653620bcc787092665
