@@ -1,0 +1,27 @@
+Konrad
+1. Fahrzeug hinzufügen
+2. Fahrzeug bearbeiten
+3. Fahrzeug löschen
+4. Log in
+5. log out
+
+Oli
+1. Kunde erstellen
+2. Kunde bearbeiten
+3. Kunde löschen
+
+Marco
+1. Termin erstellen
+2. Termin bearbeiten
+3. Termin löschen
+
+Mike
+1. Rechnung erstellen
+2. Rechnung bearbeiten
+3. Rechnung löschen
+
+Fabian
+1. Fahrzeuge einsehen
+2. Account registrieren
+3. Account bearbeiten
+
