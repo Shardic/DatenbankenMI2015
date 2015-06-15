@@ -1,0 +1,4 @@
+USE `dbwebanw_sose15_09`;
+
+ALTER TABLE kunde
+ADD column passwort varchar(50);
