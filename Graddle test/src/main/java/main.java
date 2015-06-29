@@ -13,6 +13,6 @@ public class main {
         TestClass h = new TestClass();
         h.setUsername("hahha");
         System.out.println(h.getUsername());
-        DBConnection d = new DBConnection();
+        //DBConnection d = new DBConnection();
     }
 }

@@ -1,8 +1,10 @@
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import javax.persistence.*;
 
 
 /**
@@ -10,12 +12,14 @@ import javax.persistence.Id;
  */
 public class TestClass {
 
+
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer memberNr;
     @Column(name="user_name", nullable=false, length=20)
     private String username;
-    @Column(nullable=false, length=255)
+    @Column(name="kafkjbakf", nullable=false, length=255)
     private String email;
 
     void setUsername(String newName){
