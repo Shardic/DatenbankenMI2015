@@ -26,7 +26,7 @@ buildscript {
         classpath 'org.hibernate.build.gradle:gradle-upload-auth-plugin:1.0.2'
         compile("'mysql:mysql-connector-java:5.1.6'")
         testCompile 'junit:junit:4.12'
-    }
+    } apply plugin: 'java'
 }
 
 ideaProject {
