@@ -1,5 +1,4 @@
 import org.hibernate.HibernateException;
-import org.hibernate.service.ServiceRegistryBuilder;
 
 import javax.security.auth.login.Configuration;
 import java.io.IOException;
@@ -15,6 +14,5 @@ public class main {
         h.setUsername("hahha");
         System.out.println(h.getUsername());
         DBConnection d = new DBConnection();
-
     }
 }
