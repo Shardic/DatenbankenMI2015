@@ -21,8 +21,8 @@ public class DBConnection {
             // getConnection(String url, String user, String password)
             //this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tech_groups",
              //       "techgroups_dev", "G3kcu5cMTf1DtKBM3lkv");
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306",
-                    "root", "testpassword");
+            this.connection = DriverManager.getConnection("jdbc:mysql://195.37.176.178:11336",
+                    "dbweb_user_09", "hTKPptAEAc");
 
         } catch (SQLException e) {
             System.err.println("Connection wasn't established :-/" + e);
