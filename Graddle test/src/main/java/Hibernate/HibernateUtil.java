@@ -1,4 +1,4 @@
-/**
+package Hibernate; /**
  * Created by Fabian on 11.07.15.
  */
 import org.hibernate.SessionFactory;
