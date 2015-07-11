@@ -1,29 +1,32 @@
+group 'hsb'
+version '1.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
 apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'application'
+
+mainClassName = "rateme.Start"
 
 sourceCompatibility = 1.8
-version = '1.0'
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
 jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
-    }
+    baseName = 'gs-gradle'
+    version =  '0.1.0'
 }
 
 dependencies {
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final'
-    testCompile group: 'junit', name: 'junit', version: '4.+'
-    compile 'mysql:mysql-connector-java:5.1.35'
-
-}
-
-test {
-    systemProperties 'property': 'value'
-}
-
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
+    compile "joda-time:joda-time:2.2"
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile "org.hibernate:hibernate-core:4.3.10.Final"
+    compile "mysql:mysql-connector-java:5.1.35"
 }
