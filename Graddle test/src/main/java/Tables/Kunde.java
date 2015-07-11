@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Kunde {
 
     @Id @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "kundennummer")
     private int id;
 
     @Column(name = "name")
