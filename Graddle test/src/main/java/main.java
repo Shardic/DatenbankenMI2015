@@ -20,6 +20,10 @@ public class main {
 
     public static void main(String [] args) {
         System.out.println("Hello World");
+          /*
+            Kunde newk = new Kunde("name", "email");
+            newKid = (Integer) session.save(newk);
+            */
 
 
 
@@ -27,27 +31,23 @@ public class main {
         //DBConnection d = new DBConnection();
         Kunde medium = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = null;
-        int newKid;
-        try {
-            transaction = session.beginTransaction();
-            /*
-            Kunde newk = new Kunde("name", "email");
-            newKid = (Integer) session.save(newk);
-            */
-            Kunde k = (Kunde)session.load(Kunde.class, kundennummer);
-            Hibernate.initialize(k);
-            System.out.print(k.getName());
-            transaction.commit();
-        }
-        catch (Exception e) {
-            if (transaction!=null) transaction.rollback();
-            throw e;
-        }
-        finally {
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            List employees = session.createQuery("FROM Kunde").list();
+            for (Iterator iterator =
+                 employees.iterator(); iterator.hasNext();){
+                Kunde employee = (Kunde) iterator.next();
+                System.out.print("First Name: " + employee.getName());
+                System.out.print("  Last Name: " + employee.getEmail());
+                System.out.println("  Salary: " + employee.getId());
+            }
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
             session.close();
         }
-
-
     }
 }
