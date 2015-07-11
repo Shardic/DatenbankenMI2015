@@ -15,13 +15,14 @@ public class Kunde {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "passwort")
-    private String passwort;
-
     @Column(name = "email")
     private String email;
 
     public Kunde(){}
+    public Kunde(String name, String email){
+        this.name = name;
+        this.email = email;
+    }
 
     public int getId() {
         return id;
@@ -39,13 +40,6 @@ public class Kunde {
         this.name = name;
     }
 
-    public String getPasswort() {
-        return passwort;
-    }
-
-    public void setPasswort(String passwort) {
-        this.passwort = passwort;
-    }
 
     public String getEmail() {
         return email;

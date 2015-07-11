@@ -1,11 +1,11 @@
 import Managers.KundenManager;
 import Tables.Kunde;
+import Hibernate.HibernateUtil;
 
 import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.*;
-
 
 /**
  * Created by Fabian on 27.06.15.
@@ -19,8 +19,23 @@ public class main {
 
 
         //DBConnection d = new DBConnection();
-        KundenManager k = new KundenManager();
-        Kunde ka = k.getKundeByID(0);
+        Kunde medium = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        int newKid;
+        try {
+            transaction = session.beginTransaction();
+            Kunde newk = new Kunde("name", "email");
+            newKid = (Integer) session.save(newk);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction!=null) transaction.rollback();
+            throw e;
+        }
+        finally {
+            session.close();
+        }
 
 
     }
