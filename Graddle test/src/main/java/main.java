@@ -25,6 +25,8 @@ public class main {
             newKid = (Integer) session.save(newk);
             */
 
+        //http://www.tutorialspoint.com/hibernate/hibernate_quick_guide.htm
+
 
 
 
