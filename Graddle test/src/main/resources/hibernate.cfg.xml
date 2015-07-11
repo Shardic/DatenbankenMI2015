@@ -23,7 +23,14 @@
 
   <!-- mapping file, we can use Bean annotations too -->
   <!--mapping resource="employee.hbm.xml" /-->
-  <mapping class="Tabels.Kunde" />
+  <mapping class="Tables.Kunde" />
+  <mapping class="Tables.Fahrzeug" />
+  <mapping class="Tables.Fahrzeugmodell" />
+  <mapping class="Tables.Geschaeftsstelle" />
+  <mapping class="Tables.Mitarbeiter" />
+  <mapping class="Tables.Rechnung" />
+  <mapping class="Tables.Termin" />
+  <mapping class="Tables.TerminManagement" />
 
 </session-factory>
 </hibernate-configuration>

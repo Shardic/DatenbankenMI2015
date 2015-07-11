@@ -1,4 +1,4 @@
-package Tabels;
+package Tables;
 import javax.persistence.*;
 
 /**
@@ -9,10 +9,13 @@ public class Kunde {
     @Id @GeneratedValue
     @Column(name = "id")
     private int id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "passwort")
     private String passwort;
+
     @Column(name = "email")
     private String email;
 

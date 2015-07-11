@@ -1,7 +1,5 @@
-import Tabels.Kunde;
-import javax.security.auth.login.Configuration;
-import java.awt.*;
-import java.util.*;
+import Tables.Kunde;
+
 import java.util.List;
 
 import org.hibernate.*;
