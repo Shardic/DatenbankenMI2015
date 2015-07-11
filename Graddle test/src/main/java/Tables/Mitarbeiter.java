@@ -1,12 +1,13 @@
 package Tables;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Fabian on 11.07.15.
  */
+
+@Entity
+@Table(name="mitarbeiter")
 public class Mitarbeiter {
 
     @Id
@@ -24,6 +25,12 @@ public class Mitarbeiter {
     private  int mitGeschaeftsstellennummer;
 
     public Mitarbeiter(){}
+
+    public  Mitarbeiter(String name, String email, Integer gNummer){
+        this.name = name;
+        this.email = email;
+        this.mitGeschaeftsstellennummer = gNummer;
+    }
 
     public int getMitarbeiterNummer() {
         return mitarbeiterNummer;
