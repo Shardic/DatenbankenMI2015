@@ -1,5 +1,6 @@
 import Tables.Kunde;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.*;
@@ -17,20 +18,17 @@ public class main {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
-        try {
+        try{
             transaction = session.beginTransaction();
-            Criteria criteria = session.createCriteria(Kunde.class);
-            List allUsers = criteria.list();
-            System.out.print("HIER" + allUsers.get(0));
-
+            List kunden = session.createQuery("FROM kunde").list();
+            for (int i = 0; i< kunden.size();i++){
+                System.out.print("First Name: " + kunden);
+            }
             transaction.commit();
-        }
-        catch (Exception e) {
-            System.err.print("HIER FEHLER");
+        }catch (HibernateException e) {
             if (transaction!=null) transaction.rollback();
-            throw e;
-        }
-        finally {
+            e.printStackTrace();
+        }finally {
             session.close();
         }
 

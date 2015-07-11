@@ -4,6 +4,8 @@ import javax.persistence.*;
 /**
  * Created by Fabian on 29.06.15.
  */
+@Entity
+@Table(name="kunde")
 public class Kunde {
 
     @Id @GeneratedValue
