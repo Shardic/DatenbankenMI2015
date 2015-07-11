@@ -86,3 +86,13 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+
+*.doc
+
+*.docx
+
+*.vpp
+
+*.vpp~1
+
+*.png
