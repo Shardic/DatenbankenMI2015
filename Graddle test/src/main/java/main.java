@@ -1,12 +1,9 @@
 import Managers.MitarbeiterManager;
 
-import java.sql.Date;
 import java.util.List;
 
-import Managers.RechnungManager;
 import Tables.Kunde;
 import Tables.Mitarbeiter;
-import Tables.Rechnung;
 
 /**
  * Created by Fabian on 27.06.15.
@@ -30,7 +27,7 @@ public class main {
        // km.deleteKunde(9);
        // Kunde k = km.getKundeByName("olli");
        // System.out.print(k.getId());
-
+       */
         MitarbeiterManager mm = new MitarbeiterManager();
         //mm.addMitarbeiter("newMitarbeiter", "newMitzarbeiter@hs-bremen.de", 1);
         List<Mitarbeiter> list = mm.readAllMitarbeiter();
@@ -43,11 +40,7 @@ public class main {
         //mm.addMitarbeiter("newMitarbeiter2", "newMitzarbeiter2@hs-bremen.de", 1);
         Mitarbeiter newM = mm.getMitarbeiter("newMitarbeiter2", "newMitzarbeiter2@hs-bremen.de");
         System.out.println("Hier" + newM.getName());
-        */
-        RechnungManager rm = new RechnungManager();
-        Rechnung r = rm.getRechnung(1);
-        System.out.println(r.getRechnungsBetrag());
-        rm.addRechnung(999, 5, new Date(5), new Date(5000));
+
 
     }
 

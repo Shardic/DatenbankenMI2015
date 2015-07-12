@@ -22,12 +22,6 @@ public class TerminManagement {
 
     public TerminManagement(){}
 
-    public TerminManagement(int rechnung, int fahrzeug, int termin) {
-        this.mRechunungsnummer = rechnung;
-        this.mFahrzeugnummer = fahrzeug;
-        this.mTerminnummer = termin;
-    }
-
     public int getmTerminnummer() {
         return mTerminnummer;
     }
