@@ -3,6 +3,7 @@ package Tables;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.sql.Date;
 
 /**
  * Created by Fabian on 11.07.15.
@@ -14,8 +15,10 @@ public class Rechnung {
     @Column(name = "rechnungsnummer")
     private int rechnungsNummer;
 
-    @Column(name = "anzahl_tage")
+
+    //@Column(name = "anzahl_tage")
     private int anzahlTage;
+
 
     @Column(name = "rechnungsbetrag")
     private int rechnungsBetrag;
@@ -23,7 +26,20 @@ public class Rechnung {
     @Column(name = "rkundennummer")
     private int rKudenNummer;
 
+    @Column(name = "startag")
+    private Date startTag;
+
+    @Column(name = "endtag")
+    private Date endTag;
+
     public Rechnung(){}
+
+    public Rechnung(int betrag, int kunde, Date start, Date end) {
+        this.rechnungsBetrag = betrag;
+        this.rKudenNummer=kunde;
+        this.startTag = start;
+        this.endTag = end;
+    }
 
     public int getRechnungsNummer() {
         return rechnungsNummer;
@@ -33,13 +49,15 @@ public class Rechnung {
         this.rechnungsNummer = rechnungsNummer;
     }
 
-    public int getAnzahlTage() {
-        return anzahlTage;
-    }
 
+    public int getAnzahlTage() {
+        return endTag.compareTo(startTag);
+    }
+    /*
     public void setAnzahlTage(int anzahlTage) {
         this.anzahlTage = anzahlTage;
     }
+    */
 
     public int getRechnungsBetrag() {
         return rechnungsBetrag;
@@ -55,5 +73,21 @@ public class Rechnung {
 
     public void setrKudenNummer(int rKudenNummer) {
         this.rKudenNummer = rKudenNummer;
+    }
+
+    public Date getStartTag() {
+        return startTag;
+    }
+
+    public void setStartTag(Date startTag) {
+        this.startTag = startTag;
+    }
+
+    public Date getEndTag() {
+        return endTag;
+    }
+
+    public void setEndTag(Date endTag) {
+        this.endTag = endTag;
     }
 }
