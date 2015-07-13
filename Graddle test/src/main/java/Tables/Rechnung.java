@@ -1,13 +1,13 @@
 package Tables;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
  * Created by Fabian on 11.07.15.
  */
+@Entity
+@Table(name="rechnung")
 public class Rechnung {
 
     @Id

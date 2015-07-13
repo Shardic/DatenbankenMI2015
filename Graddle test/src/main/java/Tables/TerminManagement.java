@@ -1,11 +1,12 @@
 package Tables;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Fabian on 11.07.15.
  */
+@Entity
+@Table(name="terminmanagement")
 public class TerminManagement {
 
     @Id
