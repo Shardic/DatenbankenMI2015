@@ -1,4 +1,4 @@
-package Managers;
+package DataAccessObjecs;
 
 import Hibernate.HibernateUtil;
 import Tables.Kunde;
@@ -12,10 +12,10 @@ import java.util.List;
 /**
  * Created by Fabian on 11.07.15.
  */
-public class KundenManager {
+public class KundenDAO {
 
 
-    public KundenManager(){}
+    public KundenDAO(){}
 
     /**
      * Diese Methode gibt den den Kunden mit dem param name zurück
@@ -23,19 +23,13 @@ public class KundenManager {
      * @param name
      * @return
      */
-    public Kunde getKundeByName(String name){
-        Kunde foundedKunde =null;
+    public List<Kunde> getKundeByName(String email, String passwort){
         List<Kunde> kunden = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            kunden = session.createQuery("FROM Kunde").list();
-            for(int i = 0; i <kunden.size(); i++){
-                if(kunden.get(i).getName().equals(name)){
-                    foundedKunde = kunden.get(i);
-                }
-            }
+            kunden = session.createQuery("FROM Kunde where name=name and passwort = passwort").list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -43,7 +37,7 @@ public class KundenManager {
         }finally {
             session.close();
         }
-        return foundedKunde;
+        return kunden;
     }
 
     /**
@@ -54,13 +48,13 @@ public class KundenManager {
      * @param email
      * @return newKundeId
      */
-    public Integer addKunde(String name,String email){
+    public Integer addKunde(String name,String email, String passwort){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         Integer newKundeId = null;
         try{
             tx = session.beginTransaction();
-            Kunde newKunde = new Kunde(name,email);
+            Kunde newKunde = new Kunde(name,email,passwort);
             newKundeId = (Integer) session.save(newKunde);
             tx.commit();
         }catch (HibernateException e) {
@@ -90,7 +84,8 @@ public class KundenManager {
                 Kunde kunde = (Kunde) iterator.next();
                 System.out.print("id: " + "\t" + kunde.getId());
                 System.out.print("  name: " + kunde.getName());
-                System.out.println("  email: " + kunde.getEmail());
+                System.out.print("  email: " + kunde.getEmail());
+                System.out.println("  passwort: " + kunde.getPasswort());
             }
             tx.commit();
         }catch (HibernateException e) {
@@ -136,6 +131,28 @@ public class KundenManager {
             tx = session.beginTransaction();
             Kunde kunde = (Kunde)session.get(Kunde.class, kundenid);
             kunde.setName(newName);
+            session.update(kunde);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+    }
+
+    /**
+     * Diese Methode ändert das Passwort des Kunden mit der kundenid
+     * @param kundenid
+     * @param newPasswort
+     */
+    public void updateKundenPasswort(int kundenid, String newPasswort){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            Kunde kunde = (Kunde)session.get(Kunde.class, kundenid);
+            kunde.setPasswort(newPasswort);
             session.update(kunde);
             tx.commit();
         }catch (HibernateException e) {

@@ -18,10 +18,14 @@ public class Kunde {
     @Column(name = "email")
     private String email;
 
+    @Column(name="passwort")
+    private String passwort;
+
     public Kunde(){}
-    public Kunde(String name, String email){
+    public Kunde(String name, String email, String passwort){
         this.name = name;
         this.email = email;
+        this.passwort = passwort;
     }
 
     public int getId() {
@@ -40,12 +44,19 @@ public class Kunde {
         this.name = name;
     }
 
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPasswort() {
+        return passwort;
+    }
+
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
     }
 }

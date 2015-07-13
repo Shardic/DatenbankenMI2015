@@ -1,7 +1,6 @@
-package Managers;
+package DataAccessObjecs;
 
 import Hibernate.HibernateUtil;
-import Tables.Kunde;
 import Tables.Mitarbeiter;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,9 +12,9 @@ import java.util.List;
 /**
  * Created by Fabian on 11.07.15.
  */
-public class MitarbeiterManager {
+public class MitarbeiterDAO {
 
-    public MitarbeiterManager(){}
+    public MitarbeiterDAO(){}
 
     /**
      * Diese Methode gibt den Mitarbeiter mit dem param name & email zurück

@@ -1,12 +1,8 @@
-import Managers.MitarbeiterManager;
+import DataAccessObjecs.KundenDAO;
 
-import java.sql.Date;
 import java.util.List;
 
-import Managers.RechnungManager;
 import Tables.Kunde;
-import Tables.Mitarbeiter;
-import Tables.Rechnung;
 
 /**
  * Created by Fabian on 27.06.15.
@@ -19,7 +15,7 @@ public class main {
         System.out.println("Hello World");
         //http://www.tutorialspoint.com/hibernate/hibernate_quick_guide.htm
         /*
-        KundenManager km = new KundenManager();
+        KundenDAO km = new KundenDAO();
         //int id = km.addKunde("newKundewithManager", "gehtdichGarNichtsan@hs-bremen.de");
         List<Kunde> list = km.readAllKunden();
         for(int i= 0; i< list.size(); i++){
@@ -31,7 +27,7 @@ public class main {
        // Kunde k = km.getKundeByName("olli");
        // System.out.print(k.getId());
 
-        MitarbeiterManager mm = new MitarbeiterManager();
+        MitarbeiterDAO mm = new MitarbeiterDAO();
         //mm.addMitarbeiter("newMitarbeiter", "newMitzarbeiter@hs-bremen.de", 1);
         List<Mitarbeiter> list = mm.readAllMitarbeiter();
         for(int i= 0; i< list.size(); i++){
@@ -44,10 +40,19 @@ public class main {
         Mitarbeiter newM = mm.getMitarbeiter("newMitarbeiter2", "newMitzarbeiter2@hs-bremen.de");
         System.out.println("Hier" + newM.getName());
         */
+        /*
         RechnungManager rm = new RechnungManager();
         Rechnung r = rm.getRechnung(1);
         System.out.println(r.getRechnungsBetrag());
         rm.addRechnung(999, 5, new Date(5), new Date(5000));
+        */
+
+        KundenDAO km = new KundenDAO();
+        List<Kunde> list = km.readAllKunden();
+        for(int i= 0; i< list.size(); i++){
+            System.out.println(list.get(i).getName());
+        }
+        km.deleteKunde(3);
 
     }
 
