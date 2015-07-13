@@ -1,12 +1,12 @@
 package Tables;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Fabian on 11.07.15.
  */
+@Entity
+@Table(name="fahrzeugmodell")
 public class Fahrzeugmodell {
 
     @Id
@@ -14,8 +14,8 @@ public class Fahrzeugmodell {
     @Column(name = "modellnummer")
     private int modellnummer;
 
-    @Column(name = "laufleistung")
-    private String heersteller;
+    @Column(name = "hersteller")
+    private String hersteller;
 
     @Column(name = "fahrzeugTyp")
     private String fahrzeugTyp;
@@ -25,6 +25,13 @@ public class Fahrzeugmodell {
 
     public Fahrzeugmodell(){}
 
+    public Fahrzeugmodell(String hersteller, String fahrzeugTyp, int anzahlSitzplaetze){
+
+        this.hersteller = hersteller;
+        this.fahrzeugTyp = fahrzeugTyp;
+        this.anzahlSitzplaetze = anzahlSitzplaetze;
+    }
+
     public int getModellnummer() {
         return modellnummer;
     }
@@ -33,12 +40,12 @@ public class Fahrzeugmodell {
         this.modellnummer = modellnummer;
     }
 
-    public String getHeersteller() {
-        return heersteller;
+    public String getHersteller() {
+        return hersteller;
     }
 
-    public void setHeersteller(String heersteller) {
-        this.heersteller = heersteller;
+    public void setHersteller(String hersteller) {
+        this.hersteller = hersteller;
     }
 
     public int getAnzahlSitzplaetze() {

@@ -1,11 +1,11 @@
 package Tables;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Fabian on 11.07.15.
  */
+@Entity
+@Table(name="fahrzeug")
 public class Fahrzeug {
 
     @Id
@@ -26,6 +26,14 @@ public class Fahrzeug {
     private int frzModellNummer;
 
     public Fahrzeug(){}
+
+    public Fahrzeug(Integer laufleistung, String nummernschild, Integer fgeschaeftsstellennummer,
+                    Integer fmodellnummer){
+        this.laufleistung = laufleistung;
+        this.nummernschild = nummernschild;
+        this.fGeschaeftsstellenNummer = fgeschaeftsstellennummer;
+        this.frzModellNummer =  fmodellnummer;
+    }
 
     public int getFahrzeugNummer() {
         return fahrzeugNummer;
