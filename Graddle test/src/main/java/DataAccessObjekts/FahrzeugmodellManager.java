@@ -1,4 +1,4 @@
-package Managers;
+package DataAccessObjekts;
 
 import Hibernate.HibernateUtil;
 import Tables.Fahrzeugmodell;

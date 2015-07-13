@@ -1,13 +1,11 @@
-package Managers;
+package DataAccessObjekts;
 
 import Hibernate.HibernateUtil;
-import Tables.Rechnung;
 import Tables.TerminManagement;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.sql.Date;
 import java.util.List;
 
 /**
@@ -23,11 +21,11 @@ public class TerminManagementManager {
     }
 
     /**
-     * Liefert alle TerminManagements zurück, der ALLE IDs benutzen oder NULL bei Fehler
+     * Liefert alle TerminManagements zurï¿½ck, der ALLE IDs benutzen oder NULL bei Fehler
      * @param rid Rechnungs ID
      * @param fid Fahrzeug ID
      * @param tid Termin ID
-     * @return das TerminManagement mit allen übereinstimmender ID
+     * @return das TerminManagement mit allen ï¿½bereinstimmender ID
      */
     public TerminManagement getManagerStrict(int rid, int fid, int tid) {
         TerminManagement r = null;
@@ -55,11 +53,11 @@ public class TerminManagementManager {
     }
 
     /**
-     * Liefert alle TerminManagements zurück, der eine der IDs benutzen oder NULL bei Fehler
+     * Liefert alle TerminManagements zurï¿½ck, der eine der IDs benutzen oder NULL bei Fehler
      * @param rid Rechnungs ID
      * @param fid Fahrzeug ID
      * @param tid Termin ID
-     * @return das TerminManagement mit einer übereinstimmender ID
+     * @return das TerminManagement mit einer ï¿½bereinstimmender ID
      */
     public TerminManagement getManagerRelaxed(int rid, int fid, int tid) {
         TerminManagement r = null;
@@ -139,5 +137,5 @@ public class TerminManagementManager {
     }
 
 
-    // Kein Update und Delete nötig, oder sehe ich das jetzt falsch?
+    // Kein Update und Delete nï¿½tig, oder sehe ich das jetzt falsch?
 }

@@ -1,12 +1,10 @@
-package Managers;
+package DataAccessObjekts;
 
 import Hibernate.HibernateUtil;
-import Tables.Mitarbeiter;
 import Tables.Rechnung;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.transform.Transformers;
 
 import java.sql.Date;
 import java.util.List;
@@ -24,7 +22,7 @@ public class RechnungManager {
     }
 
     /**
-     * Liefert die Rechnung mit der ID zurück oder NULL bei Fehler
+     * Liefert die Rechnung mit der ID zurï¿½ck oder NULL bei Fehler
      * @param id Rechnungs ID
      */
     public Rechnung getRechnung(int id) {
@@ -109,7 +107,7 @@ public class RechnungManager {
     }
 
     /**
-     * Überschreibt die Rechnung auf dem Platz ID mit dem eingegebenen Rechnungsobjekt, ABER ändert nicht dessen ID
+     * ï¿½berschreibt die Rechnung auf dem Platz ID mit dem eingegebenen Rechnungsobjekt, ABER ï¿½ndert nicht dessen ID
      * Success return true
      * fail: return false
      * @param neu die neue Rechnung
@@ -140,7 +138,7 @@ public class RechnungManager {
         }
 
     /**
-     * löscht die Rechnung mit der ID
+     * lï¿½scht die Rechnung mit der ID
      * @param id
      * @return true success / false fail
      */
