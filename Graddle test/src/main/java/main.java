@@ -1,4 +1,4 @@
-import DataAccessObjekts.KundenDAO;
+import DataAccessObjecs.KundenDAO;
 
 import java.util.List;
 
