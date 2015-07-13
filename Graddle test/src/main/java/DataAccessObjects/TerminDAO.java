@@ -35,10 +35,7 @@ public class TerminDAO {
         Integer newTerminNr = null;
         try{
             tx = session.beginTransaction();
-            Termin newTermin = new Termin();
-            newTermin.setStarttag(starttag);
-            newTermin.setEndtag(endtag);
-            newTermin.setTkundennummer(kundennummer);
+            Termin newTermin = new Termin(starttag, endtag, kundennummer);
             newTerminNr = (Integer) session.save(newTermin);
             tx.commit();
         }catch (HibernateException e) {

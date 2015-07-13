@@ -25,6 +25,12 @@ public class Termin {
 
     public Termin(){}
 
+    public Termin(Date starttag, Date endtag, int tkundennummer) {
+        this.setStarttag(starttag);
+        this.setEndtag(endtag);
+        this.setTkundennummer(tkundennummer);
+    }
+
     public int getTerminnummer() {
         return terminNummer;
     }

@@ -35,9 +35,7 @@ public class GeschaeftsstellenDAO {
         Integer newGeschaeftsstellenNr = null;
         try{
             tx = session.beginTransaction();
-            Geschaeftsstelle newGeschaeftsstelle = new Geschaeftsstelle();
-            newGeschaeftsstelle.setOrt(ort);
-            newGeschaeftsstelle.setPlz(plz);
+            Geschaeftsstelle newGeschaeftsstelle = new Geschaeftsstelle(ort, plz);
             newGeschaeftsstellenNr = (Integer) session.save(newGeschaeftsstelle);
             tx.commit();
         }catch (HibernateException e) {
@@ -134,7 +132,7 @@ public class GeschaeftsstellenDAO {
         Geschaeftsstelle foundedGeschaeftsstelle = null;
         try{
             tx = session.beginTransaction();
-            geschaeftsstelleList = session.createQuery("FROM Geschaeftstelle ").list();
+            geschaeftsstelleList = session.createQuery("FROM Geschaeftsstelle ").list();
             for(int i = 0; i < geschaeftsstelleList.size(); i++){
                 if(geschaeftsstelleList.get(i).getGeschaeftsstellennummer()==geschaeftsstellennr){
                     foundedGeschaeftsstelle = geschaeftsstelleList.get(i);
