@@ -266,7 +266,7 @@ INNER JOIN
 rechnung r ON tm.mrechnungsnummer = r.rechnungsnummer;
 
 ALTER TABLE kunde
-ADD COLUMN passwort INT;  
+ADD COLUMN passwort VARCHAR(40);  
 
 UPDATE kunde 
 SET passwort="123456" WHERE kundennummer = 1; 
