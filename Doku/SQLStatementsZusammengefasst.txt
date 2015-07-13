@@ -1,0 +1,272 @@
+#Folgende Statements setzen die Datenbank noch mal neu auf, 
+# da wir Änderungen vor Aufgabe 3.1 eingefügt haben. 
+
+DROP DATABASE dbwebanw_sose15_09;
+CREATE DATABASE dbwebanw_sose15_09;
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`geschaeftsstelle` (
+  `geschaeftsstellennummer` INT AUTO_INCREMENT,
+  `ort` VARCHAR(65) NULL,
+  `plz` VARCHAR (5),
+  PRIMARY KEY (`geschaeftsstellennummer`));
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`fahrzeug` (
+  `fahrzeugnummer` INT AUTO_INCREMENT,
+  `hersteller` VARCHAR(45) NULL DEFAULT 'Unbekannt',
+  `laufleistung` INT NULL,
+  `fahrzeugtyp` VARCHAR(45) NULL,
+  `anzahl_sitzplaetze` INT NULL,
+  `nummernschild` VARCHAR(15) NULL,
+  `fgeschaeftsstellennummer` INT NULL,
+  PRIMARY KEY (`fahrzeugnummer`),
+  CONSTRAINT `frzgeschaeftsstellennummer`
+    FOREIGN KEY (`fgeschaeftsstellennummer`)
+    REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`));
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`kunde` (
+  `kundennummer` INT AUTO_INCREMENT,
+  `name` VARCHAR(50) NULL,
+  `adresse` VARCHAR(150) NULL,
+  PRIMARY KEY (`kundennummer`));
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`termin` (
+  `starttag` DATE,
+  `endtag` DATE,
+  `terminnummer` INT NOT NULL AUTO_INCREMENT,
+  `tkundennummer` INT,
+  PRIMARY KEY (`terminnummer`),
+  CONSTRAINT `terkundennummer`
+    FOREIGN KEY (`tkundennummer`)
+    REFERENCES `dbwebanw_sose15_09`.`kunde` (`kundennummer`));
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`mitarbeiter` (
+  `mitarbeiternummer` INT AUTO_INCREMENT,
+  `name` VARCHAR(50) NULL,
+  `adresse` VARCHAR(150) NULL,
+  `mitgeschaeftsstellennummer` INT,
+  `mitterminnummer` INT,
+  `mitfahrzeugnummer` INT,
+  PRIMARY KEY (`mitarbeiternummer`),
+  CONSTRAINT `mitgeschaeftsstellennummer`
+    FOREIGN KEY (`mitgeschaeftsstellennummer`)
+    REFERENCES `dbwebanw_sose15_09`.`geschaeftsstelle` (`geschaeftsstellennummer`),
+  CONSTRAINT `mitterminnummer`
+    FOREIGN KEY (`mitterminnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`termin` (`terminnummer`),
+  CONSTRAINT `mitfahrzeugnummer`
+    FOREIGN KEY (`mitfahrzeugnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`));
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`rechnung` (
+  `rechnungsnummer` INT AUTO_INCREMENT,
+  `anzahl_tage` INT,
+  `rechnungsbetrag` INT NULL,
+  `rkundennummer` INT,
+  PRIMARY KEY (`rechnungsnummer`),
+  CONSTRAINT `rechkundennummer`
+    FOREIGN KEY (`rkundennummer`)
+    REFERENCES `dbwebanw_sose15_09`.`kunde` (`kundennummer`));
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`terminmanagement` (
+  `mterminnummer` INT,
+  `mrechnungsnummer` INT,
+  `mfahrzeugnummer` INT,
+  PRIMARY KEY (`mterminnummer`),
+  CONSTRAINT `terfahrzeugnummer`
+    FOREIGN KEY (`mfahrzeugnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`),
+  CONSTRAINT `terterminnummer`
+    FOREIGN KEY (`mterminnummer`)
+    REFERENCES `dbwebanw_sose15_09`.`termin` (`terminnummer`),
+  CONSTRAINT `terrechnungsnummer`
+    FOREIGN KEY (`mrechnungsnummer`)
+     REFERENCES `dbwebanw_sose15_09`.`rechnung` (`rechnungsnummer`));
+     
+USE dbwebanw_sose15_09;
+    
+INSERT INTO geschaeftsstelle VALUES(1,'Bremen', 28203);
+
+INSERT INTO fahrzeug VALUES(1,'Audi', 20000,"Coupe",2, 'HB AU 12',1);
+
+INSERT INTO kunde VALUES(1,'Hans Wurst',"Hans Wurst Straße 30 29199 Bremen");
+
+INSERT INTO termin VALUES('2015-05-11','2015-05-30',1,1);
+
+INSERT INTO rechnung VALUES(1,25,500,1);
+
+INSERT INTO mitarbeiter VALUES (1, 'Müller', 'Flughafenallee 10', 1, 1, 1);
+
+INSERT INTO terminmanagement VALUES(1,1,1);
+
+#Folgende Satements gehören zu Aufgabe 3.1 und 
+# bestimmen das Verhalten bei Verletzung referentieller
+# Integrität für jeden Fremdschlüssel
+
+USE `dbwebanw_sose15_09`;
+
+ALTER TABLE `fahrzeug`
+DROP FOREIGN KEY `frzgeschaeftsstellennummer`;
+
+ALTER TABLE `fahrzeug`
+ADD CONSTRAINT `frzgeschaeftsstellennummer` FOREIGN KEY(`fgeschaeftsstellennummer`)
+REFERENCES `geschaeftsstelle` (`geschaeftsstellennummer`)
+ON DELETE SET NULL
+ON UPDATE RESTRICT;
+
+ALTER TABLE `termin`
+DROP FOREIGN KEY `terkundennummer`;
+
+ALTER TABLE `termin`
+ADD CONSTRAINT `terkundennummer` FOREIGN KEY (`tkundennummer`)
+REFERENCES `kunde` (`kundennummer`)
+ON DELETE SET NULL
+ON UPDATE RESTRICT; 
+
+ALTER TABLE `mitarbeiter`
+DROP FOREIGN KEY `mitfahrzeugnummer`,
+DROP FOREIGN KEY `mitgeschaeftsstellennummer`,
+DROP FOREIGN KEY `mitterminnummer`;
+
+ALTER TABLE `mitarbeiter`
+ADD CONSTRAINT `mitfahrzeugnummer` FOREIGN KEY (`mitfahrzeugnummer`)
+REFERENCES `fahrzeug` (`fahrzeugnummer`) 
+ON DELETE SET NULL
+ON UPDATE RESTRICT,
+ADD CONSTRAINT `mitgeschaeftsstellennummer` FOREIGN KEY (`mitgeschaeftsstellennummer`)
+REFERENCES `geschaeftsstelle` (`geschaeftsstellennummer`) 
+ON DELETE SET NULL
+ON UPDATE RESTRICT,
+ADD CONSTRAINT `mitterminnummer` FOREIGN KEY (`mitterminnummer`)
+REFERENCES `termin` (`terminnummer`) 
+ON DELETE SET NULL
+ON UPDATE RESTRICT;
+
+ALTER TABLE `termin`
+DROP FOREIGN KEY `terkundennummer`;
+
+ALTER TABLE `termin`
+ADD CONSTRAINT `terkundennummer` FOREIGN KEY (`tkundennummer`)
+REFERENCES `kunde` (`kundennummer`) 
+ON DELETE SET NULL
+ON UPDATE RESTRICT;
+
+ALTER TABLE `terminmanagement`
+DROP FOREIGN KEY `terfahrzeugnummer`,
+DROP FOREIGN KEY `terrechnungsnummer`,
+DROP FOREIGN KEY `terterminnummer`;
+
+ALTER TABLE `terminmanagement`
+ADD CONSTRAINT `terfahrzeugnummer` FOREIGN KEY (`mfahrzeugnummer`)
+REFERENCES `fahrzeug` (`fahrzeugnummer`)
+ON DELETE SET NULL
+ON UPDATE RESTRICT,
+ADD CONSTRAINT `terterminnummer` FOREIGN KEY (`mterminnummer`)
+REFERENCES `termin` (`terminnummer`)
+ON DELETE CASCADE
+ON UPDATE RESTRICT,
+ADD CONSTRAINT `mrechnungsnummer` FOREIGN KEY (`mrechnungsnummer`)
+REFERENCES `rechnung` (`rechnungsnummer`)
+ON DELETE SET NULL
+ON UPDATE RESTRICT;
+
+
+
+
+#Aufgabe 3.2: wir haben uns entschieden, den Mitarbeiter nur der
+# Geschaeftsstelle zuzuordnen um Redundanzen zu vermeiden.
+
+USE dbwebanw_sose15_09;
+
+ALTER TABLE mitarbeiter
+DROP FOREIGN KEY mitterminnummer,
+DROP FOREIGN KEY mitfahrzeugnummer,
+DROP `mitterminnummer`,
+DROP `mitfahrzeugnummer`,
+CHANGE COLUMN `adresse` `email` VARCHAR(150) NULL; 
+
+ALTER TABLE kunde
+CHANGE COLUMN `adresse` `email` VARCHAR(150) NULL;
+
+
+
+
+#Zur normalisierung wird eine weitere Tabelle erstellt die sich um Fahrzeugmodelle kümmert
+
+CREATE TABLE IF NOT EXISTS `dbwebanw_sose15_09`.`fahrzeugmodell` (
+  `modellnummer` INT AUTO_INCREMENT,
+  `hersteller` VARCHAR(45) NULL DEFAULT 'Unbekannt',
+  `fahrzeugtyp` VARCHAR(45) NULL,
+  `anzahl_sitzplaetze` INT NULL,
+  PRIMARY KEY (`modellnummer`));
+
+USE `dbwebanw_sose15_09`;
+
+ALTER TABLE geschaeftsstelle DROP `plz`;
+
+ALTER TABLE fahrzeug
+DROP `hersteller`,
+DROP `fahrzeugtyp`,
+DROP `anzahl_sitzplaetze`,
+ADD `fmodellnummer` INT,
+ADD CONSTRAINT `frzmodellnummer`
+    FOREIGN KEY (`fmodellnummer`)
+REFERENCES `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`)
+	ON DELETE SET NULL 
+	ON UPDATE CASCADE;
+
+INSERT INTO `fahrzeugmodell` VALUES (1, "VW", "Limousine", 5);
+
+UPDATE `fahrzeug` SET `fmodellnummer` = 1 WHERE `fahrzeugnummer` = 1;
+
+ALTER TABLE rechnung
+DROP `anzahl_tage`,
+ADD `starttag` DATE,
+ADD `endtag` DATE;
+
+#loescht die views, falls sie existieren, und erstellt sie neu
+
+DROP VIEW IF EXISTS 
+termin_fahrzeug, termin_zu_kunde, kunde_zu_rechnung, arbeitsort, rechnung_pro_termin;
+
+CREATE VIEW termin_fahrzeug AS
+SELECT t.terminnummer, t.starttag, t.endtag, f.fahrzeugnummer
+FROM terminmanagement tm
+INNER JOIN fahrzeug f
+ON f.fahrzeugnummer=tm.mfahrzeugnummer
+INNER JOIN termin t
+ON t.terminnummer=tm.mterminnummer;
+
+
+CREATE VIEW termin_zu_kunde AS
+SELECT termin.starttag, termin.tkundennummer
+FROM termin
+ORDER BY tkundennummer DESC;
+
+
+CREATE VIEW kunde_zu_rechnung AS
+SELECT rechnung.rechnungsnummer, rechnung.rechnungsbetrag, kunde.kundennummer, kunde.name
+FROM rechnung
+INNER JOIN kunde
+ON rechnung.rkundennummer=kunde.kundennummer;
+
+
+CREATE VIEW arbeitsort AS
+SELECT mitarbeiter.name, geschaeftsstelle.ort
+FROM mitarbeiter 
+INNER JOIN geschaeftsstelle
+ON mitarbeiter.mitgeschaeftsstellennummer=geschaeftsstelle.geschaeftsstellennummer;
+
+
+CREATE VIEW rechnung_pro_termin (termin, rechnung) AS 
+SELECT t.terminnummer, r.rechnungsbetrag
+FROM terminmanagement tm
+INNER JOIN 
+termin t ON tm.mterminnummer = t.terminnummer
+INNER JOIN 
+rechnung r ON tm.mrechnungsnummer = r.rechnungsnummer;
+
+ALTER TABLE kunde
+ADD COLUMN passwort INT;  
+
+UPDATE kunde 
+SET passwort="123456" WHERE kundennummer = 1; 
