@@ -1,4 +1,4 @@
-package DataAccessObjecs;
+package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Tables.Fahrzeugmodell;
@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Created by mikehuesing on 12.07.15.
  */
-public class FahrzeugmodellManager {
+public class FahrzeugmodellDAO {
 
-    public FahrzeugmodellManager(){}
+    public FahrzeugmodellDAO(){}
 
     /**
      * Diese Methode gibt das Fahrzeugmodell mit dem param fahrzeugTyp & Hersteller zurück

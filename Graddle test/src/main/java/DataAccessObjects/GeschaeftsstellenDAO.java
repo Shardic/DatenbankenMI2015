@@ -1,4 +1,4 @@
-package DataAccessObjecs;
+package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Tables.Geschaeftsstelle;
@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by oliverbammann on 12.07.15.
  */
-public class GeschaeftsstellenManager {
+public class GeschaeftsstellenDAO {
 
-    public GeschaeftsstellenManager() {
+    public GeschaeftsstellenDAO() {
 
     }
 

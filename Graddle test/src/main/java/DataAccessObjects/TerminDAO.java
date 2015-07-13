@@ -1,4 +1,4 @@
-package DataAccessObjecs;
+package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Tables.Mitarbeiter;
@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by oliverbammann on 12.07.15.
  */
-public class TerminManager {
+public class TerminDAO {
 
-    public TerminManager() {
+    public TerminDAO() {
 
     }
 

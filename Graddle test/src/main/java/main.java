@@ -1,4 +1,4 @@
-import DataAccessObjecs.KundenDAO;
+import DataAccessObjects.KundenDAO;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class main {
         System.out.println("Hier" + newM.getName());
         */
         /*
-        RechnungManager rm = new RechnungManager();
+        RechnungDAO rm = new RechnungDAO();
         Rechnung r = rm.getRechnung(1);
         System.out.println(r.getRechnungsBetrag());
         rm.addRechnung(999, 5, new Date(5), new Date(5000));
