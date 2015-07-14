@@ -1,13 +1,14 @@
 package Tables;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Fabian on 11.07.15.
  */
 @Entity
 @Table(name="terminmanagement")
-public class TerminManagement {
+public class TerminManagement implements Serializable {
 
     @Id
     @Column(name = "mterminnummer")

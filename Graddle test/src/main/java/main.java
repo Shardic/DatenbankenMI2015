@@ -53,6 +53,7 @@ public class main {
             System.out.println(list.get(i).getName());
         }
 
+
     }
 
 }
