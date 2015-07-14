@@ -22,6 +22,11 @@ public class Geschaeftsstelle {
 
     public Geschaeftsstelle(){}
 
+    public Geschaeftsstelle(String ort, String plz) {
+        this.setOrt(ort);
+        this.setPlz(plz);
+    }
+
     public int getGeschaeftsstellennummer() {
         return geschaeftsstellennummer;
     }

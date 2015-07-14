@@ -1,4 +1,4 @@
-package DataAccessObjecs;
+package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Tables.Mitarbeiter;
@@ -14,9 +14,9 @@ import java.util.List;
 /**
  * Created by oliverbammann on 12.07.15.
  */
-public class TerminManager {
+public class TerminDAO {
 
-    public TerminManager() {
+    public TerminDAO() {
 
     }
 
@@ -35,10 +35,7 @@ public class TerminManager {
         Integer newTerminNr = null;
         try{
             tx = session.beginTransaction();
-            Termin newTermin = new Termin();
-            newTermin.setStarttag(starttag);
-            newTermin.setEndtag(endtag);
-            newTermin.setTkundennummer(kundennummer);
+            Termin newTermin = new Termin(starttag, endtag, kundennummer);
             newTerminNr = (Integer) session.save(newTermin);
             tx.commit();
         }catch (HibernateException e) {

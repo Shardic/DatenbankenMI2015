@@ -1,4 +1,4 @@
-package DataAccessObjecs;
+package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Tables.Kunde;

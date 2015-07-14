@@ -1,4 +1,4 @@
-package DataAccessObjecs;
+package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Tables.Rechnung;
@@ -12,12 +12,12 @@ import java.util.List;
 /**
  * Created by Konrad on 12.07.2015.
  */
-public class RechnungManager {
+public class RechnungDAO {
 
     /**
      * Standard Konstruktor
      */
-    public RechnungManager() {
+    public RechnungDAO() {
 
     }
 

@@ -1,4 +1,4 @@
-package DataAccessObjecs;
+package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Tables.Fahrzeug;
@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Created by mikehuesing on 12.07.15.
  */
-public class FahrzeugManager {
+public class FahrzeugDAO {
 
-    public FahrzeugManager(){}
+    public FahrzeugDAO(){}
 
     /**
      * Diese Methode gibt das Fahrzeug mit dem param fahrzeugnummer zurück
