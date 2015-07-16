@@ -22,8 +22,8 @@ public class Fahrzeug {
     @Column(name = "fgeschaeftsstellennummer")
     private int fGeschaeftsstellenNummer;
 
-    @Column(name = "frzmodellnummer")
-    private int frzModellNummer;
+    @Column(name = "fmodellnummer")
+    private int fModellNummer;
 
     public Fahrzeug(){}
 
@@ -32,7 +32,7 @@ public class Fahrzeug {
         this.laufleistung = laufleistung;
         this.nummernschild = nummernschild;
         this.fGeschaeftsstellenNummer = fgeschaeftsstellennummer;
-        this.frzModellNummer =  fmodellnummer;
+        this.fModellNummer =  fmodellnummer;
     }
 
     public int getFahrzeugNummer() {
@@ -67,11 +67,11 @@ public class Fahrzeug {
         this.fGeschaeftsstellenNummer = fGeschaeftsstellenNummer;
     }
 
-    public int getFrzModellNummer() {
-        return frzModellNummer;
+    public int getFModellNummer() {
+        return fModellNummer;
     }
 
-    public void setFrzModellNummer(int frzModellNummer) {
-        this.frzModellNummer = frzModellNummer;
+    public void setFModellNummer(int frzModellNummer) {
+        this.fModellNummer = frzModellNummer;
     }
 }

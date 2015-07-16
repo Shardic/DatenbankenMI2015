@@ -1,0 +1,20 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Fabian
+  Date: 14.07.15
+  Time: 14:42
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+  <head>
+    <title>Index</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Autovermietung</h1>
+    <a href="login.jsp"><button type="button">Login</button></a>
+    <a href="kundenList.jsp"><button type="button">Kundenliste</button></a>
+  </body>
+</html>

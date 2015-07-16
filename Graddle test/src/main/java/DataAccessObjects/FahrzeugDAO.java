@@ -93,7 +93,7 @@ public class FahrzeugDAO {
                 System.out.print("id: " + "\t" + fahrzeug.getFahrzeugNummer());
                 System.out.print("  nummernschild: " + fahrzeug.getNummernschild());
                 System.out.print("  laufleistung: " + fahrzeug.getLaufleistung());
-                System.out.print("  fahrzeugmodellnummer: " + fahrzeug.getFrzModellNummer());
+                System.out.print("  fahrzeugmodellnummer: " + fahrzeug.getFModellNummer());
                 System.out.println("  fahrzeuggeschäftsstellennummer: " + fahrzeug.getfGeschaeftsstellenNummer());
             }
             tx.commit();
@@ -161,7 +161,7 @@ public class FahrzeugDAO {
         try{
             tx = session.beginTransaction();
             Fahrzeug fahrzeug = (Fahrzeug)session.get(Fahrzeug.class, fahrzeugid);
-            fahrzeug.setFrzModellNummer(newFrzModellNummer);
+            fahrzeug.setFModellNummer(newFrzModellNummer);
             session.update(fahrzeug);
             tx.commit();
         }catch (HibernateException e) {
