@@ -29,7 +29,7 @@
   List<Fahrzeugmodell> allFModelle = fMDAO.readAllFahrzeugmodelle();
 %>
 <div class="container">
-<table class="table table-bordered">
+  <table class="table table-bordered">
   <thead>
   <tr>
     <th>Fahrzeugnummer</th>
