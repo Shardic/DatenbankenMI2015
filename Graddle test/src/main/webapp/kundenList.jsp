@@ -26,13 +26,16 @@
     KundenDAO kDao = new KundenDAO();
     List<Kunde> allKunden = kDao.readAllKunden();
   %>
-  <table>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Passwort</th>
-  </tr>
+  <div class="container">
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Passwort</th>
+    </tr>
+  </thead>
 
 
   <%
@@ -46,16 +49,18 @@
 
   %>
 
-
+  <tbody>
       <tr>
         <td><%= id%></td>
         <td><%= name%></td>
         <td><%= email%></td>
         <td><%= passwort%></td>
       </tr>
+  </tbody>
 
   <%}%>
   </table>
+  </div>
 
 </body>
 </html>
