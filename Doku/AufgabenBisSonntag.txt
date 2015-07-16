@@ -1,0 +1,15 @@
+Am Montag dem 20.07. treffen wir uns um 12 Uhr wieder in der Hochschule 
+
+Fabian: Kunden hinzufügen (Passwörter, Anzeige usw.) (JSP Datei erweitern)
+Oliver: Bootstrap pflegen (Tabellen aufhübschen) 
+Marco: Fahrzeug hinzügen und anzeigen, Fahrzeuge löschen (JSP Datei erstellen), Termine Hinzufügen und Anzeigen
+
+Konrad : Views kunde_zu_rechnung, termin_zu_kunde implementiern, termin_fahrzeug implementiern  (VIEW DER DATENBANK NUTZEN)
+
+uneingeloggt alle Fahrzeuge anzeigen lassen
+
+Session speichern und damit arbeiten nach Kunden login 
+Kunde kann Sessionabhängig seine Rechnungen und Termine sehen
+
+
+Die nicht benannten Aufgaben stehen zur freien Auswahl
