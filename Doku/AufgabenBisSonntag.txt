@@ -4,9 +4,7 @@ Fabian: Kunden hinzufügen (Passwörter, Anzeige usw.) (JSP Datei erweitern)
 Oliver: Bootstrap pflegen (Tabellen aufhübschen) 
 Marco: Fahrzeug hinzügen und anzeigen, Fahrzeuge löschen (JSP Datei erstellen), Termine Hinzufügen und Anzeigen
 
-Views kunde_zu_rechnung implementieren (VIEW DER DATENBANK NUTZEN)
-View termin_zu_kunde implementiern (VIEW DER DATENBANK NUTZEN)
-View termin_fahrzeug implementiern (VIEW DER DATENBANK NUTZEN)
+Konrad : Views kunde_zu_rechnung, termin_zu_kunde implementiern, termin_fahrzeug implementiern  (VIEW DER DATENBANK NUTZEN)
 
 uneingeloggt alle Fahrzeuge anzeigen lassen
 
