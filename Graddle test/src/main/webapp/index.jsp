@@ -11,7 +11,7 @@
     <title>Index</title>
   </head>
   <body>
-    <h1>Überschrift</h1>
-    <p>TestTestTestTestTestTestTestTestTestTestTestTestTestTest</p>
+    <h1>Autovermietung</h1>
+    <a href="login.jsp"><button type="button">Login</button></a>
   </body>
 </html>
