@@ -13,5 +13,6 @@
   <body>
     <h1>Autovermietung</h1>
     <a href="login.jsp"><button type="button">Login</button></a>
+    <a href="kundenList.jsp"><button type="button">Kundenliste</button></a>
   </body>
 </html>

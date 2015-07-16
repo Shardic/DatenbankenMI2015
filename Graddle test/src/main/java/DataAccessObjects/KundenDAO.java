@@ -20,7 +20,7 @@ public class KundenDAO {
     /**
      * Diese Methode gibt den den Kunden mit dem param name zurück
      * fail return null
-     * @param name
+     * @param email
      * @return
      */
     public List<Kunde> getKundeByName(String email, String passwort){

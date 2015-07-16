@@ -1,9 +1,3 @@
-import DataAccessObjects.KundenDAO;
-
-import java.util.List;
-
-import Tables.Kunde;
-
 /**
  * Created by Fabian on 27.06.15.
  */
@@ -47,11 +41,11 @@ public class main {
         rm.addRechnung(999, 5, new Date(5), new Date(5000));
         */
 
-        KundenDAO km = new KundenDAO();
+        /*KundenDAO km = new KundenDAO();
         List<Kunde> list = km.readAllKunden();
         for(int i= 0; i< list.size(); i++){
             System.out.println(list.get(i).getName());
-        }
+        }*/
     }
 
 }
