@@ -13,10 +13,23 @@
     <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Autovermietung</h1>
-    <p><a href="login.jsp"><button type="button">Login</button></a></p>
-    <p><a href="registrieren.jsp"><button type="button">Registrieren</button></a></p>
-
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <h1 style="text-align: center">Autovermietung</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <br>
+        <a href="login.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Login</button></a>
+        <br>
+        <a href="registrieren.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Registrieren</button></a>
+        <br>
+        <a href="fahrzeugList.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeuge anzeigen</button></a>
+      </div>
+    </div>
+  </div>
 
   </body>
 </html>

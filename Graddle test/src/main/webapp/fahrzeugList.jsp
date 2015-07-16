@@ -28,7 +28,9 @@
   List<Fahrzeug> allFahrzeuge = fDao.readAllFahrzeuge();
   List<Fahrzeugmodell> allFModelle = fMDAO.readAllFahrzeugmodelle();
 %>
-<table class="table-striped table">
+<div class="container">
+<table class="table table-bordered">
+  <thead>
   <tr>
     <th>Fahrzeugnummer</th>
     <th>Laufleistung</th>
@@ -37,6 +39,7 @@
     <th>Fahrzeugtyp</th>
     <th>Sitzplaetze</th>
   </tr>
+  </thead>
   <%
     for(i=0; i< allFahrzeuge.size(); i++){
       id = allFahrzeuge.get(i).getFahrzeugNummer();
@@ -49,15 +52,19 @@
           sitzplaetze = allFModelle.get(j).getAnzahlSitzplaetze();
         }
       }
-      %> <tr>
-    <td><%= id%></td>
-  <td><%= laufleistung%></td>
-  <td><%= nummernschild%></td>
-  <td><%= hersteller%></td>
-  <td><%= fahrzeugtyp%></td>
-  <td><%= sitzplaetze%></td>
-  </tr>
+      %>
+  <tbody>
+    <tr>
+      <td><%= id%></td>
+      <td><%= laufleistung%></td>
+      <td><%= nummernschild%></td>
+      <td><%= hersteller%></td>
+      <td><%= fahrzeugtyp%></td>
+      <td><%= sitzplaetze%></td>
+    </tr>
+  </tbody>
    <%}%>
 </table>
+</div>
 </body>
 </html>

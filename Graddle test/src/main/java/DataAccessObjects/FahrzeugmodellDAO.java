@@ -31,7 +31,7 @@ public class FahrzeugmodellDAO {
         Fahrzeugmodell foundFahrzeugmodell = null;
         try{
             tx = session.beginTransaction();
-            fahrzeugmodelle = session.createQuery("FROM fahrzeugmodell ").list();
+            fahrzeugmodelle = session.createQuery("FROM Fahrzeugmodell ").list();
             for(int i = 0; i < fahrzeugmodelle.size(); i++){
                 if(fahrzeugmodelle.get(i).getFahrzeugTyp().equals(fahrzeugTyp)
                         && fahrzeugmodelle.get(i).getHersteller().equals(hersteller)){

@@ -17,7 +17,7 @@ public class Fahrzeugmodell {
     @Column(name = "hersteller")
     private String hersteller;
 
-    @Column(name = "fahrzeugTyp")
+    @Column(name = "fahrzeugtyp")
     private String fahrzeugTyp;
 
     @Column(name = "anzahl_sitzplaetze")
