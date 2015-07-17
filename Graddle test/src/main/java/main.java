@@ -1,4 +1,6 @@
+import DataAccessObjects.FahrzeugDAO;
 import DataAccessObjects.KundenDAO;
+import Tables.Fahrzeug;
 import Tables.Kunde;
 
 import java.util.List;
@@ -44,13 +46,23 @@ public class main {
         Rechnung r = rm.getRechnung(1);
         System.out.println(r.getRechnungsBetrag());
         rm.addRechnung(999, 5, new Date(5), new Date(5000));
-        */
+
 
         KundenDAO km = new KundenDAO();
         List<Kunde> list = km.readAllKunden();
         for(int i= 0; i< list.size(); i++){
             System.out.println(list.get(i).getName());
         }
+        */
+        FahrzeugDAO d = new FahrzeugDAO();
+        List<Fahrzeug> list = d.readAllFahrzeuge();
+        for(int i= 0; i< list.size(); i++){
+            System.out.println(list.get(i).getNummernschild());
+        }
+
+
+
+
     }
 
 }

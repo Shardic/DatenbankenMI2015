@@ -52,7 +52,7 @@
           sitzplaetze = allFModelle.get(j).getAnzahlSitzplaetze();
         }
       }
-      %>
+  %>
   <tbody>
     <tr>
       <td><%= id%></td>

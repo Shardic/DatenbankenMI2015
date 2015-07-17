@@ -18,6 +18,9 @@
       <div class="col-md-4 col-md-offset-4">
         <h1 style="text-align: center">Autovermietung</h1>
       </div>
+      <div class="col-md-4 col-md-offset-2" style="padding-top: 5%">
+        <img src="Images/mainPageCars.jpg">
+      </div>
     </div>
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
@@ -27,6 +30,9 @@
         <a href="registrieren.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Registrieren</button></a>
         <br>
         <a href="fahrzeugList.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeuge anzeigen</button></a>
+        <br>
+        <a href="kundenList.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Kunden anzeigen</button></a>
+
       </div>
     </div>
   </div>

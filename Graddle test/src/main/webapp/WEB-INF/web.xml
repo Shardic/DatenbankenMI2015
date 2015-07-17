@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <!--index.jsp ist die Startseite-->
     <welcome-file-list>
      <welcome-file>index.html</welcome-file>
      <welcome-file>index.htm</welcome-file>
@@ -13,6 +14,16 @@
         <welcome-file>default.htm</welcome-file>
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
+
+    <!--Mapping für Servlets-->
+    <servlet>
+        <servlet-name>RegistrierenServlet.java</servlet-name>
+        <servlet-class>Servlet.RegistrierenServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrierenServlet.java</servlet-name>
+        <url-pattern>/registrieren</url-pattern>
+    </servlet-mapping>
 
 </web-app>
 
