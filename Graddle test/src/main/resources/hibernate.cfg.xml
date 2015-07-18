@@ -32,5 +32,7 @@
   <mapping class="Tables.Termin" />
   <mapping class="Tables.TerminManagement" />
 
+  <mapping class="Views.KundeZuRechnung"/>
+
 </session-factory>
 </hibernate-configuration>

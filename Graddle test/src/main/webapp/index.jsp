@@ -33,7 +33,7 @@
         <br>
         <a href="kundenList.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Kunden anzeigen</button></a>
         <br>
-        <a href="viewKzuR.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Kunde zu Rechnung</button></a>
+        <a href="kundeZuRechnung.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Termin zu Kunde</button></a>
       </div>
     </div>
   </div>
