@@ -33,6 +33,10 @@
   <mapping class="Tables.TerminManagement" />
 
   <mapping class="Views.KundeZuRechnung"/>
+  <mapping class="Views.Arbeitsort"/>
+  <mapping class="Views.RechnungProTermin"/>
+  <mapping class="Views.TerminFahrzeug"/>
+  <mapping class="Views.TerminZuKunde"/>
 
 </session-factory>
 </hibernate-configuration>

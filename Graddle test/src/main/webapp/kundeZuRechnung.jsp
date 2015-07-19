@@ -5,9 +5,6 @@
 <%--
   Created by IntelliJ IDEA.
   User: Konrad
-  Date: 18.07.2015
-  Time: 20:15
-  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -19,8 +16,8 @@
 <body>
 <%
   int i;
-  int Kundennummer, Rechnungsnummer, Rechnungsbetrag;
-  String Kundenname;
+  int kundennummer, rechnungsnummer, rechnungsbetrag;
+  String kundenname;
   ViewDAO myviews = new ViewDAO();
   List<KundeZuRechnung> viewListe = myviews.getKundeZuRechnungView();
 %>
@@ -40,21 +37,21 @@
     <%
 
         for (Iterator iterator = viewListe.iterator(); iterator.hasNext();){
-          KundeZuRechnung kunde = (KundeZuRechnung) iterator.next();
-          Kundennummer = kunde.getKundennummer();
-          Rechnungsnummer = kunde.getRechnungsnummer();
-          Rechnungsbetrag = kunde.getRechnungsbetrag();
-          Kundenname = kunde.getName();
+          KundeZuRechnung iter = (KundeZuRechnung) iterator.next();
+          kundennummer = iter.getKundennummer();
+          rechnungsnummer = iter.getRechnungsnummer();
+          rechnungsbetrag = iter.getRechnungsbetrag();
+          kundenname = iter.getName();
 
 
     %>
 
     <tbody>
     <tr>
-      <td><%= Kundennummer%></td>
-      <td><%= Kundenname%></td>
-      <td><%= Rechnungsnummer%></td>
-      <td><%= Rechnungsbetrag%></td>
+      <td><%= kundennummer%></td>
+      <td><%= kundenname%></td>
+      <td><%= rechnungsnummer%></td>
+      <td><%= rechnungsbetrag%></td>
     </tr>
     </tbody>
 
