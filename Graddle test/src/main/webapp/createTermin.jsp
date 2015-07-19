@@ -1,4 +1,5 @@
 <%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%--
   Created by IntelliJ IDEA.
   User: Marco
@@ -19,15 +20,15 @@
 
 <%
   Date start, end;
-  String  name,
-          email,
-          passwort,
-          passwort1;
+  int kundenNummer, fahrzeugNummer;
 
 %>
 <%!
 
-  public boolean checkPasswords(String pw1, String pw2){
+  public boolean checkDate(Date d1, Date d2){
+    if (d1.after(d2)) {
+      return false;
+    }
     return true;
   }
 
@@ -50,7 +51,7 @@
         <input type="date" name="startDate" id="inputStart" class="form-control" required>
         <h6>Enddatum</h6>
         <label for="inputEnd" class="sr-only">Email</label>
-        <input type="date" name="startDate" id="inputEnd" class="form-control" required>
+        <input type="date" name="endDate" id="inputEnd" class="form-control" required>
         <br>
         <label for="kundenNummer" class="sr-only">kundenNummer</label>
         <input type="int" name="kundenNummer" id="kundenNummer" class="form-control" placeholder="Kunden Nummer (Muss ausgetauscht werden bei der Sessionnutzung) required">
@@ -67,19 +68,28 @@
   </div>
 
   <%
-
-    if (request.getParameter("name") != null) {
-      name = request.getParameter("name");
-      email = request.getParameter("email");
-      passwort = request.getParameter("passwort");
-      passwort1 = request.getParameter("passwort1");
-      if(checkPasswords(passwort, passwort1)){
-       // createNewTermin();
+    out.println(request.getParameter("startDate"));
+    if (request.getParameter("startDate") != null) {
+      SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+      start = format.parse(request.getParameter("startDate"));
+      end = format.parse(request.getParameter("endDate"));
+      kundenNummer = Integer.parseInt(request.getParameter("kundenNummer"));
+      fahrzeugNummer =Integer.parseInt(request.getParameter("fahrzeugNummer"));
+      if(checkDate(start, end)){
+       if (checkKunde(kundenNummer)) {
+         createNewTermin();
+       } else {
+         %>
+            <script>
+              alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
+            </script>
+         <%
+       }
       }else{
         out.print("Fail");
   %>
   <script>
-    alert("Die Passwörter stimmen nicht überein");
+    alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
   </script>
   <%
       }
