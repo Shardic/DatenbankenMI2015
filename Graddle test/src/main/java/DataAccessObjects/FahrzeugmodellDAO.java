@@ -48,6 +48,27 @@ public class FahrzeugmodellDAO {
         return foundFahrzeugmodell;
     }
 
+    public Fahrzeugmodell getFahrzeugmodell(int modellnummer){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List<Fahrzeugmodell> fahrzeugmodelle = null;
+        Fahrzeugmodell foundFahrzeugmodell = null;
+        try{
+            tx = session.beginTransaction();
+            fahrzeugmodelle = session.createQuery("FROM Fahrzeugmodell WHERE modellnummer = modellnummer ").list();
+            if(fahrzeugmodelle.get(0) != null) {
+                foundFahrzeugmodell = fahrzeugmodelle.get(0);
+            }
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return foundFahrzeugmodell;
+    }
+
     /**
      * Diese Methode legt eine neue Row in der Tabelle Fahrzeugmodell an
      * Success return id des neuen Fahrzeugmodell
@@ -57,7 +78,7 @@ public class FahrzeugmodellDAO {
      * @param anzahlSitzplaetze
      * @return
      */
-    public Integer addMitarbeiter(String fahrzeugTyp, String hersteller, Integer anzahlSitzplaetze){
+    public Integer addFahrzeug(String fahrzeugTyp, String hersteller, Integer anzahlSitzplaetze){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         Integer newFahrzeugmodellId = null;
