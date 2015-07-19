@@ -108,14 +108,14 @@
         } else {
             %>
             <script>
-              alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
+              alert("Das Fahrzeug existiert nicht");
             </script>
             <%
         }
        } else {
          %>
           <script>
-            alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
+            alert("Dieser Kunde existiert nicht!");
           </script>
          <%
        }
