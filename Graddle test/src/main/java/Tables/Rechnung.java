@@ -1,7 +1,7 @@
 package Tables;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by Fabian on 11.07.15.
@@ -15,18 +15,13 @@ public class Rechnung {
     @Column(name = "rechnungsnummer")
     private int rechnungsNummer;
 
-
-    //@Column(name = "anzahl_tage")
-    private int anzahlTage;
-
-
     @Column(name = "rechnungsbetrag")
     private int rechnungsBetrag;
 
     @Column(name = "rkundennummer")
     private int rKudenNummer;
 
-    @Column(name = "startag")
+    @Column(name = "starttag")
     private Date startTag;
 
     @Column(name = "endtag")

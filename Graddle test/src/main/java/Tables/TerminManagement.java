@@ -8,17 +8,17 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="terminmanagement")
-public class TerminManagement implements Serializable {
+public class TerminManagement {
 
     @Id
     @Column(name = "mterminnummer")
     private int mTerminnummer;
 
-    @Id
+
     @Column(name = "mrechnungsnummer")
     private int mRechunungsnummer;
 
-    @Id
+
     @Column(name = "mfahrzeugnummer")
     private int mFahrzeugnummer;
 

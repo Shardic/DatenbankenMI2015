@@ -1,5 +1,11 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="DataAccessObjects.TerminDAO" %>
+<%@ page import="DataAccessObjects.TerminManagementDAO" %>
+<%@ page import="Tables.Termin" %>
+<%@ page import="java.util.List" %>
+<%@ page import="DataAccessObjects.RechnungDAO" %>
+<%@ page import="Tables.Rechnung" %>
 <%--
   Created by IntelliJ IDEA.
   User: Marco
@@ -32,8 +38,29 @@
     return true;
   }
 
-  public void createNewTermin(Date start, Date end, int kundennummer, int fahrzeugnummer){
+  public boolean checkKunde(int kundenNummer) {
 
+    return true;
+  }
+
+  public boolean checkFahrzeugVerfuegbar(int fahrzeugNummer) {
+
+    return true;
+  }
+
+  public void createNewTermin(Date start, Date end, int kundennummer, int fahrzeugnummer){
+    TerminDAO tDAO = new TerminDAO();
+    tDAO.addTermin(start, end, kundennummer);
+    RechnungDAO rDAO = new RechnungDAO();
+    int diffInDays = (int)( (end.getTime() - start.getTime())
+            / (1000 * 60 * 60 * 24));
+    rDAO.addRechnung(diffInDays*100,kundennummer,start,end);
+    TerminManagementDAO tMDAO = new TerminManagementDAO();
+    List<Termin> terminList = tDAO.readAllTermine();
+    List<Rechnung> rechnungList = rDAO.getAll();
+    int rechnungsnummer = rechnungList.get(rechnungList.size()-1).getRechnungsNummer();
+    int terminnumer = terminList.get(terminList.size()-1).getTerminnummer();
+    tMDAO.addTerminManagement(rechnungsnummer,fahrzeugnummer,terminnumer);
   }
 %>
 
@@ -68,7 +95,6 @@
   </div>
 
   <%
-    out.println(request.getParameter("startDate"));
     if (request.getParameter("startDate") != null) {
       SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
       start = format.parse(request.getParameter("startDate"));
@@ -77,16 +103,23 @@
       fahrzeugNummer =Integer.parseInt(request.getParameter("fahrzeugNummer"));
       if(checkDate(start, end)){
        if (checkKunde(kundenNummer)) {
-         createNewTermin();
-       } else {
-         %>
+        if (checkFahrzeugVerfuegbar(fahrzeugNummer)) {
+          createNewTermin(start, end, kundenNummer, fahrzeugNummer);
+        } else {
+            %>
             <script>
               alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
             </script>
+            <%
+        }
+       } else {
+         %>
+          <script>
+            alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
+          </script>
          <%
        }
       }else{
-        out.print("Fail");
   %>
   <script>
     alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
