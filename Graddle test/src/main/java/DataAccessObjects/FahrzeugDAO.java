@@ -2,10 +2,13 @@ package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Tables.Fahrzeug;
+import Tables.Termin;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.criteria.Root;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -213,6 +216,30 @@ public class FahrzeugDAO {
         }finally {
             session.close();
         }
+    }
+
+    public boolean isFahrzeugAvailable(int fahrzeugID, Date start, Date end) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List<Fahrzeug> fahrzeuge = null;
+        String statement = "SELECT DISTINCT f FROM TerminManagement JOIN Fahrzeug f WITH f.fahrzeugNummer = TerminManagement.mFahrzeugnummer" +
+                " JOIN Termin t WITH t.terminNummer = TerminManagement.mTerminnummer" +
+                " WHERE Termin.endTag >= '" + start + "' AND Termin.startTag <= '" + end +
+                "' AND f.fahrzeugNummer = " + fahrzeugID;
+        try{
+            tx = session.beginTransaction();
+            fahrzeuge = session.createQuery(statement).list();
+            if (fahrzeuge.size() > 0) {
+             return false;
+            }
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return true;
     }
 
 }
