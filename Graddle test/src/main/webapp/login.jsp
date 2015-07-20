@@ -21,7 +21,7 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-    <form role="form">
+    <form role="form" method="post" action="">
       <label for="inputEmail" class="sr-only">Email</label>
       <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
       <br>
