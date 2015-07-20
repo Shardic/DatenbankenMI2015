@@ -40,7 +40,7 @@ String  name,
 
 %>
 
-  <form action="#" method="post" required>
+  <form action="#" method="post"  required>
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -61,12 +61,17 @@ String  name,
             <label for="inputPassword2" class="sr-only">Passwort wiederholen</label>
             <input type="password" name="passwort1" id="inputPassword2" class="form-control" placeholder="Passwort wiederholen" required>
             <br>
-            <a href="login.jsp"><button value="Submit" class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button></a>
+            <a href="login.jsp"><button id ="sub" value="Submit" class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button></a>
             <br>
             <a href="registrieren.jsp"><button class="btn btn-lg btn-primary btn-block" type="submit">Bereits registriert?</button></a>
         </div>
       </div>
     </div>
+      <script>
+          var test = document.getElementById("sub").;
+          console.log(test);
+      </script>
+
 
     <%
 
@@ -82,6 +87,8 @@ String  name,
             %>
                 <script>
                     alert("Die Passwörter stimmen nicht überein");
+                    var test = document.getElementById("sub").val;
+                    console.log(test);
                 </script>
 
             <%
@@ -90,8 +97,6 @@ String  name,
 
     %>
   </form>
-
-
 
 </body>
 </html>
