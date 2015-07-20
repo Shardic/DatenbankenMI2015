@@ -115,7 +115,7 @@
         } else {
             %>
             <script>
-              alert("Das Fahrzeug existiert nicht");
+              alert("Das Fahrzeug ist zu dem Zeitraum ausgebucht");
             </script>
             <%
         }
