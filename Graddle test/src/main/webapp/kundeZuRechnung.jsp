@@ -23,8 +23,8 @@
     List<KundeZuRechnung> viewListe;
 
 
-    //Natürlich sollte nicht jeder einfach alle Kundenrechnungen einsehen können, also müsste noch ein Prüfen auf Mitarbeiter stattfinden --
-    if (request.getParameter("id") == null) {
+    //TODO: Natürlich sollte nicht jeder einfach alle Kundenrechnungen einsehen können, also müsste noch ein Prüfen auf Mitarbeiter (oder ähnlich) stattfinden
+    if (request.getParameter("id") == null || request.getParameter("id") == "") {
         viewListe = myviews.getKundeZuRechnungView();
     } else {
         Integer requestId = Integer.parseInt(request.getParameter("id"));
