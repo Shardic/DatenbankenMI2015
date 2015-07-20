@@ -33,6 +33,7 @@
         <li><a href="#">Meine Rechnungen</a></li>
         <li><a href="#">Fahrzeug buchen</a></li>
         <li><a href="#">Konto bearbeiten</a></li>
+        <li><a href="#">Ausloggen</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
