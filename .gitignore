@@ -92,3 +92,6 @@ local.properties
 *.vpp~1
 
 *.png
+*.class
+Graddle test/build/resources/main/hibernate.cfg.xml
+*.war

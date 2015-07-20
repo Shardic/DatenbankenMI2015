@@ -53,6 +53,37 @@ public class ViewDAO {
     }
 
     /**
+     * Diese Methode gibt eine Liste mit den Rechnungen von Kunde X zurück;
+     * @param nummer Kundennummer
+     * @return List<KundeZuRechnung> Rechnungen von Kunde X
+     */
+    public List<KundeZuRechnung> getKundeZuRechnungView(Integer nummer){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List myview = null;
+        try{
+            tx = session.beginTransaction();
+            myview = session.createQuery("FROM KundeZuRechnung k where k.kundennummer = "+nummer).list();
+
+            for (Iterator iterator = myview.iterator(); iterator.hasNext();){
+                KundeZuRechnung kunde = (KundeZuRechnung) iterator.next();
+                System.out.println("Kundennummer: " + kunde.getKundennummer());
+                System.out.println("Rechnungsnummer: " + kunde.getRechnungsnummer());
+                System.out.println("Betrag: " + kunde.getRechnungsbetrag());
+                System.out.println("Name: " + kunde.getName());
+            }
+
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return myview;
+    }
+
+    /**
      * Gibt die Liste der Standorte und Mitarbeiter an zurück;
      * @return List<Arbeitsort> Standorte und Mitarbeiter
      */

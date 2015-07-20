@@ -6,6 +6,7 @@
   Created by IntelliJ IDEA.
   User: Konrad
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,7 +20,19 @@
   int kundennummer, rechnungsnummer, rechnungsbetrag;
   String kundenname;
   ViewDAO myviews = new ViewDAO();
-  List<KundeZuRechnung> viewListe = myviews.getKundeZuRechnungView();
+  List<KundeZuRechnung> viewListe;
+
+  System.out.println(request.getParameter("id"));
+
+  viewListe = myviews.getKundeZuRechnungView();
+
+  if (request.getParameter("id") == null) {
+    viewListe = myviews.getKundeZuRechnungView();
+  } else {
+    Integer id = Integer.parseInt(request.getParameter("id"));
+    viewListe = myviews.getKundeZuRechnungView(id);
+  }
+
 %>
 
 <div class="container">
