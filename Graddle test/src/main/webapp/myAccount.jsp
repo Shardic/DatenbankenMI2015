@@ -20,5 +20,10 @@ Hier nur ein Test der Bean<br>
 <%= kunde.getEmail() %> <br>
 <%= kunde.getId() %> <br>
 <%= kunde.getPasswort() %> <br>
+
+und jetzt kommen die Rechnungen des Kunden mit der ID <%= kunde.getId() %>, aber Testweise ID = 1<br>
+<jsp:include page="kundeZuRechnung.jsp" >
+  <jsp:param name="id" value="1" />
+</jsp:include>
 </body>
 </html>
