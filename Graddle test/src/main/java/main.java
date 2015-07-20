@@ -1,4 +1,7 @@
-import DataAccessObjects.KundenDAO;
+
+
+
+import java.util.List;
 
 /**
  * Created by Fabian on 27.06.15.
@@ -9,9 +12,6 @@ public class main {
 
     public static void main(String [] args) {
         System.out.println("Hello World");
-
-        KundenDAO kundenDAO = new KundenDAO();
-        System.out.println(kundenDAO.isKundeEmailTrue("hallo", "hhh"));
         //http://www.tutorialspoint.com/hibernate/hibernate_quick_guide.htm
         /*
         KundenDAO km = new KundenDAO();
@@ -23,7 +23,7 @@ public class main {
         //km.updateKundenEmail(1,"newKundenEmail@hs-bremen.de");
        // km.updateKundenNamen(1,"newNameFromManager");
        // km.deleteKunde(9);
-       // Kunde k = km.getKundeByEmail("olli");
+       // Kunde k = km.getKundeByName("olli");
        // System.out.print(k.getId());
 
         MitarbeiterDAO mm = new MitarbeiterDAO();

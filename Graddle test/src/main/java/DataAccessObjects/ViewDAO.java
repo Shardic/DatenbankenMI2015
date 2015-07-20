@@ -148,7 +148,28 @@ public class ViewDAO {
 
 
     /**
-     * Gibt die Liste der Kundentermine zurück;
+     * Gibt die Liste der Termine von Kunde X zurück;
+     * @return List<TerminZuKunde> Kundentermine
+     */
+    public List<TerminZuKunde> getTerminZuKunde(Integer nummer){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List myview = null;
+        try{
+            tx = session.beginTransaction();
+            myview = session.createQuery("FROM TerminZuKunde k where k.tkundennummer = "+nummer).list();
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return myview;
+    }
+
+    /**
+     * Gibt die Liste ALLER Kundentermine zurück;
      * @return List<TerminZuKunde> Kundentermine
      */
     public List<TerminZuKunde> getTerminZuKunde(){

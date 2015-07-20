@@ -13,3 +13,10 @@ Kunde kann Sessionabhängig seine Rechnungen und Termine sehen
 
 
 Die nicht benannten Aufgaben stehen zur freien Auswahl
+
+NEU!!!!BIS Donnerstag den 23!!!!!!!!
+Konrad: Views die wir brauchen perfekt
+Oli: Log in.....
+Fabian: Kunden update + jsp
+Marco: Create Termin + view und Filter
+Mike: Doku Programmierwerkzeuge nennen, Vor- und Nachteile auflisten und alternativen nennen. BegrŸndung warum wir uns fŸr unser Setup entschieden haben.

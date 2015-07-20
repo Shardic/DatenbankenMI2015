@@ -32,6 +32,7 @@
   List<Fahrzeug> fahrzeuge = fDAO.readAllFahrzeuge();
   Date start, end;
   int kundenNummer, fahrzeugNummer;
+  boolean test = true;
 
 %>
 <%!
@@ -84,6 +85,7 @@
         <h6>Enddatum</h6>
         <label for="inputEnd" class="sr-only">Email</label>
         <input type="date" name="endDate" id="inputEnd" class="form-control" required>
+        <!--
         <br>
         <label for="kundenNummer" class="sr-only">kundenNummer</label>
         <input type="int" name="kundenNummer" id="kundenNummer" class="form-control" placeholder="Kunden Nummer (Muss ausgetauscht werden bei der Sessionnutzung) required">
@@ -91,19 +93,13 @@
         <label for="fahrzeugNummer" class="sr-only">Fahrzeugnummer</label>
         <input list="fahrzeuge" name="fahrzeugNummer" id="fahrzeugNummer" class="form-control" placeholder="Fahrzeug auswählen" required>
         <br>
-        <a href="createTermin.jsp"><button value="Submit" class="btn btn-lg btn-primary btn-block" type="submit">Termin erstellen</button></a>
-        <datalist id = fahrzeuge>
-          <%
-            for (k = 0; k < fahrzeuge.size(); k++) {
-          %>
-            <option value=<%= fahrzeuge.get(k).getFahrzeugNummer()%>>
-          <%
-            }
-          %>
-        </datalist>
+        -->
+        <br>
+        <a href="createTermin.jsp"><button value="Submit" class="btn btn-lg btn-primary btn-block" type="submit">Fahrzeuge Finden</button></a>
       </div>
     </div>
   </div>
+
 
   <%
     if (request.getParameter("startDate") != null) {
@@ -119,7 +115,7 @@
         } else {
             %>
             <script>
-              alert("Das Fahrzeug existiert nicht");
+              alert("Das Fahrzeug ist zu dem Zeitraum ausgebucht");
             </script>
             <%
         }
@@ -140,7 +136,7 @@
     }
   %>
 </form>
-<%@include file="fahrzeugeAnzeigen.jsp"
-%>
+
+
 </body>
 </html>
