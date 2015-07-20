@@ -15,16 +15,6 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
-    <!--Mapping für Servlets-->
-    <servlet>
-        <servlet-name>RegistrierenServlet.java</servlet-name>
-        <servlet-class>Servlet.RegistrierenServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegistrierenServlet.java</servlet-name>
-        <url-pattern>/registrieren</url-pattern>
-    </servlet-mapping>
-
 </web-app>
 
 
