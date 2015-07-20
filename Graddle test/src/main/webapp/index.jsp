@@ -42,6 +42,8 @@
         <a href="terminFahrzeug.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Terminfahrzeug</button></a>
         <br>
         <a href="terminZuKunde.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Termin zu Kunde</button></a>
+        <br>
+        <a href="createTermin.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Termin erstellen</button></a>
       </div>
     </div>
   </div>
