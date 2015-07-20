@@ -23,9 +23,9 @@
   int j;
   int id, laufleistung, sitzplaetze = 0;
   String nummernschild, hersteller = null, fahrzeugtyp = null;
-  FahrzeugDAO fDao = new FahrzeugDAO();
+  FahrzeugDAO fDAO = new FahrzeugDAO();
   FahrzeugmodellDAO fMDAO = new FahrzeugmodellDAO();
-  List<Fahrzeug> allFahrzeuge = fDao.readAllFahrzeuge();
+  List<Fahrzeug> allFahrzeuge = fDAO.readAllFahrzeuge();
   List<Fahrzeugmodell> allFModelle = fMDAO.readAllFahrzeugmodelle();
 %>
 <div class="container">

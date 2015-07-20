@@ -118,7 +118,7 @@ public class TerminManagementDAO {
      * @param tid Termin ID
      * @return true success / false fail
      */
-    public Integer addRechnung(int rid, int fid, int tid){
+    public Integer addTerminManagement(int rid, int fid, int tid){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         Integer result = null;
