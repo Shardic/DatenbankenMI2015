@@ -13,13 +13,13 @@
 <%@ page import="Tables.Fahrzeugmodell" %>
 
 <%
-  int i;
-  int j;
-  int id, laufleistung, sitzplaetze = 0;
-  String nummernschild, hersteller = null, fahrzeugtyp = null;
-  FahrzeugDAO fDAO = new FahrzeugDAO();
+  int xy;
+  int xz;
+  int idX, laufleistungX, sitzplaetzeX = 0;
+  String nummernschildX, herstellerX = null, fahrzeugtypX = null;
+  FahrzeugDAO fDAOX = new FahrzeugDAO();
   FahrzeugmodellDAO fMDAO = new FahrzeugmodellDAO();
-  List<Fahrzeug> allFahrzeuge = fDAO.readAllFahrzeuge();
+  List<Fahrzeug> allFahrzeuge = fDAOX.readAllFahrzeuge();
   List<Fahrzeugmodell> allFModelle = fMDAO.readAllFahrzeugmodelle();
 %>
 <div class="container">
@@ -35,26 +35,26 @@
     </tr>
     </thead>
     <%
-      for(i=0; i< allFahrzeuge.size(); i++){
-        id = allFahrzeuge.get(i).getFahrzeugNummer();
-        laufleistung = allFahrzeuge.get(i).getLaufleistung();
-        nummernschild = allFahrzeuge.get(i).getNummernschild();
-        for(j = 0; j< allFModelle.size(); j++) {
-          if (allFahrzeuge.get(i).getFModellNummer() == allFModelle.get(j).getModellnummer()) {
-            hersteller = allFModelle.get(j).getHersteller();
-            fahrzeugtyp = allFModelle.get(j).getFahrzeugTyp();
-            sitzplaetze = allFModelle.get(j).getAnzahlSitzplaetze();
+      for(xy=0; xy< allFahrzeuge.size(); xy++){
+        idX = allFahrzeuge.get(xy).getFahrzeugNummer();
+        laufleistungX = allFahrzeuge.get(xy).getLaufleistung();
+        nummernschildX = allFahrzeuge.get(xy).getNummernschild();
+        for(xz = 0; xz< allFModelle.size(); xz++) {
+          if (allFahrzeuge.get(xy).getFModellNummer() == allFModelle.get(xz).getModellnummer()) {
+            herstellerX = allFModelle.get(xz).getHersteller();
+            fahrzeugtypX = allFModelle.get(xz).getFahrzeugTyp();
+            sitzplaetzeX = allFModelle.get(xz).getAnzahlSitzplaetze();
           }
         }
     %>
     <tbody>
     <tr>
-      <td><%= id%></td>
-      <td><%= laufleistung%></td>
-      <td><%= nummernschild%></td>
-      <td><%= hersteller%></td>
-      <td><%= fahrzeugtyp%></td>
-      <td><%= sitzplaetze%></td>
+      <td><%= idX%></td>
+      <td><%= laufleistungX%></td>
+      <td><%= nummernschildX%></td>
+      <td><%= herstellerX%></td>
+      <td><%= fahrzeugtypX%></td>
+      <td><%= sitzplaetzeX%></td>
     </tr>
     </tbody>
     <%}%>

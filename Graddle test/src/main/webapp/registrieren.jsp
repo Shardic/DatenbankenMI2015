@@ -40,7 +40,7 @@ String  name,
 
 %>
 
-  <form action="#" method="post"  required>
+  <form action="login.jsp" method="post"  required>
     <div class="container">
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -82,6 +82,7 @@ String  name,
         passwort1 = request.getParameter("passwort1");
         if(checkPasswords(passwort, passwort1)){
           createNewKunde(name,email,passwort);
+
         }else{
             out.print("Fail");
             %>

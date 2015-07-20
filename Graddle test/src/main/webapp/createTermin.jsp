@@ -6,6 +6,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="DataAccessObjects.RechnungDAO" %>
 <%@ page import="Tables.Rechnung" %>
+<%@ page import="Tables.Fahrzeug" %>
+<%@ page import="DataAccessObjects.FahrzeugDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: Marco
@@ -25,6 +27,9 @@
 
 
 <%
+  int k = 0;
+  FahrzeugDAO fDAO = new FahrzeugDAO();
+  List<Fahrzeug> fahrzeuge = fDAO.readAllFahrzeuge();
   Date start, end;
   int kundenNummer, fahrzeugNummer;
 
@@ -75,7 +80,7 @@
       <div class="col-md-4 col-md-offset-4">
         <h6>Startdatum</h6>
         <label for="inputStart" class="sr-only">Name</label>
-        <input type="date" name="startDate" id="inputStart" class="form-control" required>
+        <input type="date" name="startDate" id="inputStart" class="form-control" required >
         <h6>Enddatum</h6>
         <label for="inputEnd" class="sr-only">Email</label>
         <input type="date" name="endDate" id="inputEnd" class="form-control" required>
@@ -88,8 +93,15 @@
         <br>
         <a href="createTermin.jsp"><button value="Submit" class="btn btn-lg btn-primary btn-block" type="submit">Termin erstellen</button></a>
         <datalist id = fahrzeuge>
-          <option value = 1>
+          <%
+            for (k = 0; k < fahrzeuge.size(); k++) {
+              %>
+            <option value=<%= fahrzeuge.get(k).getFahrzeugNummer()%>
+          <%
+            }
+          %>
         </datalist>
+          <p><%fahrzeuge.size();%>   hh</p>
       </div>
     </div>
   </div>
@@ -129,8 +141,7 @@
     }
   %>
 </form>
-<div class="container">
-  <a href="fahrzeugList.jsp" target="_blank"><button class="btn btn-lg btn-primary btn-block">Fahrzeuge Anzeigen</button></a>
-</div>
+<%@include file="fahrzeugeAnzeigen.jsp"
+%>
 </body>
 </html>
