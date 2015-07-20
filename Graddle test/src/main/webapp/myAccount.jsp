@@ -29,7 +29,7 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="myAccount.jsp">Home</a></li>
-        <li><a href="#">Meine Termine</a></li>
+        <li><a href="terminZuKunde.jsp?id="<%=kunde.getId()%>>Meine Termine</a></li>
         <li><a href="kundeZuRechnung.jsp?id="<%=kunde.getId()%>>Meine Rechnungen</a></li>
         <li><a href="#">Fahrzeug buchen</a></li>
         <li><a href="#">Konto bearbeiten</a></li>
