@@ -95,13 +95,12 @@
         <datalist id = fahrzeuge>
           <%
             for (k = 0; k < fahrzeuge.size(); k++) {
-              %>
-            <option value=<%= fahrzeuge.get(k).getFahrzeugNummer()%>
+          %>
+            <option value=<%= fahrzeuge.get(k).getFahrzeugNummer()%>>
           <%
             }
           %>
         </datalist>
-          <p><%fahrzeuge.size();%>   hh</p>
       </div>
     </div>
   </div>
