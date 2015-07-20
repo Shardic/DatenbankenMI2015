@@ -67,14 +67,8 @@ String  name,
         </div>
       </div>
     </div>
-      <script>
-          var test = document.getElementById("sub").;
-          console.log(test);
-      </script>
-
 
     <%
-
       if (request.getParameter("name") != null) {
         name = request.getParameter("name");
         email = request.getParameter("email");
@@ -82,14 +76,16 @@ String  name,
         passwort1 = request.getParameter("passwort1");
         if(checkPasswords(passwort, passwort1)){
           createNewKunde(name,email,passwort);
-
+            %>
+            <script>
+                alert("Sie wurden erfolgreich registriert.");
+                window.location.href = "login.jsp";
+            </script>
+            <<%
         }else{
-            out.print("Fail");
             %>
                 <script>
                     alert("Die Passwörter stimmen nicht überein");
-                    var test = document.getElementById("sub").val;
-                    console.log(test);
                 </script>
 
             <%
