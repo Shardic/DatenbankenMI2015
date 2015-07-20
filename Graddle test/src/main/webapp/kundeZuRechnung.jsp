@@ -6,7 +6,7 @@
   Created by IntelliJ IDEA.
   User: Konrad
 --%>
-
+<jsp:useBean id="kunde" class="Tables.Kunde" scope="session"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,16 +22,20 @@
   ViewDAO myviews = new ViewDAO();
   List<KundeZuRechnung> viewListe;
 
-  System.out.println(request.getParameter("id"));
 
   viewListe = myviews.getKundeZuRechnungView();
-
+ //Natürlich sollte nicht jeder einfach alle Kundenrechnungen einsehen können, also müsste noch ein Prüfen auf Mitarbeiter stattfinden --
   if (request.getParameter("id") == null) {
     viewListe = myviews.getKundeZuRechnungView();
   } else {
-    Integer id = Integer.parseInt(request.getParameter("id"));
-    viewListe = myviews.getKundeZuRechnungView(id);
+    Integer requestId = Integer.parseInt(request.getParameter("id"));
+    //prüft, ob die Kunden Id auch tatsächlich die request Id ist
+    if(kunde.getId() == requestId) {
+      viewListe = myviews.getKundeZuRechnungView(requestId);
+    }
+
   }
+
 
 %>
 

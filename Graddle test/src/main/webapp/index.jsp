@@ -30,21 +30,6 @@
         <a href="registrieren.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Registrieren</button></a>
         <br>
         <a href="fahrzeugList.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeuge anzeigen</button></a>
-        <br>
-        <a href="kundenList.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Kunden anzeigen</button></a>
-        <br>
-        <a href="kundeZuRechnung.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Kunde zu Rechnung</button></a>
-        <br>
-        <a href="arbeitsort.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Arbeitsort</button></a>
-        <br>
-        <a href="rechnungProTermin.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Rechnung pro Termin</button></a>
-        <br>
-        <a href="terminFahrzeug.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Terminfahrzeug</button></a>
-        <br>
-        <a href="terminZuKunde.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">View: Termin zu Kunde</button></a>
-        <br>
-        <a href="createTermin.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Termin erstellen</button></a>
-
       </div>
     </div>
   </div>
