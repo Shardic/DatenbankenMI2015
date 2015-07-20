@@ -21,14 +21,14 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-    <form role="form" method="post" action="">
+    <form method="post" action="loginPrüfen.jsp">
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
       <br>
       <label for="inputPassword" class="sr-only">Passwort</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Passwort" required>
+      <input type="password" id="inputPassword" name="passwort" class="form-control" placeholder="Passwort" required>
       <br>
-      <a href="login.jsp"><button class="btn btn-lg btn-primary btn-block" type="submit">Einloggen</button></a>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Einloggen</button>
       <br>
       <a href="registrieren.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Noch nicht registriert?</button></a>
     </form>

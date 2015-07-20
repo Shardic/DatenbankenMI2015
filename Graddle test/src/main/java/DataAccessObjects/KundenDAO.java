@@ -5,6 +5,7 @@ import Tables.Kunde;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,16 +21,17 @@ public class KundenDAO {
     /**
      * Diese Methode gibt den den Kunden mit dem param name zurück
      * fail return null
-     * @param email
+     * @param emailX
      * @return
      */
-    public List<Kunde> getKundeByName(String email, String passwort){
+    public Kunde getKundeByEmail(String emailX, String passwortX){
         List<Kunde> kunden = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
+        String statement = "FROM Kunde k where k.email = '"+ emailX +"'and passwort = '"+ passwortX +"'";
         try{
             tx = session.beginTransaction();
-            kunden = session.createQuery("FROM Kunde where name=name and passwort = passwort").list();
+            kunden = session.createQuery(statement).list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
@@ -37,7 +39,32 @@ public class KundenDAO {
         }finally {
             session.close();
         }
-        return kunden;
+        return kunden.get(0);
+    }
+
+    public Boolean isKundeEmailTrue(String emailX, String passwortX){
+        List<Kunde> kunden = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        String statement = "FROM Kunde k where k.email = '"+ emailX +"'and passwort = '"+ passwortX +"'";
+        try{
+            tx = session.beginTransaction();
+            kunden = session.createQuery(statement).list();
+            //for(int i=0; i< kunden.size(); i++) {
+            //    System.out.println(kunden.get(i).getName());
+            //}
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        if (kunden.size() == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -75,7 +102,7 @@ public class KundenDAO {
     public List<Kunde> readAllKunden(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        List kunden = null;
+        List<Kunde> kunden = null;
         try{
             tx = session.beginTransaction();
             kunden = session.createQuery("FROM Kunde").list();

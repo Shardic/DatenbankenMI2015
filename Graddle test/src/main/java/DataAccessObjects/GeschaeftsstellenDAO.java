@@ -128,6 +128,7 @@ public class GeschaeftsstellenDAO {
     public Geschaeftsstelle getGeschaeftsstelleById(int geschaeftsstellennr){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
+        Geschaeftsstelle geschaeftsstelle;
         List<Geschaeftsstelle> geschaeftsstelleList = null;
         Geschaeftsstelle foundedGeschaeftsstelle = null;
         try{
