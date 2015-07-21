@@ -6,11 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<jsp:useBean id="kunde" class="Tables.Kunde" scope="session"/>
+<jsp:useBean id="loggedKunde" class="Tables.Kunde" scope="session"/>
+<%
+  if (loggedKunde.getId()== 0) {
+%>
+<jsp:forward page="index.jsp"/>
+<%
+  }
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Mein Account <%= kunde.getName() %></title>
+    <title>Mein Account <%= loggedKunde.getName() %></title>
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
@@ -29,11 +36,11 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active"><a href="myAccount.jsp">Home</a></li>
-        <li><a href="terminZuKunde.jsp?id="<%=kunde.getId()%>>Meine Termine</a></li>
-        <li><a href="kundeZuRechnung.jsp?id="<%=kunde.getId()%>>Meine Rechnungen</a></li>
+        <li><a href="terminZuKunde.jsp?id=<%=loggedKunde.getId()%>">Meine Termine</a></li>
+        <li><a href="kundeZuRechnung.jsp?id=<%=loggedKunde.getId()%>">Meine Rechnungen</a></li>
         <li><a href="#">Fahrzeug buchen</a></li>
         <li><a href="#">Konto bearbeiten</a></li>
-        <li><a href="#">Ausloggen</a></li>
+        <li><a href="ausloggen.jsp">Ausloggen</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -41,10 +48,10 @@
 
 <div class="container" style="margin-top: 70px">
   <p>Kunde</p><br>
-  <p>Name: <%= kunde.getName() %> </p>
-  <p>Email: <%= kunde.getEmail() %> </p>
-  <p>Nummer: <%= kunde.getId() %> </p>
-  <p>Passwort: <%= kunde.getPasswort() %> </p>
+  <p>Name: <%= loggedKunde.getName() %> </p>
+  <p>Email: <%= loggedKunde.getEmail() %> </p>
+  <p>Nummer: <%= loggedKunde.getId() %> </p>
+  <p>Passwort: <%= loggedKunde.getPasswort() %> </p>
 </div>
 
 

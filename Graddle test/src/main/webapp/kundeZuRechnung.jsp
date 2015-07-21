@@ -6,7 +6,7 @@
   Created by IntelliJ IDEA.
   User: Konrad
 --%>
-<jsp:useBean id="kunde" class="Tables.Kunde" scope="session"/>
+<jsp:useBean id="loggedKunde" class="Tables.Kunde" scope="session"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,7 +29,7 @@
     } else {
         Integer requestId = Integer.parseInt(request.getParameter("id"));
         //TODO: prüft, ob die Kunden Id auch tatsächlich die request Id ist, aber für testzwecke weglassen
-        //if (kunde.getId() == requestId) {
+        //if (loggedKunde.getId() == requestId) {
             viewListe = myviews.getKundeZuRechnungView(requestId);
         //}
     }
