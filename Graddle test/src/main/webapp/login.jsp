@@ -21,7 +21,7 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-    <form method="post" action="loginPrüfen.jsp">
+    <form method="post" action="loginPruefen.jsp">
       <label for="inputEmail" class="sr-only">Email</label>
       <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
       <br>

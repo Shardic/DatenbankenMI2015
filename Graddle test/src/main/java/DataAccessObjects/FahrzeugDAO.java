@@ -243,3 +243,10 @@ public class FahrzeugDAO {
     }
 
 }
+/*
+// View erstellen:
+SELECT * FROM terminmanagement
+        INNER JOIN fahrzeug  ON (fahrzeug.fahrzeugnummer = terminmanagement.mfahrzeugnummer)
+        INNER JOIN termin ON (termin.terminnummer = terminmanagement.mterminnummer)
+        WHERE termin.endtag >= '2015-08-01' AND termin.starttag <= '2015-08-30'
+        AND fahrzeug.fahrzeugnummer = '1';*/
