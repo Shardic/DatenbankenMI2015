@@ -16,6 +16,16 @@
   }
 
 %>
+
+<jsp:useBean id="loggedKunde" class="Tables.Kunde" scope="session"/>
+<%
+  if (loggedKunde.getId()== 0) {
+%>
+<jsp:forward page="index.jsp"/>
+<%
+  }
+%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -33,11 +43,10 @@
     </div>
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <label for="inputName"><h4>Name ändern:</h4></label>
+        <label><h4>Name ändern:</h4></label>
         <input type="text" name="name" id="inputName" class="form-control" placeholder="Neuer Name">
         <br>
-        <label for="inputPassword"><h4>Passwort ändern:</h4></label>
-        <input type="text" name="passwort" id="inputPassword" placeholder="Altes Passwort" class="form-control">
+        <label><h4>Passwort ändern:</h4></label>
         <br>
         <input type="text" name="passwort1" id="inputPassword2" class="form-control" placeholder="Neues Passwort">
         <br>
@@ -48,24 +57,18 @@
     </div>
 
     <%
-      int userId = 1; // TODO: get ID vom derzeitigem Nutzer
+      int userId = loggedKunde.getId();
       KundenDAO kDao = new KundenDAO();
       String newUserName = request.getParameter("name");
-      String oldUserPasswort = request.getParameter("passwort");
       String newUserPasswort = request.getParameter("passwort1");
       String newUserPaswortRepeat = request.getParameter("passwort2");
-      out.println(newUserName);
-      out.println(oldUserPasswort);
-      out.println(newUserPasswort);
-      out.println(newUserPaswortRepeat);
       boolean hasNameChanged = (request.getParameter("name") != "" && request.getParameter("name") != null) ?  true : false;
 
-      boolean hasPasswortChanged =   (oldUserPasswort != "" && oldUserPasswort != null)
-                                  && (newUserPasswort != "" && newUserPasswort != null)
-                                  && (newUserPaswortRepeat != "" && newUserPaswortRepeat != null) ? true : false;
-      out.println(hasNameChanged);
-      out.println(hasPasswortChanged);
+      boolean hasPasswortChanged =  (newUserPasswort != "" && newUserPasswort != null)
+                                    && (newUserPaswortRepeat != "" && newUserPaswortRepeat != null) ? true : false;
 
+      boolean hasNothingChanged = (newUserPasswort == "") && (newUserName =="")
+                                  && (newUserPaswortRepeat == "") ? true : false;
 
       if(hasNameChanged){
         kDao.updateKundenNamen(userId, newUserName);
@@ -102,6 +105,14 @@
           window.location.href = "myAccount.jsp";
         </script>
         <%
+      }
+      if(hasNothingChanged){
+      %>
+        <script>
+          alert("Es wurden keine Änderungen vorgenommen.");
+          window.location.href = "myAccount.jsp";
+        </script>
+      <%
       }
     %>
   </div>

@@ -18,11 +18,10 @@
 
 <%
 
-String  name,
-        email,
-        passwort,
-        passwort1;
-
+String  name = null,
+        email = null,
+        passwort = null,
+        passwort1 = null;
 %>
 <%!
 
@@ -68,36 +67,29 @@ String  name,
       </div>
     </div>
       <%
-      if (request.getParameter("name") != null) {
+  boolean areAllFieldsFilledIn = (request.getParameter("name") != null) && (request.getParameter("email") != null) && (request.getParameter("passwort") != null) && (request.getParameter("passwort1") != null) ? true : false;
+      if (areAllFieldsFilledIn) {
           name = request.getParameter("name");
           email = request.getParameter("email");
           passwort = request.getParameter("passwort");
           passwort1 = request.getParameter("passwort1");
-          out.println(name);
-          out.println(email);
-          out.println(passwort);
-          out.println(passwort1);
-          if(checkPasswords(passwort, passwort1)){
-              try {
-                  createNewKunde(name,email,passwort);
-              }catch (Exception e){
-                  out.println(e.toString());
+              if(checkPasswords(passwort, passwort1)){
+                      createNewKunde(name,email,passwort);
+              %>
+                  <script>
+                      alert("Sie wurden erfolgreich registriert.");
+                      window.location.href = "login.jsp";
+                  </script>
+              <%
+              }else{
+              %>
+              <script>
+                  alert("Die Passwörter stimmen nicht überein");
+              </script>
+              <%
               }
+      }
 
-      %>
-      <script>
-          alert("Sie wurden erfolgreich registriert.");
-          window.location.href = "login.jsp";
-      </script>
-      <%
-      }else{
-      %>
-      <script>
-          alert("Die Passwörter stimmen nicht überein");
-      </script>
-      <%
-              }
-          }
 
       %>
 
