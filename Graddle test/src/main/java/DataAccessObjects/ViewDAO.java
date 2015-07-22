@@ -199,7 +199,7 @@ public class ViewDAO {
         System.out.println(start);
         try{
             tx = session.beginTransaction();
-            myview =  session.createQuery("FROM FahrzeugeMitTermindaten WHERE endtag >= '" + start + "' AND starttag <= '"+end+"'").list();
+            myview =  session.createQuery("FROM FahrzeugeMitTermindaten WHERE endtag <= '" + start + "' AND starttag >= '"+end+"'").list();
             if (myview.size() == 0) {
                 System.out.println("keine ergebnisse");
             }
