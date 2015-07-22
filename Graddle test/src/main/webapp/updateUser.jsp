@@ -60,8 +60,9 @@
       out.println(newUserPaswortRepeat);
       boolean hasNameChanged = (request.getParameter("name") != "" && request.getParameter("name") != null) ?  true : false;
 
-      boolean hasPasswortChanged = (newUserPasswort != "" && newUserPasswort != null)
-                                && (newUserPaswortRepeat != "" && newUserPaswortRepeat != null) ? true : false;
+      boolean hasPasswortChanged =   (oldUserPasswort != "" && oldUserPasswort != null)
+                                  && (newUserPasswort != "" && newUserPasswort != null)
+                                  && (newUserPaswortRepeat != "" && newUserPaswortRepeat != null) ? true : false;
       out.println(hasNameChanged);
       out.println(hasPasswortChanged);
 
