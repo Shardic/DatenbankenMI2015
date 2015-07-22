@@ -39,6 +39,7 @@
         <li><a href="terminZuKunde.jsp?id=<%=loggedKunde.getId()%>">Meine Termine</a></li>
         <li><a href="kundeZuRechnung.jsp?id=<%=loggedKunde.getId()%>">Meine Rechnungen</a></li>
         <li><a href="#">Fahrzeug buchen</a></li>
+        <li><a href="createTermin.jsp">Termin buchen</a></li>
         <li><a href="#">Konto bearbeiten</a></li>
         <li><a href="ausloggen.jsp">Ausloggen</a></li>
       </ul>

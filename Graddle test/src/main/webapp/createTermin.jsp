@@ -24,53 +24,7 @@
 </head>
 <body>
 
-
-
-<%
-  int k = 0;
-  FahrzeugDAO fDAO = new FahrzeugDAO();
-  List<Fahrzeug> fahrzeuge = fDAO.readAllFahrzeuge();
-  Date start, end;
-  int kundenNummer, fahrzeugNummer;
-  boolean test = true;
-
-%>
-<%!
-
-  public boolean checkDate(Date d1, Date d2){
-    if (d1.after(d2)) {
-      return false;
-    }
-    return true;
-  }
-
-  public boolean checkKunde(int kundenNummer) {
-
-    return true;
-  }
-
-  public boolean checkFahrzeugVerfuegbar(int fahrzeugNummer) {
-
-    return true;
-  }
-
-  public void createNewTermin(Date start, Date end, int kundennummer, int fahrzeugnummer){
-    TerminDAO tDAO = new TerminDAO();
-    tDAO.addTermin(start, end, kundennummer);
-    RechnungDAO rDAO = new RechnungDAO();
-    int diffInDays = (int)( (end.getTime() - start.getTime())
-            / (1000 * 60 * 60 * 24));
-    rDAO.addRechnung(diffInDays*100,kundennummer,start,end);
-    TerminManagementDAO tMDAO = new TerminManagementDAO();
-    List<Termin> terminList = tDAO.readAllTermine();
-    List<Rechnung> rechnungList = rDAO.getAll();
-    int rechnungsnummer = rechnungList.get(rechnungList.size()-1).getRechnungsNummer();
-    int terminnumer = terminList.get(terminList.size()-1).getTerminnummer();
-    tMDAO.addTerminManagement(rechnungsnummer,fahrzeugnummer,terminnumer);
-  }
-%>
-
-<form action="#" method="post" required>
+<form action="createTerminFahrzeugwahl.jsp" method="post" required>
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
@@ -99,42 +53,6 @@
       </div>
     </div>
   </div>
-
-
-  <%
-    if (request.getParameter("startDate") != null) {
-      SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-      start = format.parse(request.getParameter("startDate"));
-      end = format.parse(request.getParameter("endDate"));
-      kundenNummer = Integer.parseInt(request.getParameter("kundenNummer"));
-      fahrzeugNummer =Integer.parseInt(request.getParameter("fahrzeugNummer"));
-      if(checkDate(start, end)){
-       if (checkKunde(kundenNummer)) {
-        if (checkFahrzeugVerfuegbar(fahrzeugNummer)) {
-          createNewTermin(start, end, kundenNummer, fahrzeugNummer);
-        } else {
-            %>
-            <script>
-              alert("Das Fahrzeug ist zu dem Zeitraum ausgebucht");
-            </script>
-            <%
-        }
-       } else {
-         %>
-          <script>
-            alert("Dieser Kunde existiert nicht!");
-          </script>
-         <%
-       }
-      }else{
-  %>
-  <script>
-    alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
-  </script>
-  <%
-      }
-    }
-  %>
 </form>
 
 

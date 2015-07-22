@@ -2,10 +2,12 @@ package DataAccessObjects;
 
 import Hibernate.HibernateUtil;
 import Views.*;
+import Views.FahrzeugeMitTermindaten;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -179,6 +181,23 @@ public class ViewDAO {
         try{
             tx = session.beginTransaction();
             myview = session.createQuery("FROM TerminZuKunde").list();
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return myview;
+    }
+
+    public List<FahrzeugeMitTermindaten> getFahrzeugeMitTermindaten(Date start, Date end){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List<FahrzeugeMitTermindaten> myview = null;
+        try{
+            tx = session.beginTransaction();
+            myview = (List<FahrzeugeMitTermindaten>) session.createQuery("FROM FahrzeugeMitTermindaten WHERE endtag <= '" + start.toString() + "' AND starttag >= '" + end.toString() + "'").list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
