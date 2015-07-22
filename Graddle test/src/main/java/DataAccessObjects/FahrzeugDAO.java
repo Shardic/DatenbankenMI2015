@@ -91,14 +91,14 @@ public class FahrzeugDAO {
         try{
             tx = session.beginTransaction();
             fahrzeuge = session.createQuery("FROM Fahrzeug ").list();
-            for (Iterator iterator = fahrzeuge.iterator(); iterator.hasNext();){
+      /*      for (Iterator iterator = fahrzeuge.iterator(); iterator.hasNext();){
                 Fahrzeug fahrzeug = (Fahrzeug) iterator.next();
                 System.out.print("id: " + "\t" + fahrzeug.getFahrzeugNummer());
                 System.out.print("  nummernschild: " + fahrzeug.getNummernschild());
                 System.out.print("  laufleistung: " + fahrzeug.getLaufleistung());
                 System.out.print("  fahrzeugmodellnummer: " + fahrzeug.getFModellNummer());
                 System.out.println("  fahrzeuggeschäftsstellennummer: " + fahrzeug.getfGeschaeftsstellenNummer());
-            }
+            }*/
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

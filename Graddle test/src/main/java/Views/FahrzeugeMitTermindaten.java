@@ -9,7 +9,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "fahrzeuge_mit_termindaten")
-public class FahrzeugeMitTermindaten implements Serializable {
+public class FahrzeugeMitTermindaten {
 
     @Id
     @Column(name = "fahrzeugnummer")

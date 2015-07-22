@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -191,13 +192,17 @@ public class ViewDAO {
         return myview;
     }
 
-    public List<FahrzeugeMitTermindaten> getFahrzeugeMitTermindaten(Date start, Date end){
+    public List<FahrzeugeMitTermindaten> getFahrzeugeMitTermindaten(String start, String end){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        List<FahrzeugeMitTermindaten> myview = null;
+        List myview = null;
+        System.out.println(start);
         try{
             tx = session.beginTransaction();
-            myview = (List<FahrzeugeMitTermindaten>) session.createQuery("FROM FahrzeugeMitTermindaten WHERE endtag <= '" + start.toString() + "' AND starttag >= '" + end.toString() + "'").list();
+            myview =  session.createQuery("FROM FahrzeugeMitTermindaten WHERE endtag >= '" + start + "' AND starttag <= '"+end+"'").list();
+            if (myview.size() == 0) {
+                System.out.println("keine ergebnisse");
+            }
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
