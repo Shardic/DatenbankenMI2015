@@ -45,14 +45,7 @@ public class Rechnung {
     }
 
 
-    public int getAnzahlTage() {
-        return endTag.compareTo(startTag);
-    }
-    /*
-    public void setAnzahlTage(int anzahlTage) {
-        this.anzahlTage = anzahlTage;
-    }
-    */
+
 
     public int getRechnungsBetrag() {
         return rechnungsBetrag;

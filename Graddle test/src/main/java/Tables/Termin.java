@@ -31,6 +31,8 @@ public class Termin {
         this.setTkundennummer(tkundennummer);
     }
 
+
+
     public int getTerminnummer() {
         return terminNummer;
     }

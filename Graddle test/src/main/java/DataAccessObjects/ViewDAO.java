@@ -152,6 +152,7 @@ public class ViewDAO {
 
     /**
      * Gibt die Liste der Termine von Kunde X zurück;
+     *
      * @return List<TerminZuKunde> Kundentermine
      */
     public List<TerminZuKunde> getTerminZuKunde(Integer nummer){
@@ -203,6 +204,49 @@ public class ViewDAO {
             if (myview.size() == 0) {
                 System.out.println("keine ergebnisse");
             }
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return myview;
+    }
+
+    /**
+     * Gibt die Liste der Rechnungen von Kunde X zurück;
+     * @param nummer Kundennummer
+     * @return List<Rechnungsansicht> Kunden Rechnungen
+     */
+    public List<Rechnungsansicht> getRechnungsansicht(Integer nummer){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List myview = null;
+        try{
+            tx = session.beginTransaction();
+            myview = session.createQuery("FROM Rechnungsansicht where rkundennummer ="+nummer).list();
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return myview;
+    }
+
+    /**
+     * Gibt die Liste der Rechnungen aller Rechnungsansichten zurück;
+     * @return List<Rechnungsansicht>  Rechnungen
+     */
+    public List<Rechnungsansicht> getRechnungsansicht(){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List myview = null;
+        try{
+            tx = session.beginTransaction();
+            myview = session.createQuery("FROM Rechnungsansicht").list();
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

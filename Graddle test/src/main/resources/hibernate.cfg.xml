@@ -37,6 +37,7 @@
   <mapping class="Views.RechnungProTermin"/>
   <mapping class="Views.TerminFahrzeug"/>
   <mapping class="Views.TerminZuKunde"/>
+  <mapping class="Views.Rechnungsansicht"/>
 
 </session-factory>
 </hibernate-configuration>
