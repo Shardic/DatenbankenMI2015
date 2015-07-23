@@ -1,11 +1,10 @@
 Benötigte Sachen:
 
+ER Diagramm muss mit der Datenbank übereinstimmen
+ein paar sachen sind anders z.b. Datumsangaben in Rechnung und die Views
 
 Termin Bearbeiten Seite (Aufruf über ID vom eingeloggten Kunden aus seiner Terminübersicht.)
 Dort soll man das Start und Enddatum ändern können und einen Termin löschen (stornieren)
-
-TerminManagement Mapping tabelle müsste die von Hand eingetragenen Daten mappen.
-z.b. Gibt es 20 Rechnungen, aber nur 5 davon sind über das management gemapt worden
 
 
 Quality of Life improvements

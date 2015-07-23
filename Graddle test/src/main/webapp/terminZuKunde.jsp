@@ -24,6 +24,7 @@
   int kundennummer, terminnummer;
   long tage;
   Date starttag, endtag;
+  Date heute = new Date();
   TerminDAO myviews = new TerminDAO();
   List<Termin> viewListe = null;
 
@@ -34,6 +35,8 @@
   } else {
     viewListe = myviews.readAllTermine(loggedKunde.getId());
   }
+
+
 %>
 
 <div class="container">
@@ -43,7 +46,7 @@
       <th>Starttag</th>
       <th>Endtag</th>
       <th>Anzahl Tage</th>
-      <th></th>
+      <th>Bearbeiten</th>
     </tr>
     </thead>
 
@@ -64,10 +67,17 @@
     <tbody>
     <tr>
 
-      <td><%= starttag%></td>
+      <td><%= starttag%>
+      </td>
       <td><%= endtag%></td>
       <td><%= tage%></td>
-      <td><a href="editTermin.jsp?id=<%= terminnummer%>"><button class="btn btn-lg btn-primary btn-block" type="button">Bearbeiten</button></a></td>
+      <%
+        if (TageRechner.isBeforeDay(heute, starttag)) {
+      %>
+       <td><a href="editTermin.jsp?id=<%= terminnummer%>"><button class="btn btn-lg btn-primary btn-block" type="button">Bearbeiten</button></a></td>
+      <%
+      }
+      %>
     </tr>
     </tbody>
 
