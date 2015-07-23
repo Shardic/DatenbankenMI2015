@@ -79,6 +79,28 @@ public class TerminDAO {
     }
 
     /**
+     * Diese Methode gibt eine Liste mit allen Terminen von Kunde X zurück
+     * @param nummer Kundennummer
+     * @return Termine wo Kunden Id passt
+     */
+    public List<Termin> readAllTermine(Integer nummer){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        List termine = null;
+        try{
+            tx = session.beginTransaction();
+            termine = session.createQuery("FROM Termin where tkundenNummer = "+nummer).list();
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return termine;
+    }
+
+    /**
      * Diese Methode ändert den Starttag des Termins mit der terminnummer
      * @param terminnummer
      * @param starttag

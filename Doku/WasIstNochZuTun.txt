@@ -1,0 +1,26 @@
+Benötigte Sachen:
+
+
+Termin Bearbeiten Seite (Aufruf über ID vom eingeloggten Kunden aus seiner Terminübersicht.)
+Dort soll man das Start und Enddatum ändern können und einen Termin löschen (stornieren)
+
+TerminManagement Mapping tabelle müsste die von Hand eingetragenen Daten mappen.
+z.b. Gibt es 20 Rechnungen, aber nur 5 davon sind über das management gemapt worden
+
+
+Quality of Life improvements
+z.b. Terminauswahl über ein Terminkalender Popup
+
+Sicherheit des Systems
+z.b. Loginabfragen, oder sonstiges beim Anzeigen von Kundendaten wie Terminen
+
+
+
+
+
+Mögliche Sachen, die man in einer normalen Autoverwaltung gerne hätte, aber die aus Faulheit wegfallen:
+
+
+
+Automatischer Übergang von Terminen zu Rechnungen
+Wenn ein Datum erreicht wird, kann der Termin (Starttag) nicht mehr storniert werden und nach dem Ablauf (Endtag) wird das ganze dann als Rechnung gespeichert und an den Kunden geschickt

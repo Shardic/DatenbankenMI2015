@@ -109,13 +109,13 @@ public class FahrzeugmodellDAO {
         try{
             tx = session.beginTransaction();
             fahrzeumodelle = session.createQuery("FROM Fahrzeugmodell ").list();
-            for (Iterator iterator = fahrzeumodelle.iterator(); iterator.hasNext();){
+           /* for (Iterator iterator = fahrzeumodelle.iterator(); iterator.hasNext();){
                 Fahrzeugmodell fahrzeugmodell = (Fahrzeugmodell) iterator.next();
                 System.out.print("Modellnummer: " + "\t" + fahrzeugmodell.getModellnummer());
                 System.out.print("  Hersteller: " + fahrzeugmodell.getHersteller());
                 System.out.print("  Sitzplätze: " + fahrzeugmodell.getAnzahlSitzplaetze());
                 System.out.println("  Fahrzeug: " + fahrzeugmodell.getFahrzeugTyp());
-            }
+            }*/
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

@@ -27,15 +27,8 @@
 <body>
 <%
 
-  Date start = null,
-          end = null;
-  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-  try {
-    start = format.parse(request.getParameter("startDate"));
-    end = format.parse(request.getParameter("endDate"));
-  } catch (Exception e) {
-    e.printStackTrace();
-  }
+  String start = request.getParameter("startDate"),
+          end = request.getParameter("endDate");
   ArrayList<Integer> nichtVerfFahrzeuge = new ArrayList<Integer>();
   FahrzeugmodellDAO fMDAO = new FahrzeugmodellDAO();
   List<Fahrzeugmodell> allModelle = fMDAO.readAllFahrzeugmodelle();
@@ -50,8 +43,16 @@
 %>
 <%!
 
-  public boolean checkDate(Date d1, Date d2){
-    if (d1.after(d2)) {
+  public boolean checkDate(String d1, String d2){
+    SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+    Date date1 = null, date2 = null;
+    try {
+      date1 = format.parse(d1);
+      date2 = format.parse(d2);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    if (date1.after(date2)) {
       return false;
     }
     return true;
@@ -93,21 +94,24 @@
         nichtVerfFahrzeuge.add(verfFahrzeuge.get(k).getFahrzeugnummer());
       }
       for(i=0; i< allFahrzeuge.size(); i++){
+        boolean fahrzeugVerf = true;
         for (int m = 0; m < nichtVerfFahrzeuge.size(); m++) {
-          if (!(nichtVerfFahrzeuge.get(m).equals(allFahrzeuge.get(i).getFahrzeugNummer()))) {
-            fahrzeugNummer = allFahrzeuge.get(i).getFahrzeugNummer();
-            laufleistung = allFahrzeuge.get(i).getLaufleistung();
-            nummernschild = allFahrzeuge.get(i).getNummernschild();
-            for (j = 0; j < allModelle.size(); j++) {
-              if (allFahrzeuge.get(i).getFModellNummer() == allModelle.get(j).getModellnummer()) {
-                hersteller = allModelle.get(j).getHersteller();
-                fahrzeugtyp = allModelle.get(j).getFahrzeugTyp();
-                anzahl_sitzplaetze = allModelle.get(j).getAnzahlSitzplaetze();
-              }
-            }
+          if(allFahrzeuge.get(i).getFahrzeugNummer() == (int) nichtVerfFahrzeuge.get(m)) {
+            fahrzeugVerf = false;
           }
         }
-    %>
+        if (fahrzeugVerf) {
+          fahrzeugNummer = allFahrzeuge.get(i).getFahrzeugNummer();
+          laufleistung = allFahrzeuge.get(i).getLaufleistung();
+          nummernschild = allFahrzeuge.get(i).getNummernschild();
+          for (j = 0; j < allModelle.size(); j++) {
+            if (allFahrzeuge.get(i).getFModellNummer() == allModelle.get(j).getModellnummer()) {
+              hersteller = allModelle.get(j).getHersteller();
+              fahrzeugtyp = allModelle.get(j).getFahrzeugTyp();
+              anzahl_sitzplaetze = allModelle.get(j).getAnzahlSitzplaetze();
+            }
+          }
+          %>
     <tbody>
     <tr>
       <td><%= fahrzeugNummer%></td>
@@ -118,7 +122,9 @@
       <td><%= anzahl_sitzplaetze%></td>
     </tr>
     </tbody>
-    <%}%>
+    <%
+        }
+      }%>
   </table>
 </div>
 

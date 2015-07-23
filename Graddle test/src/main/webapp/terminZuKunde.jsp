@@ -1,8 +1,11 @@
 <%@ page import="DataAccessObjects.ViewDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
-<%@ page import="java.sql.Date" %>
+<%@ page import="java.util.Date" %>
 <%@ page import="Views.TerminZuKunde" %>
+<%@ page import="Tables.Termin" %>
+<%@ page import="DataAccessObjects.TerminDAO" %>
+<%@ page import="utils.TageRechner" %>
 <%--
   Created by IntelliJ IDEA.
   User: Konrad
@@ -18,19 +21,20 @@
 <body>
 <%
   int i;
-  int kundennummer;
-  Date starttag;
-  ViewDAO myviews = new ViewDAO();
-  List<TerminZuKunde> viewListe;
+  int kundennummer, terminnummer;
+  long tage;
+  Date starttag, endtag;
+  TerminDAO myviews = new TerminDAO();
+  List<Termin> viewListe;
 
   //TODO: Natürlich sollte nicht jeder einfach alle Kundenrechnungen einsehen können, also müsste noch ein Prüfen auf Mitarbeiter (oder ähnlich) stattfinden
   if (request.getParameter("id") == null || request.getParameter("id") == "") {
-    viewListe = myviews.getTerminZuKunde();
+    viewListe = myviews.readAllTermine();
   } else {
     Integer requestId = Integer.parseInt(request.getParameter("id"));
     //TODO: prüft, ob die Kunden Id auch tatsächlich die request Id ist, aber für testzwecke weglassen
     //if (loggedKunde.getId() == requestId) {
-    viewListe = myviews.getTerminZuKunde(requestId);
+    viewListe = myviews.readAllTermine(requestId);
     //}
   }
 %>
@@ -39,8 +43,10 @@
   <table class="table table-bordered">
     <thead>
     <tr>
-      <th>Kundennummer</th>
       <th>Starttag</th>
+      <th>Endtag</th>
+      <th>Anzahl Tage</th>
+      <th></th>
     </tr>
     </thead>
 
@@ -48,17 +54,23 @@
     <%
 
       for (Iterator iterator = viewListe.iterator(); iterator.hasNext();){
-        TerminZuKunde iter = (TerminZuKunde) iterator.next();
+        Termin iter = (Termin) iterator.next();
         starttag = iter.getStarttag();
         kundennummer = iter.getTkundennummer();
+        terminnummer = iter.getTerminnummer();
+        endtag = iter.getEndtag();
+        tage = TageRechner.getAnzahlTage(starttag, endtag);
 
 
     %>
 
     <tbody>
     <tr>
-      <td><%= kundennummer%></td>
+
       <td><%= starttag%></td>
+      <td><%= endtag%></td>
+      <td><%= tage%></td>
+      <td><a href="editTermin.jsp?id=<%= terminnummer%>"><button class="btn btn-lg btn-primary btn-block" type="button">Bearbeiten</button></a></td>
     </tr>
     </tbody>
 
