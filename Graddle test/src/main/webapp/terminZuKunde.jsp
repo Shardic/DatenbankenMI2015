@@ -40,7 +40,7 @@
 %>
 
 <div class="container">
-  <table class="table table-bordered">
+  <table class="table table-bordered table-hover">
     <thead>
     <tr>
       <th>Starttag</th>
@@ -74,7 +74,11 @@
       <%
         if (TageRechner.isBeforeDay(heute, starttag)) {
       %>
-       <td><a href="editTermin.jsp?id=<%= terminnummer%>"><button class="btn btn-lg btn-primary btn-block" type="button">Bearbeiten</button></a></td>
+       <td><a href="editTermin.jsp?id=<%= terminnummer%>"><button class="btn btn-sm btn-success btn-block" type="button">Bearbeiten</button></a></td>
+      <%
+      } else {
+      %>
+      <td><a href="kundeZuRechnung.jsp"><button class="btn btn-sm btn-primary btn-block" type="button">Rechnung</button></a></td>
       <%
       }
       %>

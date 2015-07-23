@@ -31,22 +31,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.jsp">Autovermietung</a>
+      <a class="navbar-brand" href="index.jsp"><button class="btn btn-lg btn-default btn-block disabled" type="button">Autovermietung</button></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="myAccount.jsp">Home</a></li>
-        <li><a href="terminZuKunde.jsp">Meine Termine</a></li>
-        <li><a href="kundeZuRechnung.jsp">Meine Rechnungen</a></li>
-        <li><a href="createTermin.jsp">Fahrzeug buchen</a></li>
-        <li><a href="updateUser.jsp">Konto bearbeiten</a></li>
-        <li><a href="ausloggen.jsp">Ausloggen</a></li>
+        <li><a href="terminZuKunde.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Termine</button></a></li>
+        <li><a href="kundeZuRechnung.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Rechnungen</button></a></li>
+        <li><a href="createTermin.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeug buchen</button></a></li>
+        <li><a href="updateUser.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Konto bearbeiten</button></a></li>
+        <li><a href="ausloggen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Ausloggen</button></a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </nav>
 
-<div class="container" style="margin-top: 70px">
+<div class="container" style="margin-top: 90px">
   <p>Kunde</p><br>
   <p>Name: <%= loggedKunde.getName() %> </p>
   <p>Email: <%= loggedKunde.getEmail() %> </p>
