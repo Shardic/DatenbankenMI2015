@@ -25,17 +25,14 @@
   long tage;
   Date starttag, endtag;
   TerminDAO myviews = new TerminDAO();
-  List<Termin> viewListe;
+  List<Termin> viewListe = null;
 
-  //TODO: Natürlich sollte nicht jeder einfach alle Kundenrechnungen einsehen können, also müsste noch ein Prüfen auf Mitarbeiter (oder ähnlich) stattfinden
-  if (request.getParameter("id") == null || request.getParameter("id") == "") {
-    viewListe = myviews.readAllTermine();
+  if (loggedKunde.getId() == 0) {
+    %>
+      <jsp:forward page="index.jsp"/>
+    <%
   } else {
-    Integer requestId = Integer.parseInt(request.getParameter("id"));
-    //TODO: prüft, ob die Kunden Id auch tatsächlich die request Id ist, aber für testzwecke weglassen
-    //if (loggedKunde.getId() == requestId) {
-    viewListe = myviews.readAllTermine(requestId);
-    //}
+    viewListe = myviews.readAllTermine(loggedKunde.getId());
   }
 %>
 
