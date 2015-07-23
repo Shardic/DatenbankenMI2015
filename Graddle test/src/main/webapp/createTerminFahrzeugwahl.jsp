@@ -26,13 +26,23 @@
 
 <body>
 <%
-
   String start = request.getParameter("startDate"),
           end = request.getParameter("endDate");
+  SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+  Date date1 = null, date2 = null;
+  try {
+    date1 = format.parse(start);
+    date2 = format.parse(end);
+  } catch (Exception e) {
+    e.printStackTrace();
+  }
+  %>
+<p><%= start%>   <%=date1%>   <%=date2%></p>
+<%
   ArrayList<Integer> nichtVerfFahrzeuge = new ArrayList<Integer>();
   FahrzeugmodellDAO fMDAO = new FahrzeugmodellDAO();
   List<Fahrzeugmodell> allModelle = fMDAO.readAllFahrzeugmodelle();
-  int kundenNummer = loggedKunde.getId();
+  int kundenNummer =(int) loggedKunde.getId();
   int fahrzeugNummer = 0, laufleistung = 0, anzahl_sitzplaetze = 0, i, k, j = 0;
   String nummernschild = null, hersteller = null, fahrzeugtyp = null;
   FahrzeugDAO fDAO = new FahrzeugDAO();
@@ -40,22 +50,27 @@
   ViewDAO viewDAO = new ViewDAO();
   List<FahrzeugeMitTermindaten> verfFahrzeuge = viewDAO.getFahrzeugeMitTermindaten(start,end);
 
+  if (start != null) {
+    if(checkDate(date1, date2)){
+    }else {
+%>
+<script>
+  alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
+  window.location.href= "createTermin.jsp";
+</script>
+<%
+    }
+  }
 %>
 <%!
 
-  public boolean checkDate(String d1, String d2){
-    SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
-    Date date1 = null, date2 = null;
-    try {
-      date1 = format.parse(d1);
-      date2 = format.parse(d2);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (date1.after(date2)) {
+  public boolean checkDate(Date d1, Date d2){
+    System.out.println("gg");
+    if (d1.after(d2)) {
       return false;
+    } else {
+      return true;
     }
-    return true;
   }
 
   public void createNewTermin(Date start, Date end, int kundennummer, int fahrzeugnummer){
@@ -74,6 +89,7 @@
   }
 
 %>
+
 
 <div class="container">
   <table class="table table-bordered table-hover">
@@ -126,26 +142,11 @@
         }
       }%>
   </table>
+  <form method="post" action="#">
+    <label for="fahrzeugNummer" class="sr-only">Email</label>
+    <input type="int" id="fahrzeugNummer" name="fahrzeugNummer" class="form-control" placeholder="Fahrzeugnummer" required autofocus>
+    <a href="#"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeug buchen</button></a>
+  </form>
 </div>
-
-
-<%
-  if (request.getParameter("startDate") != null) {
-    if(checkDate(start, end)){
-    }else {
-      %>
-      <script>
-              alert("Das Enddatum kann nicht vor dem Startdatum liegen!");
-              window.location.href= "createTermin.jsp";
-      </script>
-<%
-      }
-    }
-
-  //if (request.getParameter() != null) {
-   // fahrzeugNummer = request.getParameter("");
-  //}
-%>
-
 </body>
 </html>

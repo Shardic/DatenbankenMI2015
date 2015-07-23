@@ -34,11 +34,11 @@
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <h6>Startdatum</h6>
-        <label for="inputStart" class="sr-only">Name</label>
-        <input type="date" name="startDate" id="inputStart" class="form-control" required >
+        <label for="startDate" class="sr-only">Name</label>
+        <input type="date" name="startDate" id="startDate" class="form-control" required >
         <h6>Enddatum</h6>
-        <label for="inputEnd" class="sr-only">Email</label>
-        <input type="date" name="endDate" id="inputEnd" class="form-control" required>
+        <label for="endDate" class="sr-only">Email</label>
+        <input type="date" name="endDate" id="endDate" class="form-control" required>
         <!--
         <br>
         <label for="kundenNummer" class="sr-only">kundenNummer</label>
