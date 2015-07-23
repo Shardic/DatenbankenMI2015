@@ -61,13 +61,13 @@ public class TerminDAO {
         try{
             tx = session.beginTransaction();
             termine = session.createQuery("FROM Termin ").list();
-            for (Iterator iterator = termine.iterator(); iterator.hasNext();){
+          /*  for (Iterator iterator = termine.iterator(); iterator.hasNext();){
                 Termin termin = (Termin) iterator.next();
                 System.out.println("id: " + "\t" + termin.getTerminnummer());
                 System.out.println("  starttag: " + termin.getStarttag().toString());
                 System.out.println("  endtag: " + termin.getEndtag().toString());
                 System.out.println("  Kundennummer: " + termin.getTkundennummer());
-            }
+            }*/
             tx.commit();
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

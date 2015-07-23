@@ -28,7 +28,7 @@
 <%
   String start = request.getParameter("startDate"),
           end = request.getParameter("endDate");
-  SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+  SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
   Date date1 = null, date2 = null;
   try {
     date1 = format.parse(start);
@@ -37,7 +37,6 @@
     e.printStackTrace();
   }
   %>
-<p><%= start%>   <%=date1%>   <%=date2%></p>
 <%
   ArrayList<Integer> nichtVerfFahrzeuge = new ArrayList<Integer>();
   FahrzeugmodellDAO fMDAO = new FahrzeugmodellDAO();
@@ -65,7 +64,6 @@
 <%!
 
   public boolean checkDate(Date d1, Date d2){
-    System.out.println("gg");
     if (d1.after(d2)) {
       return false;
     } else {
@@ -73,13 +71,13 @@
     }
   }
 
-  public void createNewTermin(Date start, Date end, int kundennummer, int fahrzeugnummer){
+  public void createNewTermin(Date anfangsTag, Date endTag, int kundennummer, int fahrzeugnummer){
     TerminDAO tDAO = new TerminDAO();
-    tDAO.addTermin(start, end, kundennummer);
+    tDAO.addTermin(anfangsTag, endTag, kundennummer);
     RechnungDAO rDAO = new RechnungDAO();
-    int diffInDays = (int)( (end.getTime() - start.getTime())
+    int diffInDays = (int)( (endTag.getTime() - anfangsTag.getTime())
             / (1000 * 60 * 60 * 24));
-    rDAO.addRechnung(diffInDays*100,kundennummer,start,end);
+    rDAO.addRechnung(diffInDays*100,kundennummer,anfangsTag,endTag);
     TerminManagementDAO tMDAO = new TerminManagementDAO();
     List<Termin> terminList = tDAO.readAllTermine();
     List<Rechnung> rechnungList = rDAO.getAll();
@@ -142,11 +140,26 @@
         }
       }%>
   </table>
-  <form method="post" action="#">
-    <label for="fahrzeugNummer" class="sr-only">Email</label>
-    <input type="int" id="fahrzeugNummer" name="fahrzeugNummer" class="form-control" placeholder="Fahrzeugnummer" required autofocus>
-    <a href="#"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeug buchen</button></a>
+  <form action="#" method="post">
+    <label for="chosenFahrzeug" class="sr-only">Email</label>
+    <input type="int" id="chosenFahrzeug" name="chosenFahrzeug" class="form-control" placeholder="Fahrzeugnummer" required autofocus>
+    <input type='hidden' name = 'startDate'    value = <%=start %>>
+    <input type='hidden' name = 'endDate'    value =  <%=end %>>
+    <a href="#"><button id ="sub" value="Submit" class="btn btn-lg btn-primary btn-block" type="submit">Fahrzeug buchen</button></a>
   </form>
 </div>
+
+<%
+  if (request.getParameter("chosenFahrzeug") != null) {
+    int fahrzeug = Integer.parseInt(request.getParameter("chosenFahrzeug"));
+    createNewTermin(date1,date2,kundenNummer,fahrzeug);
+%>
+<script>
+  alert("Ihr Termin wurde gebucht!");
+  window.location.href= "myAccount.jsp";
+</script>
+<%
+  }
+%>
 </body>
 </html>
