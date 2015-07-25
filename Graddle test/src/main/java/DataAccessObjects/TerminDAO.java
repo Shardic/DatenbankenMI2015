@@ -199,7 +199,7 @@ public class TerminDAO {
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            Termin termin = (Termin)session.get(Mitarbeiter.class, terminnummer);
+            Termin termin = (Termin)session.get(Termin.class, terminnummer);
             session.delete(termin);
             tx.commit();
         }catch (HibernateException e) {

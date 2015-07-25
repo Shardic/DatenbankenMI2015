@@ -5,6 +5,7 @@
 <%@ page import="Tables.Termin" %>
 <%@ page import="DataAccessObjects.TerminDAO" %>
 <%@ page import="utils.TageRechner" %>
+<%@ page import="Views.Rechnungsansicht" %>
 <%--
   Created by IntelliJ IDEA.
   User: Konrad
@@ -21,12 +22,14 @@
 <body>
 <%
   int i;
-  int kundennummer, terminnummer;
+  int rechnungsnummer, fahrzeugnummer, terminnummer;
   long tage;
   Date starttag, endtag;
   Date heute = new Date();
   TerminDAO myviews = new TerminDAO();
+  ViewDAO myRechnung = new ViewDAO();
   List<Termin> viewListe = null;
+  List<Rechnungsansicht> rListe = null;
 
   if (loggedKunde.getId() == 0) {
     %>
@@ -34,6 +37,7 @@
     <%
   } else {
     viewListe = myviews.readAllTermine(loggedKunde.getId());
+    rListe = myRechnung.getRechnungsansicht(loggedKunde.getId());
   }
 
 
@@ -67,7 +71,22 @@
 
 
     <%
-
+      for (Iterator iterator = rListe.iterator(); iterator.hasNext();) {
+        Rechnungsansicht iter = (Rechnungsansicht) iterator.next();
+        starttag = iter.getStarttag();
+        endtag = iter.getEndtag();
+        tage = TageRechner.getAnzahlTage(starttag, endtag);
+        terminnummer = iter.getTerminnummer();
+        rechnungsnummer = iter.getRechnungsnummer();
+        fahrzeugnummer = iter.getFahrzeugnummer();
+        System.out.println("Termin:");
+        System.out.println(starttag);
+        System.out.println(endtag);
+        System.out.println(tage);
+        System.out.println(terminnummer);
+        System.out.println(rechnungsnummer);
+        System.out.println(fahrzeugnummer);
+      /*
       for (Iterator iterator = viewListe.iterator(); iterator.hasNext();){
         Termin iter = (Termin) iterator.next();
         starttag = iter.getStarttag();
@@ -75,21 +94,23 @@
         terminnummer = iter.getTerminnummer();
         endtag = iter.getEndtag();
         tage = TageRechner.getAnzahlTage(starttag, endtag);
-
+      */
 
     %>
 
     <tbody>
     <tr>
 
-      <td><%= starttag%>
-      </td>
+      <td><%= starttag%></td>
       <td><%= endtag%></td>
       <td><%= tage%></td>
       <%
         if (TageRechner.isBeforeDay(heute, starttag)) {
+
+        session.setAttribute("Object", iter);
       %>
-       <td><a href="editTermin.jsp?id=<%= terminnummer%>"><button class="btn btn-sm btn-success btn-block" type="button">Bearbeiten</button></a></td>
+       <td><a href="deleteTermin.jsp"><button class="btn btn-sm btn-success btn-block" type="button">Stornieren</button></a></td>
+
       <%
       } else {
       %>
