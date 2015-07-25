@@ -32,10 +32,27 @@
     <title>Update Kunde</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="bootstrap/css/mycss.css" rel="stylesheet">
 </head>
 <body>
-<form action="#" method="post">
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="termine.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Termine</button></a></li>
+        <li><a href="rechnungen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Rechnungen</button></a></li>
+        <li><a href="createTermin.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeug buchen</button></a></li>
+        <li><a href="updateUser.jsp"><button class="btn btn-lg btn-primary btn-block active" type="button">Konto bearbeiten</button></a></li>
+        <li><a href="ausloggen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Ausloggen</button></a></li>
+        <li><a href="mitarbeiterAnsicht.jsp"><button class="btn btn-lg btn-info btn-block" type="button">Als Mitarbeiter</button></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<form action="#" method="post">
+  <div class="container account-content">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <h1 style="text-align: center">Account ändern</h1>
@@ -52,7 +69,7 @@
         <br>
         <input type="text" name="passwort2" id="inputPassword3" class="form-control" placeholder="Neues Passwort wiederholen">
         <br>
-        <a href="login.jsp"><button id ="sub" value="Submit" class="btn btn-lg btn-primary btn-block" type="submit">Änderungen Übernehemen</button></a>
+        <a href="login.jsp"><button id ="sub" value="Submit" class="btn btn-lg btn-primary btn-block" type="submit">Änderungen übernehmen</button></a>
       </div>
     </div>
 

@@ -16,6 +16,7 @@
   <title>Termin zu Kunde</title>
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="bootstrap/css/mycss.css" rel="stylesheet">
 </head>
 <body>
 <%
@@ -38,7 +39,22 @@
 
 %>
 
-<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="termine.jsp"><button class="btn btn-lg btn-primary btn-block active" type="button">Meine Termine</button></a></li>
+        <li><a href="rechnungen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Rechnungen</button></a></li>
+        <li><a href="createTermin.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeug buchen</button></a></li>
+        <li><a href="updateUser.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Konto bearbeiten</button></a></li>
+        <li><a href="ausloggen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Ausloggen</button></a></li>
+        <li><a href="mitarbeiterAnsicht.jsp"><button class="btn btn-lg btn-info btn-block" type="button">Als Mitarbeiter</button></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container account-content">
   <table class="table table-bordered table-hover">
     <thead>
     <tr>

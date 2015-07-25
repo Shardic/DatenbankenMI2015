@@ -20,46 +20,30 @@
     <title>Mein Account <%= loggedKunde.getName() %></title>
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="bootstrap/css/mycss.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.jsp"><button class="btn btn-lg btn-default btn-block disabled" type="button">Autovermietung</button></a>
-    </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li><a href="termine.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Termine</button></a></li>
         <li><a href="rechnungen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Rechnungen</button></a></li>
         <li><a href="createTermin.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeug buchen</button></a></li>
         <li><a href="updateUser.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Konto bearbeiten</button></a></li>
-       <!--<li><a href="mitarbeiterAnsicht.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Mitarbeiter Funktionen</button></a></li>-->
         <li><a href="ausloggen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Ausloggen</button></a></li>
+        <li><a href="mitarbeiterAnsicht.jsp"><button class="btn btn-lg btn-info btn-block" type="button">Als Mitarbeiter</button></a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </nav>
 
-<div class="container" style="margin-top: 90px">
-  <p>Kunde</p><br>
-  <p>Name: <%= loggedKunde.getName() %> </p>
-  <p>Email: <%= loggedKunde.getEmail() %> </p>
-  <p>Nummer: <%= loggedKunde.getId() %> </p>
-  <p>Passwort: <%= loggedKunde.getPasswort() %> </p>
-</div>
-
-<div class="container">
-  <div class="row">
-        <div class="col-md-4 col-md-offset-8">
-             <a href="mitarbeiterAnsicht.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Mitarbeiter Funktionen</button></a>
-        </div>
-  </div>
+<div class="container account-content">
+  <h1 class="text-center text-info">Willkommen in deinem Kundenkonto, <%=loggedKunde.getName()%>.</h1>
+  <br>
+  <h3>Hier siehst Du unsere Fahrzeuge:</h3>
+  <br>
+  <jsp:include page="fahrzeugList.jsp"/>
 </div>
 
 </body>

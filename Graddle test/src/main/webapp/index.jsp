@@ -21,6 +21,7 @@ if (loggedKunde.getId()!= 0) {
     <title>Index</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bootstrap/css/mycss.css" rel="stylesheet">
   </head>
   <body>
   <div class="container">

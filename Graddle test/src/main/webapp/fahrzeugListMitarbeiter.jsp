@@ -30,7 +30,21 @@
   List<Fahrzeugmodell> allFModelle = fMDAO.readAllFahrzeugmodelle();
 %>
 
-<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="kundenList.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Kundenliste</button></a></li>
+        <li><a href="termineList.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Alle Termine</button></a></li>
+        <li><a href="fahrzeugListMitarbeiter.jsp"><button class="btn btn-lg btn-primary btn-block active" type="button">Alle Fahrzeuge</button></a></li>
+        <li><a href="ausloggen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Ausloggen</button></a></li>
+        <li><a href="myAccount.jsp"><button class="btn btn-lg btn-info btn-block" type="button">Als Kunde</button></a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container account-content">
   <table class="table table-bordered table-hover">
   <thead>
   <tr>
