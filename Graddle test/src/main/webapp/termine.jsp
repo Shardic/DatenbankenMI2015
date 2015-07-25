@@ -2,7 +2,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="Views.TerminZuKunde" %>
 <%@ page import="Tables.Termin" %>
 <%@ page import="DataAccessObjects.TerminDAO" %>
 <%@ page import="utils.TageRechner" %>
@@ -78,7 +77,7 @@
       <%
       } else {
       %>
-      <td><a href="kundeZuRechnung.jsp"><button class="btn btn-sm btn-primary btn-block" type="button">Rechnung</button></a></td>
+      <td><a href="rechnungen.jsp"><button class="btn btn-sm btn-primary btn-block" type="button">Rechnung</button></a></td>
       <%
       }
       %>

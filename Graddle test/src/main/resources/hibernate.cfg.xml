@@ -31,12 +31,7 @@
   <mapping class="Tables.Termin" />
   <mapping class="Tables.TerminManagement" />
 
-  <mapping class="Views.KundeZuRechnung"/>
-  <mapping class="Views.Arbeitsort"/>
   <mapping class="Views.FahrzeugeMitTermindaten"/>
-  <mapping class="Views.RechnungProTermin"/>
-  <mapping class="Views.TerminFahrzeug"/>
-  <mapping class="Views.TerminZuKunde"/>
   <mapping class="Views.Rechnungsansicht"/>
 
 </session-factory>

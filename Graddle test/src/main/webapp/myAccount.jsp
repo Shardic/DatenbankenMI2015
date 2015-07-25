@@ -35,10 +35,11 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="terminZuKunde.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Termine</button></a></li>
-        <li><a href="kundeZuRechnung.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Rechnungen</button></a></li>
+        <li><a href="termine.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Termine</button></a></li>
+        <li><a href="rechnungen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Meine Rechnungen</button></a></li>
         <li><a href="createTermin.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Fahrzeug buchen</button></a></li>
         <li><a href="updateUser.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Konto bearbeiten</button></a></li>
+       <!--<li><a href="mitarbeiterAnsicht.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Mitarbeiter Funktionen</button></a></li>-->
         <li><a href="ausloggen.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Ausloggen</button></a></li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -53,6 +54,13 @@
   <p>Passwort: <%= loggedKunde.getPasswort() %> </p>
 </div>
 
+<div class="container">
+  <div class="row">
+        <div class="col-md-4 col-md-offset-8">
+             <a href="mitarbeiterAnsicht.jsp"><button class="btn btn-lg btn-primary btn-block" type="button">Mitarbeiter Funktionen</button></a>
+        </div>
+  </div>
+</div>
 
 </body>
 </html>
