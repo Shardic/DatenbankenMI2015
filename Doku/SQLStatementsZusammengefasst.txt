@@ -225,8 +225,9 @@ ADD `endtag` DATE;
 
 #loescht die views, falls sie existieren, und erstellt sie neu
 
+
 DROP VIEW IF EXISTS 
-termin_fahrzeug, termin_zu_kunde, kunde_zu_rechnung, arbeitsort, rechnung_pro_termin, fahrzeuge_mit_termindaten;
+termin_fahrzeug, termin_zu_kunde, kunde_zu_rechnung, arbeitsort, rechnung_pro_termin, fahrzeuge_mit_termindaten, rechnungsansicht;
 
 CREATE VIEW termin_fahrzeug AS
 SELECT t.terminnummer, t.starttag, t.endtag, f.fahrzeugnummer
@@ -271,6 +272,22 @@ INNER JOIN
 termin t ON tm.mterminnummer = t.terminnummer
 INNER JOIN 
 rechnung r ON tm.mrechnungsnummer = r.rechnungsnummer;
+
+CREATE VIEW rechnungsansicht AS
+
+
+Select rechnungsnummer, rechnungsbetrag, rkundennummer, starttag, endtag, nummernschild, fahrzeugnummer, fmodellnummer
+
+FROM terminmanagement ter 
+
+JOIN rechnung r
+
+ON ter.mrechnungsnummer = r.rechnungsnummer
+
+
+JOIN fahrzeug f
+
+ON ter.mfahrzeugnummer = f.fahrzeugnummer
 
 ALTER TABLE kunde
 ADD COLUMN passwort VARCHAR(40);  
