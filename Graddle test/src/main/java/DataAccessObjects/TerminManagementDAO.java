@@ -27,7 +27,7 @@ public class TerminManagementDAO {
      * @param tid Termin ID
      * @return das TerminManagement mit allen �bereinstimmender ID
      */
-    public TerminManagement getManagerStrict(int rid, int fid, int tid) {
+    public TerminManagement getManagerStrict(Integer rid, Integer fid, Integer tid) {
         TerminManagement r = null;
         List<TerminManagement> results = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -59,7 +59,7 @@ public class TerminManagementDAO {
      * @param tid Termin ID
      * @return das TerminManagement mit einer �bereinstimmender ID
      */
-    public TerminManagement getManagerRelaxed(int rid, int fid, int tid) {
+    public TerminManagement getManagerRelaxed(Integer rid, Integer fid, Integer tid) {
         TerminManagement r = null;
         List<TerminManagement> results = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -118,7 +118,7 @@ public class TerminManagementDAO {
      * @param tid Termin ID
      * @return true success / false fail
      */
-    public Integer addTerminManagement(int rid, int fid, int tid){
+    public Integer addTerminManagement(Integer rid, Integer fid, Integer tid){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         Integer result = null;
@@ -136,6 +136,31 @@ public class TerminManagementDAO {
         return result;
     }
 
+    /**
+     * löscht ein Terminmanagement
+     * Success true
+     * fail: false
+     * @param rid Rechnungs ID
+     * @param fid Fahrzeug ID
+     * @param tid Termin ID
+     * @return true success / false fail
+     */
+    public Integer deleteTerminmanagement(Integer rid, Integer fid, Integer tid){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        Integer result = null;
+        try{
+            tx = session.beginTransaction();
+            TerminManagement t = (TerminManagement)session.load(TerminManagement.class, tid);
+            session.delete(t);
+            tx.commit();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return result;
+    }
 
-    // Kein Update und Delete n�tig, oder sehe ich das jetzt falsch?
 }

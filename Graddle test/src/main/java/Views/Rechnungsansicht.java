@@ -18,6 +18,7 @@ public class Rechnungsansicht   implements Serializable {
     private String nummernschild;
     private int fahrzeugnummer;
     private Integer fmodellnummer;
+    private Integer terminnummer;
 
     @Id
     @Column(name = "rechnungsnummer")
@@ -47,6 +48,16 @@ public class Rechnungsansicht   implements Serializable {
 
     public void setRkundennummer(Integer rkundennummer) {
         this.rkundennummer = rkundennummer;
+    }
+
+    @Id
+    @Column(name = "terminnummer")
+    public Integer getTerminnummer() {
+        return terminnummer;
+    }
+
+    public void setTerminnummer(Integer terminnummer) {
+        this.terminnummer = terminnummer;
     }
 
     @Basic

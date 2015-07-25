@@ -15,6 +15,16 @@
   Time: 21:15
   To change this template use File | Settings | File Templates.
 --%>
+
+<jsp:useBean id="loggedKunde" class="Tables.Kunde" scope="session"/>
+<%
+  if (loggedKunde.getId()== 0) {
+%>
+<jsp:forward page="index.jsp"/>
+<%
+  }
+%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
