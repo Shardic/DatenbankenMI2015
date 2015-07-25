@@ -45,8 +45,6 @@
       name = allKunden.get(i).getName();
       email = allKunden.get(i).getEmail();
       passwort = allKunden.get(i).getPasswort();
-
-
   %>
 
   <tbody>

@@ -1,6 +1,5 @@
 <%@ page import="DataAccessObjects.ViewDAO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Views.KundeZuRechnung" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="Views.Rechnungsansicht" %>
 <%@ page import="java.util.Date" %>

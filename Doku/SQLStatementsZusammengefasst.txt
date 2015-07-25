@@ -227,15 +227,7 @@ ADD `endtag` DATE;
 
 
 DROP VIEW IF EXISTS 
-termin_fahrzeug, termin_zu_kunde, kunde_zu_rechnung, arbeitsort, rechnung_pro_termin, fahrzeuge_mit_termindaten, rechnungsansicht;
-
-CREATE VIEW termin_fahrzeug AS
-SELECT t.terminnummer, t.starttag, t.endtag, f.fahrzeugnummer
-FROM terminmanagement tm
-INNER JOIN fahrzeug f
-ON f.fahrzeugnummer=tm.mfahrzeugnummer
-INNER JOIN termin t
-ON t.terminnummer=tm.mterminnummer;
+fahrzeuge_mit_termindaten, rechnungsansicht;
 
 CREATE VIEW fahrzeuge_mit_termindaten AS SELECT f.fahrzeugnummer, f.laufleistung, 
 f.nummernschild, fm.hersteller, fm.fahrzeugtyp, fm.anzahl_sitzplaetze,
@@ -245,48 +237,12 @@ INNER JOIN fahrzeug f ON (f.fahrzeugnummer = tm.mfahrzeugnummer)
 INNER JOIN fahrzeugmodell fm ON (f.fmodellnummer = fm.modellnummer)
 INNER JOIN termin t ON (t.terminnummer = tm.mterminnummer);
 
-CREATE VIEW termin_zu_kunde AS
-SELECT termin.starttag, termin.tkundennummer
-FROM termin
-ORDER BY tkundennummer DESC;
-
-
-CREATE VIEW kunde_zu_rechnung AS
-SELECT rechnung.rechnungsnummer, rechnung.rechnungsbetrag, kunde.kundennummer, kunde.name
-FROM rechnung
-INNER JOIN kunde
-ON rechnung.rkundennummer=kunde.kundennummer;
-
-
-CREATE VIEW arbeitsort AS
-SELECT mitarbeiter.name, geschaeftsstelle.ort
-FROM mitarbeiter 
-INNER JOIN geschaeftsstelle
-ON mitarbeiter.mitgeschaeftsstellennummer=geschaeftsstelle.geschaeftsstellennummer;
-
-
-CREATE VIEW rechnung_pro_termin (termin, rechnung) AS 
-SELECT t.terminnummer, r.rechnungsbetrag
-FROM terminmanagement tm
-INNER JOIN 
-termin t ON tm.mterminnummer = t.terminnummer
-INNER JOIN 
-rechnung r ON tm.mrechnungsnummer = r.rechnungsnummer;
-
 CREATE VIEW rechnungsansicht AS
-
-
 Select rechnungsnummer, rechnungsbetrag, rkundennummer, starttag, endtag, nummernschild, fahrzeugnummer, fmodellnummer
-
 FROM terminmanagement ter 
-
 JOIN rechnung r
-
 ON ter.mrechnungsnummer = r.rechnungsnummer
-
-
 JOIN fahrzeug f
-
 ON ter.mfahrzeugnummer = f.fahrzeugnummer
 
 ALTER TABLE kunde
