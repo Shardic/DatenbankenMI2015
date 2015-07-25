@@ -238,12 +238,21 @@ INNER JOIN fahrzeugmodell fm ON (f.fmodellnummer = fm.modellnummer)
 INNER JOIN termin t ON (t.terminnummer = tm.mterminnummer);
 
 CREATE VIEW rechnungsansicht AS
-Select rechnungsnummer, rechnungsbetrag, rkundennummer, starttag, endtag, nummernschild, fahrzeugnummer, fmodellnummer
+Select rechnungsnummer, rechnungsbetrag, rkundennummer, r.starttag, r.endtag, nummernschild, f.fahrzeugnummer, fmodellnummer, terminnummer
+
 FROM terminmanagement ter 
+
 JOIN rechnung r
+
 ON ter.mrechnungsnummer = r.rechnungsnummer
+
 JOIN fahrzeug f
+
 ON ter.mfahrzeugnummer = f.fahrzeugnummer
+
+JOIN termin t
+
+ON ter.mterminnummer = t.terminnummer
 
 ALTER TABLE kunde
 ADD COLUMN passwort VARCHAR(40);  
