@@ -88,7 +88,7 @@ INSERT INTO geschaeftsstelle VALUES(1,'Bremen', 28203);
 
 INSERT INTO fahrzeug VALUES(1,'Audi', 20000,"Coupe",2, 'HB AU 12',1);
 
-INSERT INTO kunde VALUES(1,'Hans Wurst',"Hans Wurst Straﬂe 30 29199 Bremen");
+INSERT INTO kunde VALUES(1,'test',"test@test.de");
 
 INSERT INTO termin VALUES('2015-05-11','2015-05-30',1,1);
 
@@ -239,23 +239,41 @@ INNER JOIN termin t ON (t.terminnummer = tm.mterminnummer);
 
 CREATE VIEW rechnungsansicht AS
 Select rechnungsnummer, rechnungsbetrag, rkundennummer, r.starttag, r.endtag, nummernschild, f.fahrzeugnummer, fmodellnummer, terminnummer
-
 FROM terminmanagement ter 
-
 JOIN rechnung r
-
 ON ter.mrechnungsnummer = r.rechnungsnummer
-
 JOIN fahrzeug f
-
 ON ter.mfahrzeugnummer = f.fahrzeugnummer
-
 JOIN termin t
-
-ON ter.mterminnummer = t.terminnummer
+ON ter.mterminnummer = t.terminnummer;
 
 ALTER TABLE kunde
 ADD COLUMN passwort VARCHAR(40);  
 
 UPDATE kunde 
-SET passwort="123456" WHERE kundennummer = 1; 
+SET passwort="test" WHERE kundennummer = 1; 
+
+UPDATE rechnung
+SET starttag = '2015-05-11', endtag = '2015-05-30' WHERE rechnungsnummer = 1;
+
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`, `hersteller`, `fahrzeugtyp`, `anzahl_sitzplaetze`) VALUES ('2', 'Audi', 'Limusine', '5');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`, `hersteller`, `fahrzeugtyp`, `anzahl_sitzplaetze`) VALUES ('3', 'BMW', 'Coupe', '2');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`, `hersteller`, `fahrzeugtyp`, `anzahl_sitzplaetze`) VALUES ('4', 'VW', 'Gelaendewagen', '5');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`, `hersteller`, `fahrzeugtyp`, `anzahl_sitzplaetze`) VALUES ('5', 'Audi', 'Coupe', '2');
+
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('2', '10000', 'HB DA 832', '1', '2');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('3', '30000', 'VER JU 32', '1', '3');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('4', '50000', 'DH GG 596', '1', '4');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('5', '200', 'HB TT 111', '1', '5');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('6', '34098', 'VER HD 130', '1', '1');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('7', '21134', 'HB BL 666', '1', '2');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('8', '74234', 'HB FI 21', '1', '3');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('9', '45325', 'VER CK 82', '1', '4');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('10', '25343', 'HB JD 234', '1', '5');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('11', '44342', 'VER BG 33', '1', '5');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('12', '78932', 'HB QE 112', '1', '4');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('13', '23425', 'HB AK 99', '1', '3');
+INSERT INTO `dbwebanw_sose15_09`.`fahrzeug` (`fahrzeugnummer`, `laufleistung`, `nummernschild`, `fgeschaeftsstellennummer`, `fmodellnummer`) VALUES ('14', '43434', 'HB DA 77 ', '1', '2');
+
+
+
