@@ -1,0 +1,11 @@
+3.4. Konfiguration der Datenbank: 
+
+Für die Konfiguration der Datenbank die der Anwendung zugrunde liegt müssen folgende Schritte befolgt werden: 
+
+	- MySQL Workbench muss installiert werden. 
+	- In der MySQL Workbench muss eine neue SQL Connection und Server erstellt werden.
+		Um die Verbindung zum lokalen Datenbankserver zu gewähleisten muss ein lokaler MySQL Server auf dem Rechner laufen. Bei Windows kann es wichtig sein die "mysqld.exe" mit Administratorrecheten zu starten. Diese Datei findet man unter der MySQL Ordnerstruktur in "MySQL\MySQL Server 5.6\bin". 
+	- In der Verbindung kann dann eine Query öffnen
+	- In dieser Query muss lediglich der gesamte Inhalt der Textdatei "SQLStatementsZusammengefasst.txt" kopiert werden und ausgeführt werden. Diese Query setzt dann die gesamte Datenbank auf und füllt diese mit Beispieldatensätzen.
+
+Nachdem diese Schritte erfolgreich durchgeführt werden kann die Anwendung installiert und gestartet werden. 	
