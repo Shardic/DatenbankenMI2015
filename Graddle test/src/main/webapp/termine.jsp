@@ -76,26 +76,6 @@
         starttag = iter.getStarttag();
         endtag = iter.getEndtag();
         tage = TageRechner.getAnzahlTage(starttag, endtag);
-        terminnummer = iter.getTerminnummer();
-        rechnungsnummer = iter.getRechnungsnummer();
-        fahrzeugnummer = iter.getFahrzeugnummer();
-        System.out.println("Termin:");
-        System.out.println(starttag);
-        System.out.println(endtag);
-        System.out.println(tage);
-        System.out.println(terminnummer);
-        System.out.println(rechnungsnummer);
-        System.out.println(fahrzeugnummer);
-      /*
-      for (Iterator iterator = viewListe.iterator(); iterator.hasNext();){
-        Termin iter = (Termin) iterator.next();
-        starttag = iter.getStarttag();
-        kundennummer = iter.getTkundennummer();
-        terminnummer = iter.getTerminnummer();
-        endtag = iter.getEndtag();
-        tage = TageRechner.getAnzahlTage(starttag, endtag);
-      */
-
     %>
 
     <tbody>

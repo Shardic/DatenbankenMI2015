@@ -8,7 +8,7 @@
 <jsp:useBean id="loggedKunde" class="Tables.Kunde" scope="session"/>
 <%
 if (loggedKunde.getId()!= 0) {
-  System.out.println(loggedKunde.getId());
+ // System.out.println(loggedKunde.getId());
 %>
 <jsp:forward page="myAccount.jsp"/>
 <%

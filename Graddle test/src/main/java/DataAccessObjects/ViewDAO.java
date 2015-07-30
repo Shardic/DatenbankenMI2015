@@ -29,12 +29,11 @@ public class ViewDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         List myview = null;
-        System.out.println(start);
         try{
             tx = session.beginTransaction();
             myview =  session.createQuery("FROM FahrzeugeMitTermindaten WHERE endtag >= '" + start + "' AND starttag <= '" + end + "'").list();
             if (myview.size() == 0) {
-                System.out.println("keine ergebnisse");
+                System.out.println("Keine Fahrzeuge mehr zu den Daten verfügbar");
             }
             tx.commit();
         }catch (HibernateException e) {

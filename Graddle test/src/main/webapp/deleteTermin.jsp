@@ -33,9 +33,9 @@
 <body>
 <%
   Rechnungsansicht rechnungsansicht = (Rechnungsansicht) session.getAttribute("Object");
-  System.out.println("fahrzeug:"+rechnungsansicht.getFahrzeugnummer());
+ /* System.out.println("fahrzeug:"+rechnungsansicht.getFahrzeugnummer());
   System.out.println("rechnung:"+rechnungsansicht.getRechnungsnummer());
-  System.out.println("termin:"+rechnungsansicht.getTerminnummer());
+  System.out.println("termin:"+rechnungsansicht.getTerminnummer());*/
 
   TerminDAO tDao = new TerminDAO();
   RechnungDAO rDAO = new RechnungDAO();

@@ -46,6 +46,7 @@
   }
   %>
 <%
+  ArrayList<Integer> wirklichVerfFahrzeuge = new ArrayList<Integer>();
   ArrayList<Integer> nichtVerfFahrzeuge = new ArrayList<Integer>();
   FahrzeugmodellDAO fMDAO = new FahrzeugmodellDAO();
   List<Fahrzeugmodell> allModelle = fMDAO.readAllFahrzeugmodelle();
@@ -137,6 +138,7 @@
           }
         }
         if (fahrzeugVerf) {
+          wirklichVerfFahrzeuge.add(allFahrzeuge.get(i).getFahrzeugNummer());
           fahrzeugNummer = allFahrzeuge.get(i).getFahrzeugNummer();
           laufleistung = allFahrzeuge.get(i).getLaufleistung();
           nummernschild = allFahrzeuge.get(i).getNummernschild();
@@ -175,13 +177,30 @@
 <%
   if (request.getParameter("chosenFahrzeug") != null) {
     int fahrzeug = Integer.parseInt(request.getParameter("chosenFahrzeug"));
-    createNewTermin(date1,date2,kundenNummer,fahrzeug);
-%>
-<script>
-  alert("Ihr Termin wurde gebucht!");
-  window.location.href= "myAccount.jsp";
-</script>
-<%
+    boolean gibtEs = false;
+    boolean unready = true;
+    int h = 0;
+    while(unready) {
+      if ((int) wirklichVerfFahrzeuge.get(h) == fahrzeug)
+      {
+        createNewTermin(date1,date2,kundenNummer,fahrzeug);
+        unready = false;
+          %>
+          <script>
+            alert("Ihr Termin wurde gebucht!");
+            window.location.href= "myAccount.jsp";
+          </script>
+          <%
+      } else if(h == wirklichVerfFahrzeuge.size() -1) {
+        %>
+          <script>
+            alert("Es muss eine gültige Fahrzeugnummer sein!");
+          </script>
+        <%
+      unready = false;
+    }
+      h++;
+    }
   }
 %>
 </body>

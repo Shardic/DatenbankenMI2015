@@ -27,7 +27,6 @@ public class Kunde {
         this.email = email;
         this.passwort = passwort;
     }
-
     public int getId() {
         return id;
     }

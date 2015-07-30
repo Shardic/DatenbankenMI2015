@@ -63,7 +63,7 @@
 
   <%
     for(i=0; i< allKunden.size(); i++){
-      System.out.println(allKunden.get(i).getName());
+     // System.out.println(allKunden.get(i).getName());
       id = allKunden.get(i).getId();
       name = allKunden.get(i).getName();
       email = allKunden.get(i).getEmail();

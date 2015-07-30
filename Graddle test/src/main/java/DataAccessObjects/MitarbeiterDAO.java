@@ -89,10 +89,10 @@ public class MitarbeiterDAO {
             mitarbiter = session.createQuery("FROM Mitarbeiter ").list();
             for (Iterator iterator = mitarbiter.iterator(); iterator.hasNext();){
                 Mitarbeiter arbeiter = (Mitarbeiter) iterator.next();
-                System.out.print("id: " + "\t" + arbeiter.getMitarbeiterNummer());
+          /*      System.out.print("id: " + "\t" + arbeiter.getMitarbeiterNummer());
                 System.out.print("  name: " + arbeiter.getName());
                 System.out.print("  email: " + arbeiter.getEmail());
-                System.out.println("  Geschäftsstellennummer: " + arbeiter.getMitGeschaeftsstellennummer());
+                System.out.println("  Geschäftsstellennummer: " + arbeiter.getMitGeschaeftsstellennummer());*/
             }
             tx.commit();
         }catch (HibernateException e) {

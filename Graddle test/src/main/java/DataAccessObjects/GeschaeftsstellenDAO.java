@@ -62,9 +62,9 @@ public class GeschaeftsstellenDAO {
             geschaeftsstellen = session.createQuery("FROM Geschaeftsstelle ").list();
             for (Iterator iterator = geschaeftsstellen.iterator(); iterator.hasNext();){
                 Geschaeftsstelle geschaeftsstelle = (Geschaeftsstelle) iterator.next();
-                System.out.println("id: " + "\t" + geschaeftsstelle.getGeschaeftsstellennummer());
+             /*   System.out.println("id: " + "\t" + geschaeftsstelle.getGeschaeftsstellennummer());
                 System.out.println("ort: " + geschaeftsstelle.getOrt());
-                System.out.println("plz: " + geschaeftsstelle.getPlz());
+                System.out.println("plz: " + geschaeftsstelle.getPlz());*/
             }
             tx.commit();
         }catch (HibernateException e) {

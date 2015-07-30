@@ -267,6 +267,4 @@ public final class TageRechner {
 
     /** The maximum date possible. */
     public static Date MAX_DATE = new Date(Long.MAX_VALUE);
-
-
 }

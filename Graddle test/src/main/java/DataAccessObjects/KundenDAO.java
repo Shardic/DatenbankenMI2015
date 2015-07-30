@@ -109,10 +109,10 @@ public class KundenDAO {
             for (Iterator iterator =
                  kunden.iterator(); iterator.hasNext();){
                 Kunde kunde = (Kunde) iterator.next();
-                System.out.print("id: " + "\t" + kunde.getId());
+            /*    System.out.print("id: " + "\t" + kunde.getId());
                 System.out.print("  name: " + kunde.getName());
                 System.out.print("  email: " + kunde.getEmail());
-                System.out.println("  passwort: " + kunde.getPasswort());
+                System.out.println("  passwort: " + kunde.getPasswort());*/
             }
             tx.commit();
         }catch (HibernateException e) {
