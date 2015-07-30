@@ -21,19 +21,13 @@ public class Rechnung {
     @Column(name = "rkundennummer")
     private int rKudenNummer;
 
-    @Column(name = "starttag")
-    private Date startTag;
 
-    @Column(name = "endtag")
-    private Date endTag;
 
     public Rechnung(){}
 
-    public Rechnung(int betrag, int kunde, Date start, Date end) {
+    public Rechnung(int betrag, int kunde) {
         this.rechnungsBetrag = betrag;
         this.rKudenNummer=kunde;
-        this.startTag = start;
-        this.endTag = end;
     }
 
     public int getRechnungsNummer() {
@@ -63,19 +57,4 @@ public class Rechnung {
         this.rKudenNummer = rKudenNummer;
     }
 
-    public Date getStartTag() {
-        return startTag;
-    }
-
-    public void setStartTag(Date startTag) {
-        this.startTag = startTag;
-    }
-
-    public Date getEndTag() {
-        return endTag;
-    }
-
-    public void setEndTag(Date endTag) {
-        this.endTag = endTag;
-    }
 }
