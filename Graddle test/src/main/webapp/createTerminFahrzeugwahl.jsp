@@ -85,7 +85,7 @@
     RechnungDAO rDAO = new RechnungDAO();
     int diffInDays = (int)( (endTag.getTime() - anfangsTag.getTime())
             / (1000 * 60 * 60 * 24));
-    rDAO.addRechnung(diffInDays*100,kundennummer,anfangsTag,endTag);
+    rDAO.addRechnung(diffInDays*100,kundennummer);
     TerminManagementDAO tMDAO = new TerminManagementDAO();
     List<Termin> terminList = tDAO.readAllTermine();
     List<Rechnung> rechnungList = rDAO.getAll();

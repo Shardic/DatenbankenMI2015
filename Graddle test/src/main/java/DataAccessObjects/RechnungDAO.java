@@ -84,17 +84,15 @@ public class RechnungDAO {
      * fail: return null
      * @param betrag
      * @param kundenNummer
-     * @param startTag
-     * @param endTag
      * @return ID der Rechnung
      */
-    public Integer addRechnung(int betrag, int kundenNummer, Date startTag, Date endTag){
+    public Integer addRechnung(int betrag, int kundenNummer){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         Integer result = null;
         try{
             tx = session.beginTransaction();
-            Rechnung r = new Rechnung(betrag, kundenNummer, startTag, endTag);
+            Rechnung r = new Rechnung(betrag, kundenNummer);
             result = (Integer) session.save(r);
             tx.commit();
         }catch (HibernateException e) {
@@ -121,8 +119,6 @@ public class RechnungDAO {
         try{
             tx = session.beginTransaction();
             Rechnung alt = (Rechnung)session.get(Rechnung.class, id);
-            alt.setEndTag(neu.getEndTag());
-            alt.setStartTag(neu.getStartTag());
             alt.setRechnungsBetrag(neu.getRechnungsBetrag());
             alt.setrKudenNummer(neu.getrKudenNummer());
             session.update(alt);

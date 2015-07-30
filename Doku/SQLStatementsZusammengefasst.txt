@@ -219,9 +219,7 @@ INSERT INTO `fahrzeugmodell` VALUES (1, "VW", "Limousine", 5);
 UPDATE `fahrzeug` SET `fmodellnummer` = 1 WHERE `fahrzeugnummer` = 1;
 
 ALTER TABLE rechnung
-DROP `anzahl_tage`,
-ADD `starttag` DATE,
-ADD `endtag` DATE;
+DROP `anzahl_tage`;
 
 #loescht die views, falls sie existieren, und erstellt sie neu
 
@@ -238,7 +236,7 @@ INNER JOIN fahrzeugmodell fm ON (f.fmodellnummer = fm.modellnummer)
 INNER JOIN termin t ON (t.terminnummer = tm.mterminnummer);
 
 CREATE VIEW rechnungsansicht AS
-Select rechnungsnummer, rechnungsbetrag, rkundennummer, r.starttag, r.endtag, nummernschild, f.fahrzeugnummer, fmodellnummer, terminnummer
+Select rechnungsnummer, rechnungsbetrag, rkundennummer, starttag, endtag, nummernschild, f.fahrzeugnummer, fmodellnummer, terminnummer
 FROM terminmanagement ter 
 JOIN rechnung r
 ON ter.mrechnungsnummer = r.rechnungsnummer
@@ -253,8 +251,6 @@ ADD COLUMN passwort VARCHAR(40);
 UPDATE kunde 
 SET passwort="test" WHERE kundennummer = 1; 
 
-UPDATE rechnung
-SET starttag = '2015-05-11', endtag = '2015-05-30' WHERE rechnungsnummer = 1;
 
 INSERT INTO `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`, `hersteller`, `fahrzeugtyp`, `anzahl_sitzplaetze`) VALUES ('2', 'Audi', 'Limusine', '5');
 INSERT INTO `dbwebanw_sose15_09`.`fahrzeugmodell` (`modellnummer`, `hersteller`, `fahrzeugtyp`, `anzahl_sitzplaetze`) VALUES ('3', 'BMW', 'Coupe', '2');
