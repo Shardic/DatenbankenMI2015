@@ -1,0 +1,37 @@
+Entwicklungsumgebung
+
+Versionskontrollsystem: Github
+Bereits vorhandene Github Accounts und installierte Software
+
+Entwicklungsumgebung: IntelliJ
+Integration von Git direkt im Editor
+Einfache Installation von Bibliotheken und Frameworks
+Eclipse benötig Plugins, die angeblich umständlich funktionieren sollen
+
+Buildautomatisierungswerkzeug: Gradle
+Einfachere Konfigurations-Datein
+Direkter Support in IntelliJ
+Einfache Automatisierung
+
+Komponententest-Framework: Keins
+Aufsetzen der Entwicklungsumgebung war komplizierter als erwartet
+Hätte zu viel Eigenaufwand erfordert, da keiner Erfahrung bzw Modul dazu hat
+Nicht direkt Notenrelevant, Zeit ist besser verwendet das Projekt fertigzustellen
+
+
+
+Bibliotheken und Frameworks
+
+Hibernate und JPA
+Automatische Erstellung von Java Objekten aus Abfragen (Kein Objektbauen aus Resultsets)
+Annotations bei Mapping anstatt XML-Datein
+„Abkopplung“ vom Datenbankdenken, da arbeiten mit standard Java Objekten
+Lernen neuer Datenbankzugriffe, aber Möglichkeit Datenbank auszutauschen
+
+Java Server Pages
+Sessions und Beans nutzbar
+Normales HTML benutzbar (gegenüber JSF und Facelets)
+
+Bootstrap
+Vorgefertigte CSS Bibliothek für Frontend
+Einsparung von Designentwicklungszeit
